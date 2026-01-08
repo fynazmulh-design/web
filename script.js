@@ -6,7 +6,7 @@ const CONFIG = {
     authScriptURL: "https://script.google.com/macros/s/AKfycbwor9BTwddVVaKodWV-1tjxTrBbRjlJNjEAf2yQEQF92neiZFxXpl9C7alqt6gaFHhCrg/exec", 
     vipScriptURL:  "https://script.google.com/macros/s/AKfycbwor9BTwddVVaKodWV-1tjxTrBbRjlJNjEAf2yQEQF92neiZFxXpl9C7alqt6gaFHhCrg/exec",
 
-    noticeText: "🚀 Welcome to ProToolsHub! 🔥 Get 30% OFF on Yearly Plan! ⚡ Instant Activation with Bkash/Nagad/Rocket & Binance.",
+    noticeText: "🚀 Welcome to Freelancer Nazmul site! 🔥 Get 30% OFF on Yearly Plan! ⚡ Instant Activation with Bkash/Nagad/Rocket & Binance.",
     logoImageURL: "https://i.imgur.com/your-logo.png", 
     useImageLogo: false, 
     courses: [
@@ -321,3 +321,28 @@ function logout() { localStorage.removeItem('proToolsUser'); location.reload(); 
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
+
+// ============================================
+// 🔥 DYNAMIC PAYMENT INFO UPDATE
+// ============================================
+function updatePayInfo() {
+    const method = document.getElementById('payMethod').value;
+    const payLabel = document.getElementById('payLabel');
+    const payNumber = document.getElementById('payNumber');
+    const senderLabel = document.getElementById('senderLabel');
+    const senderInput = document.getElementById('senderInput');
+    
+    if (method === 'Binance') {
+        // Binance Logic
+        payLabel.innerText = "Binance Pay ID (Our ID)";
+        payNumber.value = "745273700"; 
+        senderLabel.innerText = "Binance Sender ID (Your Pay ID)";
+        senderInput.placeholder = "Enter your Binance ID";
+    } else {
+        // Bkash/Nagad/Rocket Logic
+        payLabel.innerText = "Payment Number (Our Number)";
+        payNumber.value = "01780103303"; 
+        senderLabel.innerText = "Sender Number (Your Number)";
+        senderInput.placeholder = "01xxxxxxxxx";
+    }
+}
