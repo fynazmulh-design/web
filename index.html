@@ -236,11 +236,29 @@
                 <h3 class="text-xl font-bold text-white mb-2">Confirm Payment</h3>
                 <p class="text-gray-400 text-sm mb-4">Package: <span id="payPackageName" class="text-purple-400 font-bold"></span></p>
                 <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30 mb-6 text-center"><span class="text-xs text-gray-400 block mb-1">Total Amount</span><span id="payAmount" class="text-3xl font-mono font-bold text-white"></span></div>
+                
                 <form onsubmit="handlePaymentSubmit(event)" class="space-y-3">
-                    <div><label class="text-xs font-bold text-gray-500 block mb-1">Payment Method</label><select name="method" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none"><option value="Bkash">Bkash</option><option value="Nagad">Nagad</option><option value="Rocket">Rocket</option><option value="Binance">Binance</option></select></div>
-                    <div><label class="text-xs font-bold text-gray-500 block mb-1">Payment Number (Our Number)</label><input type="text" value="01780103303 & Binance ID(745273700)" readonly class="w-full bg-dark/50 border border-white/5 rounded-lg px-4 py-3 text-gray-400 outline-none cursor-not-allowed"></div>
-                    <div><label class="text-xs font-bold text-gray-500 block mb-1">Sender Number (Your Number)</label><input type="text" name="sender" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none"></div>
-                    <div><label class="text-xs font-bold text-gray-500 block mb-1">Transaction ID</label><input type="text" name="trxid" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none uppercase"></div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 block mb-1">Payment Method</label>
+                        <select id="payMethod" name="method" onchange="updatePayInfo()" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none">
+                            <option value="Bkash">Bkash</option>
+                            <option value="Nagad">Nagad</option>
+                            <option value="Rocket">Rocket</option>
+                            <option value="Binance">Binance</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label id="payLabel" class="text-xs font-bold text-gray-500 block mb-1">Payment Number (Our Number)</label>
+                        <input id="payNumber" type="text" value="01780103303" readonly class="w-full bg-dark/50 border border-white/5 rounded-lg px-4 py-3 text-gray-400 outline-none cursor-not-allowed">
+                    </div>
+                    <div>
+                        <label id="senderLabel" class="text-xs font-bold text-gray-500 block mb-1">Sender Number (Your Number)</label>
+                        <input id="senderInput" type="text" name="sender" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 block mb-1">Transaction ID</label>
+                        <input type="text" name="trxid" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none uppercase">
+                    </div>
                     <button type="submit" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg shadow-lg mt-2">Submit Payment Request</button>
                 </form>
             </div>
@@ -250,16 +268,6 @@
                 <p class="text-gray-400 text-sm mb-6 bg-yellow-900/20 p-3 rounded border border-yellow-700/30">For fast access, please message <br> <a href="https://t.me/freelancernazmul" target="_blank" class="text-blue-400 underline font-bold">Telegram Support</a></p>
                 <div class="space-y-3"><label class="text-xs font-bold text-gray-500 block text-left">Enter VIP Code</label><input type="text" id="modalVipCode" placeholder="XXXX-XXXX-XXXX" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white font-mono text-center uppercase outline-none focus:border-purple-500"><button onclick="redeemVipCode()" class="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-lg shadow-lg">Unlock Access</button></div>
             </div>
-        </div>
-    </div>
-
-    <div id="lockModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-black/90 backdrop-blur-md p-6">
-        <div class="bg-[#1e293b] border border-red-500/30 p-8 rounded-2xl max-w-sm w-full text-center shadow-2xl relative">
-            <button onclick="document.getElementById('lockModal').classList.add('hidden')" class="absolute top-3 right-3 text-gray-500"><i class="ph-bold ph-x"></i></button>
-            <div class="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-500/20"><i class="ph-fill ph-lock-key text-red-500 text-3xl"></i></div>
-            <h3 class="text-2xl font-bold text-white mb-2">Access Locked!</h3>
-            <p class="text-gray-400 text-sm mb-6">Please purchase a course package to unlock all tools and videos.</p>
-            <button onclick="document.getElementById('lockModal').classList.add('hidden'); document.getElementById('course-packages').scrollIntoView({behavior:'smooth'});" class="w-full py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition shadow-lg">View Packages</button>
         </div>
     </div>
 
@@ -290,6 +298,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
