@@ -23,7 +23,10 @@ const LINK_DATA = {
     cpa: [
         { name: "Exnessoffer (Best for Beginners)", url: "https://aff.exnessoffer.com" },
         { name: "Cpagrip (Mobile Traffic)", url: "https://www.cpagrip.com" },
-        { name: "MaxBounty (Premium)", url: "https://maxbounty.com" }
+        { name: "Adbluemedia (Premium)", url: "https://adbluemedia.com" }
+        { name: "Affroyal (Premium)", url: "https://affroyal.com" }
+        { name: "Cpabossa (Premium)", url: " https://dashboard.cpabossaffiliate.com" }
+        { name: "Cpamatica (Premium)", url: "https://cpamatica.io" }
     ],
     ip: [
         { name: "Proxy6 (Cheap IPv6/IPv4)", url: "https://proxy6.net" },
@@ -318,5 +321,6 @@ function handleAuth(event, action) { event.preventDefault(); const form = event.
 function logout() { localStorage.removeItem('proToolsUser'); location.reload(); }
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
+
 
 
