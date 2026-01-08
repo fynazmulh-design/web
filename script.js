@@ -2,7 +2,7 @@
 // ⚠️ ADMIN CONFIGURATION AREA
 // ============================================
 const CONFIG = {
-    // 1. YOUR UNIFIED GOOGLE APPS SCRIPT URL (Same URL for both if using the merged script)
+    // 1. YOUR UNIFIED GOOGLE APPS SCRIPT URL
     authScriptURL: "https://script.google.com/macros/s/AKfycbwor9BTwddVVaKodWV-1tjxTrBbRjlJNjEAf2yQEQF92neiZFxXpl9C7alqt6gaFHhCrg/exec", 
     vipScriptURL:  "https://script.google.com/macros/s/AKfycbwor9BTwddVVaKodWV-1tjxTrBbRjlJNjEAf2yQEQF92neiZFxXpl9C7alqt6gaFHhCrg/exec",
 
@@ -133,16 +133,14 @@ function checkLoginStatus() {
 
         document.getElementById('dashUserName').innerText = user.name || "User";
         
-        // 🚀 AUTO SYNC PLAN: Checks plan on every login/page load
+        // 🚀 AUTO SYNC CALL
         syncUserPlan(user);
     }
 }
 
-// 🔥 THIS IS THE LOGIN FIX
 function syncUserPlan(user) {
-    updateUIBasedOnPlan(user.plan); // First show local state
-
-    // Ask server for real plan
+    updateUIBasedOnPlan(user.plan); // Show Local First
+    
     fetch(`${CONFIG.vipScriptURL}?action=check_status&email=${user.email}`)
     .then(res => res.json())
     .then(data => {
@@ -152,16 +150,15 @@ function syncUserPlan(user) {
             updateUIBasedOnPlan(data.plan);
         }
     })
-    .catch(err => {
-        console.error("Sync Error", err);
-    });
+    .catch(err => console.error("Sync Error", err));
 }
+
 function updateUIBasedOnPlan(plan) {
     updatePlanBadge(plan);
     
     // 🔥 GUIDE BUTTON VS TELEGRAM BUTTON LOGIC
     const telegramLink = "https://t.me/+vurs_IdenTE4M2Zl";
-    const guideLink = "https://youtube.com/your-guide-link"; // এখানে আপনার গাইড ভিডিওর লিংক দিন
+    const guideLink = "https://youtube.com/your-guide-link"; // ইউটিউব ভিডিও লিংক এখানে
 
     const publicBtn = document.getElementById('publicGuideBtn');
     const dashBtn = document.getElementById('dashGuideBtn');
@@ -201,7 +198,7 @@ function updateUIBasedOnPlan(plan) {
             dashBtn.onclick = function() { window.open(guideLink, '_blank'); };
             dashBtn.querySelector('i').className = "ph-fill ph-play-circle text-2xl";
             if(dashText) dashText.innerText = "Watch Tutorial / Guide";
-        
+        }
         
         // Reset Public Button
         if(publicBtn) {
@@ -209,7 +206,6 @@ function updateUIBasedOnPlan(plan) {
             if(publicText) publicText.innerText = "Watch Tutorial / Guide";
         }
     }
-}
 }
 
 function renderCourseVideos() {
@@ -280,8 +276,11 @@ function redeemVipCode() {
     fetch(CONFIG.vipScriptURL, { method: 'POST', body: data }).then(res => res.json()).then(result => {
         if (result.result === 'success') {
             alert(`✅ Success! Activated: ${result.newPlan}`);
+            // Update local storage
             user.plan = result.newPlan;
             localStorage.setItem('proToolsUser', JSON.stringify(user));
+            // Update UI
+            updateUIBasedOnPlan(result.newPlan);
             document.getElementById('paymentModal').classList.add('hidden');
             location.reload(); 
         } else { alert("❌ " + result.message); }
@@ -345,7 +344,7 @@ function loadTool(toolId) {
     }
 }
 
-// Logic Functions (Old + Address Fixed)
+// Logic Functions (Address Gen Fixed)
 function updateUABrands(){ const os=document.getElementById('uaOS').value; const c=document.getElementById('uaCountry').value; const b=document.getElementById('uaBrand'); b.innerHTML=''; if(os==='Android'){ let list=uaData.countryBrands[c]||uaData.countryBrands['US']; list.forEach(x=>b.add(new Option(x,x))); b.add(new Option('Random','Random')); } else if(os==='iOS'){ b.add(new Option('Apple','Apple')); } else { b.add(new Option('PC/Mac','PC')); } }
 function updateUAApps(){ const env=document.getElementById('uaEnv').value; const app=document.getElementById('uaApp'); app.innerHTML=''; let list=env==='browser'?uaData.versions.browser:uaData.versions.social; Object.keys(list).forEach(k=>app.add(new Option(k,k))); app.add(new Option('Random','Random')); updateUAVersion(); }
 function updateUAVersion(){ const env=document.getElementById('uaEnv').value; const app=document.getElementById('uaApp').value; const ver=document.getElementById('uaVersion'); ver.value=(app==='Random')?'Mixed':(env==='browser'?uaData.versions.browser[app]:uaData.versions.social[app]); }
@@ -353,7 +352,6 @@ function runUAGenerator(){ const qty=parseInt(document.getElementById('uaQty').v
 function runEmailGenerator(){ const qty=parseInt(document.getElementById('emailQty').value); const pattern=parseInt(document.getElementById('emailPattern').value); let results=[]; let uniqueEmails=new Set(); let attempts=0; let maxAttempts=qty*10; while(results.length<qty && attempts<maxAttempts){ attempts++; const isMale=Math.random()<0.5; const genderLabel=isMale?"male":"female"; const firstName=isMale?getRandomItem(uaData.email.maleNames):getRandomItem(uaData.email.femaleNames); const lastName=getRandomItem(uaData.email.titles); let username=""; const cleanFirst=firstName.toLowerCase(); const cleanLast=lastName.toLowerCase(); const randomYear=getRandomItem(years); const randomNumber=getRandomItem(commonNumbers); if(pattern===0) username=cleanFirst+cleanLast; else if(pattern===1) username=cleanFirst+"."+cleanLast; else if(pattern===2) username=cleanFirst+cleanLast+randomYear; else username=cleanFirst+cleanLast+randomNumber; const domain=getRandomItem(uaData.email.domains); const fullEmail=`${username}@${domain}`; if(!uniqueEmails.has(fullEmail)){ uniqueEmails.add(fullEmail); results.push(`${genderLabel} : ${firstName} ${lastName} : ${fullEmail}`); } } document.getElementById('emailResult').value=results.join('\n'); }
 async function runEmailValidator(){ const raw=document.getElementById('validInput').value; const emails=raw.split('\n').filter(e=>e.trim()); const tbody=document.getElementById('validResult'); tbody.innerHTML=''; for(let email of emails){ let domain=email.split('@')[1]; let isValid=false; try{ let res=await fetch(`https://cloudflare-dns.com/dns-query?name=${domain}&type=MX`,{headers:{'Accept':'application/dns-json'}}); let data=await res.json(); if(data.Answer && data.Answer.length>0) isValid=true; }catch(e){} const statusHTML=isValid?'<span class="status-valid">MX Record Found</span>':'<span class="status-invalid">No MX Record</span>'; const resultText=isValid?'Valid Domain':'Invalid/Unreachable'; tbody.innerHTML+=`<tr><td>${email}</td><td>${statusHTML}</td><td>${resultText}</td></tr>`; } }
 function runNumberGenerator(){ const country=document.getElementById('numCountry').value; const qty=parseInt(document.getElementById('numQty').value); const conf=uaData.number[country]; let uniqueNumbers=new Set(); while(uniqueNumbers.size<qty){ let prefix=rnd(conf.prefixes); let body=""; for(let i=0;i<conf.digits;i++){ body+=Math.floor(Math.random()*10); } uniqueNumbers.add(`${conf.code}${prefix}${body}`); } document.getElementById('numResult').value=Array.from(uniqueNumbers).join('\n'); }
-// FIXED ADDRESS GENERATOR
 function loadStates(){ const c=document.getElementById("addrCountry").value; const s=document.getElementById("addrState"); const ci=document.getElementById("addrCity"); s.innerHTML='<option value="">Any State / Region</option>'; ci.innerHTML='<option value="">Any City</option>'; if(c && uaData.address[c]){ Object.keys(uaData.address[c].states).sort().forEach(state=>{ const o=document.createElement("option"); o.value=state; o.text=state; s.appendChild(o); }); } }
 function loadCities(){ const c=document.getElementById("addrCountry").value; const s=document.getElementById("addrState").value; const ci=document.getElementById("addrCity"); ci.innerHTML='<option value="">Any City</option>'; if(c && s && uaData.address[c].states[s]){ uaData.address[c].states[s].sort().forEach(city=>{ const o=document.createElement("option"); o.value=city; o.text=city; ci.appendChild(o); }); } }
 function runAddressGenerator(){ const country=document.getElementById('addrCountry').value; const selectedState=document.getElementById('addrState').value; const selectedCity=document.getElementById('addrCity').value; const qty=parseInt(document.getElementById('addrQty').value); const div=document.getElementById('addrResult'); if(!country){ alert("Please select a country first."); return; } div.innerHTML=''; const conf=uaData.address[country]; for(let i=0;i<qty;i++){ let finalState=selectedState; let finalCity=selectedCity; if(!finalState) finalState=rnd(Object.keys(conf.states)); if(!finalCity) finalCity=rnd(conf.states[finalState]); let streetName=rnd(uaData.streets); let streetNum=Math.floor(Math.random()*999)+1; function generateZip(format){ const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ"; return format.replace(/#/g,()=>Math.floor(Math.random()*10)).replace(/\?/g,()=>letters.charAt(Math.floor(Math.random()*letters.length))); } let zip=generateZip(conf.zip); const cardHTML=`<div class="p-3 bg-white/5 rounded border border-white/5 mb-2 font-mono text-xs"><strong class="text-purple-400">Address #${i+1}</strong><br><span class="text-gray-300">${streetNum} ${streetName}<br>${finalCity}, ${finalState} ${zip}<br>${country}</span></div>`; div.innerHTML+=cardHTML; } }
@@ -369,32 +367,27 @@ function logout() { localStorage.removeItem('proToolsUser'); location.reload(); 
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ============================================
+// 🔥 DYNAMIC PAYMENT INFO UPDATE (New Feature)
+// ============================================
+function updatePayInfo() {
+    const method = document.getElementById('payMethod').value;
+    const payLabel = document.getElementById('payLabel');
+    const payNumber = document.getElementById('payNumber');
+    const senderLabel = document.getElementById('senderLabel');
+    const senderInput = document.getElementById('senderInput');
+    
+    if (method === 'Binance') {
+        // Binance Logic
+        payLabel.innerText = "Binance Pay ID (Our ID)";
+        payNumber.value = "745273700"; 
+        senderLabel.innerText = "Binance Sender ID (Your Pay ID)";
+        senderInput.placeholder = "Enter your Binance ID";
+    } else {
+        // Bkash/Nagad/Rocket Logic
+        payLabel.innerText = "Payment Number (Our Number)";
+        payNumber.value = "01780103303"; 
+        senderLabel.innerText = "Sender Number (Your Number)";
+        senderInput.placeholder = "01xxxxxxxxx";
+    }
+}
