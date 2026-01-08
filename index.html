@@ -226,23 +226,34 @@
         </div>
     </div>
 
-    <a href="https://t.me/freelancernazmul" target="_blank" class="telegram-btn"><i class="ph-fill ph-telegram-logo"></i></a>
-    <footer class="bg-[#0b1121] border-t border-white/5 py-8 px-6 mt-12 text-center text-gray-600 text-xs"><p> ©️ 2026 ProToolsHub. All rights reserved.</p></footer>
+    <form onsubmit="handlePaymentSubmit(event)" class="space-y-3">
+    <div>
+        <label class="text-xs font-bold text-gray-500 block mb-1">Payment Method</label>
+        <select id="payMethod" name="method" onchange="updatePayInfo()" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none">
+            <option value="Bkash">Bkash</option>
+            <option value="Nagad">Nagad</option>
+            <option value="Rocket">Rocket</option>
+            <option value="Binance">Binance</option>
+        </select>
+    </div>
 
-    <div id="paymentModal" class="hidden fixed inset-0 z-[150] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 overflow-y-auto">
-        <div class="relative w-full max-w-md bg-[#1e293b] border border-white/10 rounded-2xl shadow-2xl my-8 overflow-hidden p-6">
-            <button onclick="document.getElementById('paymentModal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="ph-bold ph-x text-xl"></i></button>
-            <div id="paymentStep1">
-                <h3 class="text-xl font-bold text-white mb-2">Confirm Payment</h3>
-                <p class="text-gray-400 text-sm mb-4">Package: <span id="payPackageName" class="text-purple-400 font-bold"></span></p>
-                <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30 mb-6 text-center"><span class="text-xs text-gray-400 block mb-1">Total Amount</span><span id="payAmount" class="text-3xl font-mono font-bold text-white"></span></div>
-                <form onsubmit="handlePaymentSubmit(event)" class="space-y-3">
-                    <div><label class="text-xs font-bold text-gray-500 block mb-1">Payment Method</label><select name="method" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none"><option value="Bkash">Bkash</option><option value="Nagad">Nagad</option><option value="Rocket">Rocket</option><option value="Binance">Binance</option></select></div>
-                    <div><label class="text-xs font-bold text-gray-500 block mb-1">Payment Number (Our Number)</label><input type="text" value="01780103303" readonly class="w-full bg-dark/50 border border-white/5 rounded-lg px-4 py-3 text-gray-400 outline-none cursor-not-allowed"></div>
-                    <div><label class="text-xs font-bold text-gray-500 block mb-1">Sender Number (Your Number)</label><input type="text" name="sender" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none"></div>
-                    <div><label class="text-xs font-bold text-gray-500 block mb-1">Transaction ID</label><input type="text" name="trxid" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none uppercase"></div>
-                    <button type="submit" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg shadow-lg mt-2">Submit Payment Request</button>
-                </form>
+    <div>
+        <label id="payLabel" class="text-xs font-bold text-gray-500 block mb-1">Payment Number (Our Number)</label>
+        <input id="payNumber" type="text" value="01780103303" readonly class="w-full bg-dark/50 border border-white/5 rounded-lg px-4 py-3 text-gray-400 outline-none cursor-not-allowed">
+    </div>
+
+    <div>
+        <label id="senderLabel" class="text-xs font-bold text-gray-500 block mb-1">Sender Number (Your Number)</label>
+        <input id="senderInput" type="text" name="sender" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none">
+    </div>
+
+    <div>
+        <label class="text-xs font-bold text-gray-500 block mb-1">Transaction ID</label>
+        <input type="text" name="trxid" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none uppercase">
+    </div>
+
+    <button type="submit" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg shadow-lg mt-2">Submit Payment Request</button>
+</form>
             </div>
             <div id="paymentStep2" class="hidden text-center">
                 <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-green-500 text-3xl"><i class="ph-fill ph-check-circle"></i></div>
@@ -291,4 +302,5 @@
 </body>
 
 </html>
+
 
