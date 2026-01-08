@@ -21,9 +21,20 @@ const CONFIG = {
 // 🔥 LINK DATA
 const LINK_DATA = {
     cpa: [
-        { name: "Exnessoffer (Best for Beginners)", url: "https://aff.exnessoffer.com" },
-        { name: "Cpagrip (Mobile Traffic)", url: "https://www.cpagrip.com" },
-        { name: "Adbluemedia (Premium)", url: "https://adbluemedia.com" }
+        { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
+        { name: "Cpagrip (Premium)", url: "https://www.cpagrip.com" },
+        { name: "Adbluemedia (Premium)", url: "https://adbluemedia.com" },
+        { name: "Affroyal (Premium)", url: "https://affroyal.com" },
+        { name: "Cpaboss (Premium)", url: "https://dashboard.cpabossaffiliate.com" },
+        { name: "Adbluemedia (Premium)", url: "https://cpamatica.io"
+        { name: "Nexussyner (Premium)", url: "https://www.nexussyner.com" }
+         
+        { name: "Paysale (Premium)", url: "https://my.paysale.com" },
+        { name: "Affizer (Premium)", url: "https://app.affizer.com" },
+        { name: "C3pa (Premium)", url: "https://c3pa.net" },
+        { name: "Mylead (Premium)", url: "https://pub.mylead.global" },
+        { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
+        { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" }
     ],
     ip: [
         { name: "Proxy6 (Cheap IPv6/IPv4)", url: "https://proxy6.net" },
@@ -318,6 +329,7 @@ function handleAuth(event, action) { event.preventDefault(); const form = event.
 function logout() { localStorage.removeItem('proToolsUser'); location.reload(); }
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
+
 
 
 
