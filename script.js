@@ -39,7 +39,7 @@ const LINK_DATA = {
 
 // 🔥 VIDEO LINKS
 const COURSE_VIDEOS = [
-    { title: "Class 01: Introduction & Setup", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { title: "Class 01: Introduction & Setup", url: "https://drive.google.com/file/d/1v2uwF2J4oSKgh64uLcle1Wn-BgLQnBCL/view?usp=sharing" },
     { title: "Class 02: Account Creation", url: "https://www.youtube.com/embed/3JZ_D3ELwOQ" },
     { title: "Class 03: Tool Usage Basics", url: "https://www.youtube.com/embed/tgbNymZ7vqY" },
     { title: "Class 04: Advanced Strategies", url: "https://www.youtube.com/embed/LXb3EKWsInQ" },
@@ -318,6 +318,7 @@ function handleAuth(event, action) { event.preventDefault(); const form = event.
 function logout() { localStorage.removeItem('proToolsUser'); location.reload(); }
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
+
 
 
 
