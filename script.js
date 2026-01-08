@@ -178,13 +178,13 @@ function updateUIBasedOnPlan(plan) {
             dashBtn.classList.replace('from-blue-600', 'from-sky-500'); 
             dashBtn.classList.replace('to-cyan-600', 'to-blue-700');
             dashBtn.querySelector('i').className = "ph-fill ph-telegram-logo text-2xl"; 
-            if(dashText) dashText.innerText = "Join Premium Telegram";
+            if(dashText) dashText.innerText = "Watch Video Course";
         }
         
         // Public Button Update
         if(publicBtn) {
             publicBtn.onclick = function() { window.open(telegramLink, '_blank'); };
-            if(publicText) publicText.innerText = "Join Premium Telegram";
+            if(publicText) publicText.innerText = "Watch Video Course";
         }
 
     } else {
@@ -391,5 +391,6 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
