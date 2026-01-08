@@ -156,19 +156,60 @@ function syncUserPlan(user) {
         console.error("Sync Error", err);
     });
 }
-
 function updateUIBasedOnPlan(plan) {
     updatePlanBadge(plan);
+    
+    // 🔥 GUIDE BUTTON VS TELEGRAM BUTTON LOGIC
+    const telegramLink = "https://t.me/+vurs_IdenTE4M2Zl";
+    const guideLink = "https://youtube.com/your-guide-link"; // এখানে আপনার গাইড ভিডিওর লিংক দিন
+
+    const publicBtn = document.getElementById('publicGuideBtn');
+    const dashBtn = document.getElementById('dashGuideBtn');
+    const publicText = document.getElementById('publicGuideText');
+    const dashText = document.getElementById('dashGuideText');
+
     if (plan && plan !== 'Free') {
+        // ✅ USER IS VIP -> SHOW TELEGRAM BUTTON
         document.getElementById('course-packages').classList.add('hidden'); 
         document.getElementById('videoPlayerSection').classList.remove('hidden');
         renderCourseVideos(); 
-        document.getElementById('redeemSection').classList.add('hidden'); 
+        document.getElementById('redeemSection').classList.add('hidden');
+
+        // Dashboard Button Update
+        if(dashBtn) {
+            dashBtn.onclick = function() { window.open(telegramLink, '_blank'); };
+            dashBtn.classList.replace('from-blue-600', 'from-sky-500'); 
+            dashBtn.classList.replace('to-cyan-600', 'to-blue-700');
+            dashBtn.querySelector('i').className = "ph-fill ph-telegram-logo text-2xl"; 
+            if(dashText) dashText.innerText = "Join Premium Telegram";
+        }
+        
+        // Public Button Update
+        if(publicBtn) {
+            publicBtn.onclick = function() { window.open(telegramLink, '_blank'); };
+            if(publicText) publicText.innerText = "Join Premium Telegram";
+        }
+
     } else {
+        // ❌ USER IS FREE -> SHOW GUIDE BUTTON
         document.getElementById('course-packages').classList.remove('hidden');
         document.getElementById('videoPlayerSection').classList.add('hidden');
         document.getElementById('redeemSection').classList.remove('hidden');
+
+        // Reset Dashboard Button
+        if(dashBtn) {
+            dashBtn.onclick = function() { window.open(guideLink, '_blank'); };
+            dashBtn.querySelector('i').className = "ph-fill ph-play-circle text-2xl";
+            if(dashText) dashText.innerText = "Watch Tutorial / Guide";
+        }
+        
+        // Reset Public Button
+        if(publicBtn) {
+            publicBtn.onclick = function() { window.open(guideLink, '_blank'); };
+            if(publicText) publicText.innerText = "Watch Tutorial / Guide";
+        }
     }
+}
 }
 
 function renderCourseVideos() {
@@ -327,6 +368,7 @@ function handleAuth(event, action) { event.preventDefault(); const form = event.
 function logout() { localStorage.removeItem('proToolsUser'); location.reload(); }
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
+
 
 
 
