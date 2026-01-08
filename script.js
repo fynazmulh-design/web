@@ -57,7 +57,7 @@ const LINK_DATA = {
 
 // 🔥 VIDEO LINKS
 const COURSE_VIDEOS = [
-    { title: "Course: CPA Self SignUp", url: "https://drive.google.com/file/d/1p0BPqCuLhdSvD4UdzY-KlRwZJHmoEy20/preview" },
+    { title: "Course: CPA Self SignUp", url: "#" },
 ];
 
 // ============================================
@@ -327,6 +327,7 @@ function handleAuth(event, action) { event.preventDefault(); const form = event.
 function logout() { localStorage.removeItem('proToolsUser'); location.reload(); }
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
+
 
 
 
