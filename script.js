@@ -21,7 +21,7 @@ const CONFIG = {
 // 🔥 LINK DATA
 const LINK_DATA = {
     cpa: [
-        { name: "CPA Grip (Best for Beginners)", url: "https://cpagrip.com" },
+        { name: "Exnessoffer (Best for Beginners)", url: "https://aff.exnessoffer.com" },
         { name: "OGAds (Mobile Traffic)", url: "https://ogads.com" },
         { name: "MaxBounty (Premium)", url: "https://maxbounty.com" }
     ],
@@ -318,3 +318,4 @@ function handleAuth(event, action) { event.preventDefault(); const form = event.
 function logout() { localStorage.removeItem('proToolsUser'); location.reload(); }
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
+
