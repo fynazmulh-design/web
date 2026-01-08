@@ -38,7 +38,15 @@ const LINK_DATA = {
     ip: [
         { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
         { name: "Cliproxy {2 Gb - $2.90} = 510 Tk", url: "https://share.cliproxy.com/share/uyzacuaph" },
-        { name: "Piaproxy (Residential)", url: "https://www.piaproxy.com" }
+        { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
+        { name: "Cherryproxy {5 Gb - $4} = 660 Tk", url: "https://center.cherryproxy.com/Login/Register?invite=f6803719" },
+        { name: "Nodemaven {1 Gb - $4.70} = 730 Tk", url: "https://nodemaven.com/?a_aid=freelancernazmul" },
+        { name: "Dataimpulse {5 Gb - $5} = 820 Tk", url: "https://dataimpulse.com/?aff=79223" },
+        { name: "Proxyshare {10 Gb - $9} = 1350 Tk", url: "https://www.proxyshare.com/?invitation_code=CZ1DZX" },
+        { name: "Piaproxy {5 Gb - $9} = 1350 Tk", url: "https://www.piaproxy.com/register?invitation_code=DGW10SU1" },
+        { name: "922proxy {5 Gb - $10} = 1480 Tk", url: "https://www.922proxy.com/register?inviter_code=106eb74d" },
+        { name: "Lumiproxy {10 Gb - $20} = 2800 Tk", url: "https://www.lumiproxy.com/?invite_code=3U904A" },
+        { name: "Shopsocks5 {Day 80 Ip 30 Day - $8.40} = 1280 Tk", url: "https://shopsocks5.com/register.html?invite_code=57LSVEJM" },
     ],
     software: [
         { name: "Camtasia 2024 (Pre-Activated)", url: "#" },
@@ -328,6 +336,7 @@ function handleAuth(event, action) { event.preventDefault(); const form = event.
 function logout() { localStorage.removeItem('proToolsUser'); location.reload(); }
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
+
 
 
 
