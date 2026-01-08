@@ -57,16 +57,7 @@ const LINK_DATA = {
 
 // 🔥 VIDEO LINKS
 const COURSE_VIDEOS = [
-    { title: "Class 01: CPA Self SignUp সেরা CPA সাইট ও একাউন্ট খোলার নিয়ম!", url: "https://drive.google.com/file/d/1v2uwF2J4oSKgh64uLcle1Wn-BgLQnBCL/preview" },
-    { title: "Class 02: Account Creation", url: "https://drive.google.com/file/d/1zXKczFVry9px2SkNy5XbCQJYzQjKgErM/view?usp=sharing" },
-    { title: "Class 03: Tool Usage Basics", url: "https://youtu.be/0QXL-Thx8PQ?si=omZnWMHefGh0d4hJ" },
-    { title: "Class 04: Advanced Strategies", url: "https://www.youtube.com/watch?v=0QXL-Thx8PQ" },
-    { title: "Class 05: Automation Setup", url: "https://www.youtube.com/embed/F4tHL8reNCs" },
-    { title: "Class 06: Marketing Plan", url: "https://www.youtube.com/embed/ScMzIvxBSi4" },
-    { title: "Class 07: Lead Generation", url: "https://www.youtube.com/embed/9bZkp7q19f0" },
-    { title: "Class 08: Client Hunting", url: "https://www.youtube.com/embed/M7lc1UVf-VE" },
-    { title: "Class 09: Scaling Business", url: "https://www.youtube.com/embed/jNQXAC9IVRw" },
-    { title: "Class 10: Final Roadmap", url: "https://www.youtube.com/embed/6stlCkUDG_s" }
+    { title: "Class 01: CPA Self SignUp সেরা CPA সাইট ও একাউন্ট খোলার নিয়ম!", url: "https://t.me/+vurs_IdenTE4M2Zl" },
 ];
 
 // ============================================
@@ -336,6 +327,7 @@ function handleAuth(event, action) { event.preventDefault(); const form = event.
 function logout() { localStorage.removeItem('proToolsUser'); location.reload(); }
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
+
 
 
 
