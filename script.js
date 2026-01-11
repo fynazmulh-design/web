@@ -21,6 +21,7 @@ const CONFIG = {
 // 🔥 LINK DATA
 const LINK_DATA = {
     cpa: [
+        { name: "C3pa (Premium)", url: "https://cpazon.com" },
         { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
         { name: "Cpagrip (Premium)", url: "https://www.cpagrip.com" },
         { name: "Adbluemedia (Premium)", url: "https://adbluemedia.com" },
@@ -383,6 +384,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
