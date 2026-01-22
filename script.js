@@ -29,8 +29,6 @@ const LINK_DATA = {
         { name: "Cpaboss (Premium)", url: "https://dashboard.cpabossaffiliate.com" },
         { name: "Adbluemedia (Premium)", url: "https://cpamatica.io" },
         { name: "Nexussyner (Premium)", url: "https://www.nexussyner.com" },        
-        { name: "Paysale (Premium)", url: "https://my.paysale.com" },
-        { name: "Affizer (Premium)", url: "https://app.affizer.com" },
         { name: "C3pa (Premium)", url: "https://c3pa.net" },
         { name: "Mylead (Premium)", url: "https://pub.mylead.global" },
         { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
@@ -384,6 +382,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
