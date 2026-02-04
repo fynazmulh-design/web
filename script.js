@@ -20,6 +20,9 @@ const CONFIG = {
 
 // 🔥 LINK DATA
 const LINK_DATA = {
+    video: [
+        { name: "C3pa (Premium)", url: "https://cpazon.com" },
+    ],
     cpa: [
         { name: "C3pa (Premium)", url: "https://cpazon.com" },
         { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
@@ -293,7 +296,7 @@ function loadTool(toolId) {
     output.innerHTML = ""; controls.innerHTML = "";
 
     // 🔗 LINK TOOLS
-    if (['cpa', 'ip', 'software'].includes(toolId)) {
+    if (['video', 'cpa', 'ip', 'software'].includes(toolId)) {
         let toolName = toolId === 'cpa' ? 'CPA Networks' : (toolId === 'ip' ? 'IP Lists' : 'Software Vault');
         let icon = toolId === 'cpa' ? 'ph-globe' : (toolId === 'ip' ? 'ph-globe-ip' : 'ph-hard-drives');
         title.innerHTML = `<i class="ph-fill ${icon} text-purple-400"></i> ${toolName}`;
@@ -383,6 +386,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
