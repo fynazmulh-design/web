@@ -20,7 +20,7 @@ const CONFIG = {
 
 // 🔥 LINK DATA
 const LINK_DATA = {
-    video: [
+    softwares: [
         { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
         { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" }
     ],
@@ -391,6 +391,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
