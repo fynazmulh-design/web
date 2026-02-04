@@ -20,10 +20,7 @@ const CONFIG = {
 
 // 🔥 LINK DATA
 const LINK_DATA = {
-    softwares: [
-        { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
-        { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" }
-    ],
+    ]
     cpa: [
         { name: "C3pa (Premium)", url: "https://cpazon.com" },
         { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
@@ -36,7 +33,8 @@ const LINK_DATA = {
         { name: "C3pa (Premium)", url: "https://c3pa.net" },
         { name: "Mylead (Premium)", url: "https://pub.mylead.global" },
         { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
-        { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" }
+        { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" },
+        { name: "Premium software list" }
     ],
     ip: [
         { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
@@ -390,6 +388,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
