@@ -25,7 +25,6 @@ const LINK_DATA = {
         { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" }
     ],
     cpa: [
-
         { name: "C3pa (Premium)", url: "https://cpazon.com" },
         { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
         { name: "Cpagrip (Premium)", url: "https://www.cpagrip.com" },
@@ -391,6 +390,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
