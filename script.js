@@ -20,7 +20,6 @@ const CONFIG = {
 
 // 🔥 LINK DATA
 const LINK_DATA = {
-    ]
     cpa: [
         { name: "C3pa (Premium)", url: "https://cpazon.com" },
         { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
@@ -33,7 +32,7 @@ const LINK_DATA = {
         { name: "C3pa (Premium)", url: "https://c3pa.net" },
         { name: "Mylead (Premium)", url: "https://pub.mylead.global" },
         { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
-        { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" },
+        { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" }
     ],
     ip: [
         { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
@@ -52,9 +51,6 @@ const LINK_DATA = {
         { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
         { name: "GoLogin Mobile", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
         { name: "Orbita Mobile", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita&pcampaignid=web_share" }
-    ],
-    news: [
-        { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
     ]
 
 };
@@ -387,6 +383,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
