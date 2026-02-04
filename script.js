@@ -34,8 +34,7 @@ const LINK_DATA = {
         { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
         { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" },
         { name: "PC Software (Morelogin Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
-        { name: "Mobile Software 1 (GoLogin)", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
-        { name: "Mobile Software 2 (Orbita)", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita&pcampaignid=web_share" }
+        { name: "Mobile Software (GoLogin)", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
 
     ],
     ip: [
@@ -387,6 +386,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
