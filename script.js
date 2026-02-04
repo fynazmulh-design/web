@@ -33,9 +33,10 @@ const LINK_DATA = {
         { name: "Mylead (Premium)", url: "https://pub.mylead.global" },
         { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
         { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" },
+        #
         { name: "PC Software (Morelogin Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
-        { name: "Mobile Software (GoLogin)", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
-
+        { name: "Mobile Software 1 (GoLogin)", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
+        { name: "Mobile Software 2 (Orbita)", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita&pcampaignid=web_share" }
     ],
     ip: [
         { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
@@ -386,6 +387,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
