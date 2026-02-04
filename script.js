@@ -32,7 +32,8 @@ const LINK_DATA = {
         { name: "C3pa (Premium)", url: "https://c3pa.net" },
         { name: "Mylead (Premium)", url: "https://pub.mylead.global" },
         { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
-        { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" }
+        { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" },
+        { name: "Premium software list (Premium)",
     ],
     ip: [
         { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
@@ -383,6 +384,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
