@@ -296,34 +296,10 @@ function loadTool(toolId) {
     output.innerHTML = ""; controls.innerHTML = "";
 
     // 🔗 LINK TOOLS
-if (['video', 'cpa', 'ip', 'software'].includes(toolId)) {
-    let toolName = '';
-    let icon = '';
-
-    switch (toolId) {
-        case 'cpa':
-            toolName = 'CPA Networks';
-            icon = 'ph-globe';
-            break;
-
-        case 'ip':
-            toolName = 'IP Lists';
-            icon = 'ph-globe-ip';
-            break;
-
-        case 'video':
-            toolName = 'Course Video';
-            icon = 'ph-video';
-            break;
-
-        case 'software':
-            toolName = 'Software Tools';
-            icon = 'ph-code';
-            break;
-    }
-
-    title.innerHTML = `<i class="ph-fill ${icon} text-purple-400"></i> ${toolName}`;
-}
+    if (['video', 'cpa', 'ip', 'software'].includes(toolId)) {
+        let toolName = toolId ==='video' ? 'Video Course' 'cpa' ? 'CPA Networks' : (toolId === 'ip' ? 'IP Lists' : 'Premium Software List');
+        let icon = toolId === 'cpa' ? 'ph-globe' : (toolId === 'ip' ? 'ph-globe-ip' : 'ph-hard-drives');
+        title.innerHTML = `<i class="ph-fill ${icon} text-purple-400"></i> ${toolName}`;
         
         let linksHTML = LINK_DATA[toolId].map(link => `
             <div class="flex justify-between items-center bg-white/5 p-3 rounded border border-white/10 mb-2">
@@ -410,6 +386,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
