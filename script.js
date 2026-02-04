@@ -51,6 +51,9 @@ const LINK_DATA = {
         { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
         { name: "GoLogin Mobile", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
         { name: "Orbita Mobile", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita&pcampaignid=web_share" }
+    ],
+    Video: [
+        { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
     ]
 };
 
@@ -382,6 +385,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
