@@ -18,41 +18,38 @@ const CONFIG = {
     ]
 };
 
-// 🔥 LINK DATA
+// 🔗 LINK DATA
+// ============================================
 const LINK_DATA = {
+    video: [
+        { name: "C3pa (Premium)", url: "https://cpazon.com" }
+    ],
     cpa: [
-        { name: "C3pa (Premium)", url: "https://cpazon.com" },
-        { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
-        { name: "Cpagrip (Premium)", url: "https://www.cpagrip.com" },
-        { name: "Adbluemedia (Premium)", url: "https://adbluemedia.com" },
-        { name: "Affroyal (Premium)", url: "https://affroyal.com" },
-        { name: "Cpaboss (Premium)", url: "https://dashboard.cpabossaffiliate.com" },
-        { name: "Adbluemedia (Premium)", url: "https://cpamatica.io" },
-        { name: "Nexussyner (Premium)", url: "https://www.nexussyner.com" },        
         { name: "C3pa (Premium)", url: "https://c3pa.net" },
-        { name: "Mylead (Premium)", url: "https://pub.mylead.global" },
-        { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
-        { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" }
+        { name: "Exnessoffer", url: "https://aff.exnessoffer.com" },
+        { name: "Cpagrip", url: "https://www.cpagrip.com" },
+        { name: "Adbluemedia", url: "https://adbluemedia.com" },
+        { name: "Affroyal", url: "https://affroyal.com" },
+        { name: "Cpaboss", url: "https://dashboard.cpabossaffiliate.com" },
+        { name: "Cpamatica", url: "https://cpamatica.io" },
+        { name: "Nexussyner", url: "https://www.nexussyner.com" },
+        { name: "Mylead", url: "https://pub.mylead.global" },
+        { name: "Datify", url: "https://datify.link/en/registration" },
+        { name: "Pinpoint7", url: "https://pinpoint710086024.offer18.com" }
     ],
     ip: [
-        { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
-        { name: "Cliproxy {2 Gb - $2.90} = 510 Tk", url: "https://share.cliproxy.com/share/uyzacuaph" },
-        { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
-        { name: "Cherryproxy {5 Gb - $4} = 660 Tk", url: "https://center.cherryproxy.com/Login/Register?invite=f6803719" },
-        { name: "Nodemaven {1 Gb - $4.70} = 730 Tk", url: "https://nodemaven.com/?a_aid=freelancernazmul" },
-        { name: "Dataimpulse {5 Gb - $5} = 820 Tk", url: "https://dataimpulse.com/?aff=79223" },
-        { name: "Proxyshare {10 Gb - $9} = 1350 Tk", url: "https://www.proxyshare.com/?invitation_code=CZ1DZX" },
-        { name: "Piaproxy {5 Gb - $9} = 1350 Tk", url: "https://www.piaproxy.com/register?invitation_code=DGW10SU1" },
-        { name: "922proxy {5 Gb - $10} = 1480 Tk", url: "https://www.922proxy.com/register?inviter_code=106eb74d" },
-        { name: "Lumiproxy {10 Gb - $20} = 2800 Tk", url: "https://www.lumiproxy.com/?invite_code=3U904A" },
-        { name: "Shopsocks5 {Day 80 Ip 30 Day - $8.40} = 1280 Tk", url: "https://shopsocks5.com/register.html?invite_code=57LSVEJM" }
+        { name: "Go2Proxy (1GB)", url: "https://www.go2proxy.com" },
+        { name: "Cliproxy", url: "https://share.cliproxy.com/share/uyzacuaph" },
+        { name: "CherryProxy", url: "https://center.cherryproxy.com/Login/Register?invite=f6803719" },
+        { name: "NodeMaven", url: "https://nodemaven.com/?a_aid=freelancernazmul" },
+        { name: "DataImpulse", url: "https://dataimpulse.com/?aff=79223" }
     ],
     software: [
-        { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
-        { name: "GoLogin Mobile", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
-        { name: "Orbita Mobile", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita&pcampaignid=web_share" }
+        { name: "MoreLogin (PC)", url: "https://www.morelogin.com" },
+        { name: "GoLogin (Mobile)", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile" },
+        { name: "Orbita", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita" }
+    ]
 };
-
 // 🔥 VIDEO LINKS
 const COURSE_VIDEOS = [
     { title: "Course: CPA Self SignUp", url: "https://www.youtube.com/embed/eSnDmLkKvlRcL33G" },
@@ -384,6 +381,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
