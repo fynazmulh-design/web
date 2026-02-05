@@ -21,8 +21,8 @@ const CONFIG = {
 const LINK_DATA = {
     cpa: [
         { name: "CpaZon (Fresh & Dating Offer/Minimum Payment $50)", url: "https://cpazon.com" },
-        { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
-        { name: "Cpagrip (Premium)", url: "https://www.cpagrip.com" },
+        { name: "Exnessoffer (Fresh & Dating Offer/Minimum Payment $50)", url: "https://aff.exnessoffer.com/register?refer_id=1793" },
+        { name: "Cpagrip (Fresh Offer/Minimum Payment $50)", url: "https://www.cpagrip.com/signup.php?ref=479249" },
         { name: "Adbluemedia (Premium)", url: "https://adbluemedia.com" },
         { name: "Affroyal (Premium)", url: "https://affroyal.com" },
         { name: "Cpaboss (Premium)", url: "https://dashboard.cpabossaffiliate.com" },
@@ -362,6 +362,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
