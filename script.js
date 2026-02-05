@@ -196,7 +196,7 @@ function updatePlanBadge(plan) {
     const isPremium = (plan && plan !== 'Free');
     
     badge.innerText = isPremium ? "PREMIUM" : "FREE";
-    badge.className = `hidden md:inline-block text-[15px] px-2 py-0.5 rounded border font-mono font-bold ${isPremium ? "text-red-400 border-#008000-500/20 bg-#008000-500/10" : "text-#008000-400 border-#008000-500/20 bg-#008000-500/10 animate-pulse"}`;
+    badge.className = `hidden md:inline-block text-[15px] px-2 py-0.5 rounded border font-mono font-bold ${isPremium ? "text-green-400 border-#008000-500/20 bg-#008000-500/10" : "text-#008000-400 border-#008000-500/20 bg-#008000-500/10 animate-pulse"}`;
     badge.classList.remove('hidden');
     
     dashPlan.innerText = isPremium ? `${plan} ✅` : "Locked 🔒";
@@ -362,6 +362,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
