@@ -60,8 +60,7 @@ const LINK_DATA = {
         { name: "Community Group", url: "#" }
     ],
     chat: [
-        { name: "Contact Support (Telegram)", url: "https://t.me/freelancernazmul" },
-        { name: "WhatsApp Support", url: "https://wa.me/01780103303" }
+        { name: "Contact Support Only Telegram", url: "https://t.me/studentssupportfn" },
     ]
 };
 
@@ -362,6 +361,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
