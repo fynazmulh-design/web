@@ -295,13 +295,11 @@ function loadTool(toolId) {
     window.scrollTo({ top: consoleDiv.offsetTop - 100, behavior: 'smooth' });
     output.innerHTML = ""; controls.innerHTML = "";
 
-// 🔗 LINK TOOLS
-const tools = {
-    cpa: { name: 'CPA Networks', icon: 'ph-globe' },
-    ip: { name: 'IP Lists', icon: 'ph-globe-ip' },
-    video: { name: 'Course Video', icon: 'ph-video-camera' },
-    software: { name: 'Software Tools', icon: 'ph-hard-drives' }
-};
+    // 🔗 LINK TOOLS
+    if (['video', 'cpa', 'ip', 'software'].includes(toolId)) {
+        let toolName = toolId === 'cpa' ? 'CPA Networks' : (toolId === 'ip' ? 'IP Lists' : 'Course Video');
+        let icon = toolId === 'cpa' ? 'ph-globe' : (toolId === 'ip' ? 'ph-globe-ip' : 'ph-hard-drives');
+        title.innerHTML = `<i class="ph-fill ${icon} text-purple-400"></i> ${toolName}`;
 
 if (tools[toolId]) {
     const { name: toolName, icon } = tools[toolId];
@@ -391,6 +389,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
