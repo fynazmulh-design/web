@@ -3,23 +3,23 @@
 ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; border: 2px solid #0f172a; }
 ::-webkit-scrollbar-thumb:hover { background: #334155; }
 
-.no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
-
 .course-card { background: transparent; border-radius: 0.75rem; display: flex; flex-direction: column; transition: all 0.3s ease; }
 .course-card:hover { transform: translateY(-7px); }
 
-/* Video Card (No Watermark) */
+/* Video Card */
 .video-card { background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; transition: 0.3s; position: relative; }
 .video-card:hover { transform: scale(1.02); border-color: rgba(168, 85, 247, 0.5); }
 .video-card iframe { width: 100%; height: 200px; border: none; }
 .video-card p { padding: 12px; font-weight: bold; color: #cbd5e1; font-size: 0.9rem; background: rgba(0,0,0,0.2); }
 
+/* Tools Card */
 .tool-card { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 1.2rem; transition: 0.3s; cursor: pointer; height: 100%; display: flex; flex-direction: column; }
 .tool-card:hover { background: rgba(30, 41, 59, 0.6); border-color: rgba(168, 85, 247, 0.5); transform: translateY(-6px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
 .ph-lock-key { transition: 0.3s; }
 .group:hover .ph-lock-key { color: #ef4444; transform: scale(1.1); }
 
+/* Marquee */
 .marquee-container { width: 100%; overflow: hidden; position: relative; white-space: nowrap; }
 .marquee-content { display: inline-flex; animation: scroll 35s linear infinite; }
 .marquee-item { display: inline-block; width: 260px; height: 145px; margin-right: 1.5rem; border-radius: 0.8rem; overflow: hidden; position: relative; border: 1px solid rgba(255, 255, 255, 0.08); transition: 0.3s; }
@@ -33,9 +33,14 @@
 .marquee-text { display: inline-block; animation: scroll-text 25s linear infinite; padding-left: 100%; }
 @keyframes scroll-text { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
+/* Floating Buttons */
 .telegram-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #0088cc; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; box-shadow: 0 10px 20px rgba(0, 136, 204, 0.3); z-index: 999; transition: 0.3s; border: 2px solid rgba(255, 255, 255, 0.1); }
 .telegram-btn:hover { transform: scale(1.1) translateY(-5px); background: #0099e6; }
 
+.whatsapp-btn { position: fixed; bottom: 30px; right: 100px; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); z-index: 999; transition: 0.3s; border: 2px solid rgba(255, 255, 255, 0.1); }
+.whatsapp-btn:hover { transform: scale(1.1) translateY(-5px); background: #20bd5a; }
+
+/* Tool Inputs */
 .generator-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1rem; }
 @media (min-width: 768px) { .generator-grid { grid-template-columns: repeat(2, 1fr); } }
 .gen-input { width: 100%; background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.1); color: white; padding: 10px 15px; border-radius: 8px; font-size: 0.875rem; outline: none; transition: 0.3s; }
