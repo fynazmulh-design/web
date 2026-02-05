@@ -20,9 +20,6 @@ const CONFIG = {
 
 // 🔥 LINK DATA
 const LINK_DATA = {
-    video: [
-        { name: "C3pa (Premium)", url: "https://cpazon.com" },
-    ],
     cpa: [
         { name: "C3pa (Premium)", url: "https://cpazon.com" },
         { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
@@ -389,6 +386,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
