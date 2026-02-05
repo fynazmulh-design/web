@@ -15,6 +15,7 @@ const CONFIG = {
         { title: "Advance Data Entry", image: "https://e-laeltd.com/ela-admin/user/user_images/e-learning-and-earning-ltd-247985-CPA%20Marketing.jpg" },
         { title: "Python Automation", image: "https://www.avapartner.com/wp-content/uploads/2021/11/CPA.jpg" },
         { title: "Email Secret Master", image: "https://cpared.com/wp-content/uploads/2024/12/is-cpa-marketing-still-profitable-in-2025-2-1024x538.jpg" },
+        }
     ]
 };
 // 🔥 LINK DATA
@@ -56,9 +57,11 @@ const LINK_DATA = {
     ]
 };
 
-// 🔥 VIDEO LINKS
+// 🔥 COURSE VIDEO LINKS
 const COURSE_VIDEOS = [
-    { title: "Course: CPA Self SignUp", url: "https://www.youtube.com/embed/eSnDmLkKvlRcL33G" },
+    {
+        title: "Course: CPA Self SignUp", url: "https://www.youtube.com/embed/eSnDmLkKvlRcL33G"
+    }
 ];
 
 // ============================================
@@ -385,6 +388,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
