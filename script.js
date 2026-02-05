@@ -20,7 +20,7 @@ const CONFIG = {
 // 🔥 LINK DATA (CUSTOMIZABLE)
 const LINK_DATA = {
     cpa: [
-        { name: "CpaZon (Premium)", url: "https://cpazon.com" },
+        { name: "CpaZon (Fresh & Dating Offer/Minimum Payment $50)", url: "https://cpazon.com" },
         { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
         { name: "Cpagrip (Premium)", url: "https://www.cpagrip.com" },
         { name: "Adbluemedia (Premium)", url: "https://adbluemedia.com" },
@@ -362,6 +362,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
