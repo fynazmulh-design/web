@@ -41,8 +41,7 @@ const LINK_DATA = {
     ],
     // 🔥 NEW TOOLS ADDED HERE
     video: [
-        { name: "Watch Exclusive Course", url: "https://www.youtube.com/channel/YOUR_CHANNEL_LINK" },
-        { name: "Secret Strategy Video", url: "#" }
+        { name: "Join Recorded Video Course Telegram Group👉", url: "https://t.me/+vurs_IdenTE4M2Zl" },
     ],
     proxy: [
         { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
@@ -363,4 +362,5 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
