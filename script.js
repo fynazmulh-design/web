@@ -34,7 +34,7 @@ const LINK_DATA = {
         { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
         { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" }
     ],
-    ip: [
+    proxy: [
         { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
         { name: "Cliproxy {2 Gb - $2.90} = 510 Tk", url: "https://share.cliproxy.com/share/uyzacuaph" },
         { name: "Cherryproxy {5 Gb - $4} = 660 Tk", url: "https://center.cherryproxy.com/Login/Register?invite=f6803719" },
@@ -55,10 +55,6 @@ const LINK_DATA = {
     video: [
         { name: "Watch Exclusive Course", url: "https://www.youtube.com/channel/YOUR_CHANNEL_LINK" },
         { name: "Secret Strategy Video", url: "#" }
-    ],
-    proxy: [
-        { name: "Best Proxy List 1", url: "https://example.com/proxy1" },
-        { name: "Best Proxy List 2", url: "https://example.com/proxy2" }
     ],
     news: [
         { name: "Latest Update Channel", url: "https://t.me/freelancernazmul" },
@@ -367,4 +363,5 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
