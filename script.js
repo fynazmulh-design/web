@@ -34,6 +34,16 @@ const LINK_DATA = {
         { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
         { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" }
     ],
+    software: [
+        { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
+        { name: "GoLogin Mobile", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
+        { name: "Orbita Mobile", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita&pcampaignid=web_share" }
+    ],
+    // 🔥 NEW TOOLS ADDED HERE
+    video: [
+        { name: "Watch Exclusive Course", url: "https://www.youtube.com/channel/YOUR_CHANNEL_LINK" },
+        { name: "Secret Strategy Video", url: "#" }
+    ],
     proxy: [
         { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
         { name: "Cliproxy {2 Gb - $2.90} = 510 Tk", url: "https://share.cliproxy.com/share/uyzacuaph" },
@@ -45,16 +55,6 @@ const LINK_DATA = {
         { name: "922proxy {5 Gb - $10} = 1480 Tk", url: "https://www.922proxy.com/register?inviter_code=106eb74d" },
         { name: "Lumiproxy {10 Gb - $20} = 2800 Tk", url: "https://www.lumiproxy.com/?invite_code=3U904A" },
         { name: "Shopsocks5 {Day 80 Ip 30 Day - $8.40} = 1280 Tk", url: "https://shopsocks5.com/register.html?invite_code=57LSVEJM" }
-    ],
-    software: [
-        { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
-        { name: "GoLogin Mobile", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
-        { name: "Orbita Mobile", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita&pcampaignid=web_share" }
-    ],
-    // 🔥 NEW TOOLS ADDED HERE
-    video: [
-        { name: "Watch Exclusive Course", url: "https://www.youtube.com/channel/YOUR_CHANNEL_LINK" },
-        { name: "Secret Strategy Video", url: "#" }
     ],
     news: [
         { name: "Latest Update Channel", url: "https://t.me/freelancernazmul" },
@@ -363,5 +363,3 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
-
-
