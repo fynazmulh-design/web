@@ -5,7 +5,7 @@ const CONFIG = {
     authScriptURL: "https://script.google.com/macros/s/AKfycbwor9BTwddVVaKodWV-1tjxTrBbRjlJNjEAf2yQEQF92neiZFxXpl9C7alqt6gaFHhCrg/exec", 
     vipScriptURL:  "https://script.google.com/macros/s/AKfycbwor9BTwddVVaKodWV-1tjxTrBbRjlJNjEAf2yQEQF92neiZFxXpl9C7alqt6gaFHhCrg/exec",
 
-    noticeText: "🚀 Welcome to Freelancer Nazmul site! 🔥 Get 30% OFF on Yearly Plan! ⚡ Instant Activation with Bkash/Nagad/Rocket & Binance.After sending the money 💵 click on the Telegram icon below to send a message 📨 for the VIP code.",
+    noticeText: "🚀 Welcome to Freelancer Nazmul 🔥 Get 30% OFF on Yearly Plan! ⚡ Instant Activation with Bkash/Nagad/Rocket & Binance.After sending the money 💵 click on the Telegram icon below to send a message 📨 for the VIP code.",
     logoImageURL: "https://i.imgur.com/your-logo.png", 
     useImageLogo: false, 
     courses: [
@@ -362,6 +362,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
