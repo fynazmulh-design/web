@@ -60,7 +60,7 @@ const LINK_DATA = {
         { name: "Community Group", url: "#" }
     ],
     chat: [
-        { name: "Contact Support Only Telegram", url: "https://t.me/studentssupportfn" },
+        { name: "Contact Support Only Telegram (সাপোর্ট সপ্তাহে 6 দিন ! দুপুর 2:00 টা থেকে রাত 9:00 টা পর্যন্ত ! শুক্রবারে সাপোর্ট সম্পূর্ণ বন্ধ)", url: "https://t.me/studentssupportfn" },
     ]
 };
 
@@ -361,6 +361,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
