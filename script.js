@@ -2,7 +2,6 @@
 // ⚠️ ADMIN CONFIGURATION AREA
 // ============================================
 const CONFIG = {
-    // 1. YOUR UNIFIED GOOGLE APPS SCRIPT URL
     authScriptURL: "https://script.google.com/macros/s/AKfycbwor9BTwddVVaKodWV-1tjxTrBbRjlJNjEAf2yQEQF92neiZFxXpl9C7alqt6gaFHhCrg/exec", 
     vipScriptURL:  "https://script.google.com/macros/s/AKfycbwor9BTwddVVaKodWV-1tjxTrBbRjlJNjEAf2yQEQF92neiZFxXpl9C7alqt6gaFHhCrg/exec",
 
@@ -11,19 +10,16 @@ const CONFIG = {
     useImageLogo: false, 
     courses: [
         { title: "CPA Marketing", image: "https://ppcexpo.com/blog/wp-content/uploads/2024/10/what-is-cpa-in-marketing-1-1.jpg" },
-        { title: "Ethical Hacking", image: "https://cdn2.mageplaza.com/media/blog/cpa-affiliate-marketing/cover.png" },
-        { title: "Advance Data Entry", image: "https://e-laeltd.com/ela-admin/user/user_images/e-learning-and-earning-ltd-247985-CPA%20Marketing.jpg" },
-        { title: "Python Automation", image: "https://www.avapartner.com/wp-content/uploads/2021/11/CPA.jpg" },
-        { title: "Email Secret Master", image: "https://cpared.com/wp-content/uploads/2024/12/is-cpa-marketing-still-profitable-in-2025-2-1024x538.jpg" },
+        { title: "CPA Marketing", image: "https://cdn2.mageplaza.com/media/blog/cpa-affiliate-marketing/cover.png" },
+        { title: "CPA Marketing", image: "https://e-laeltd.com/ela-admin/user/user_images/e-learning-and-earning-ltd-247985-CPA%20Marketing.jpg" },
+        { title: "CPA Marketing", image: "https://www.avapartner.com/wp-content/uploads/2021/11/CPA.jpg" },
+        { title: "CPA Marketing", image: "https://cpared.com/wp-content/uploads/2024/12/is-cpa-marketing-still-profitable-in-2025-2-1024x538.jpg" },
     ]
 };
-// 🔥 LINK DATA
+
+// 🔥 LINK DATA (CUSTOMIZABLE)
 const LINK_DATA = {
-    video: [
-        { name: "C3pa (Premium)", url: "https://cpazon.com" },
-    ],
     cpa: [
-        { name: "C3pa (Premium)", url: "https://cpazon.com" },
         { name: "Exnessoffer (Premium)", url: "https://aff.exnessoffer.com" },
         { name: "Cpagrip (Premium)", url: "https://www.cpagrip.com" },
         { name: "Adbluemedia (Premium)", url: "https://adbluemedia.com" },
@@ -31,6 +27,8 @@ const LINK_DATA = {
         { name: "Cpaboss (Premium)", url: "https://dashboard.cpabossaffiliate.com" },
         { name: "Adbluemedia (Premium)", url: "https://cpamatica.io" },
         { name: "Nexussyner (Premium)", url: "https://www.nexussyner.com" },        
+        { name: "Paysale (Premium)", url: "https://my.paysale.com" },
+        { name: "Affizer (Premium)", url: "https://app.affizer.com" },
         { name: "C3pa (Premium)", url: "https://c3pa.net" },
         { name: "Mylead (Premium)", url: "https://pub.mylead.global" },
         { name: "Datify (Premium)", url: "https://datify.link/en/registration" },
@@ -39,7 +37,6 @@ const LINK_DATA = {
     ip: [
         { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
         { name: "Cliproxy {2 Gb - $2.90} = 510 Tk", url: "https://share.cliproxy.com/share/uyzacuaph" },
-        { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
         { name: "Cherryproxy {5 Gb - $4} = 660 Tk", url: "https://center.cherryproxy.com/Login/Register?invite=f6803719" },
         { name: "Nodemaven {1 Gb - $4.70} = 730 Tk", url: "https://nodemaven.com/?a_aid=freelancernazmul" },
         { name: "Dataimpulse {5 Gb - $5} = 820 Tk", url: "https://dataimpulse.com/?aff=79223" },
@@ -53,6 +50,23 @@ const LINK_DATA = {
         { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
         { name: "GoLogin Mobile", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
         { name: "Orbita Mobile", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita&pcampaignid=web_share" }
+    ],
+    // 🔥 NEW TOOLS ADDED HERE
+    video: [
+        { name: "Watch Exclusive Course", url: "https://www.youtube.com/channel/YOUR_CHANNEL_LINK" },
+        { name: "Secret Strategy Video", url: "#" }
+    ],
+    proxy: [
+        { name: "Best Proxy List 1", url: "https://example.com/proxy1" },
+        { name: "Best Proxy List 2", url: "https://example.com/proxy2" }
+    ],
+    news: [
+        { name: "Latest Update Channel", url: "https://t.me/freelancernazmul" },
+        { name: "Community Group", url: "#" }
+    ],
+    chat: [
+        { name: "Contact Support (Telegram)", url: "https://t.me/freelancernazmul" },
+        { name: "WhatsApp Support", url: "https://wa.me/YOUR_NUMBER" }
     ]
 };
 
@@ -60,12 +74,9 @@ const LINK_DATA = {
 const COURSE_VIDEOS = [
     { title: "Course: CPA Self SignUp", url: "https://www.youtube.com/embed/eSnDmLkKvlRcL33G" },
 ];
-// ============================================
-// 🔥 RAW DATA (ALL 5 TOOLS FULL DATA)
-// ============================================
+
 const uaData={versions:{browser:{'Chrome':'143.0.7559.31','Edge':'143.0.3650.96','Opera':'125.0.5729.49','Firefox':'146.0.1','Safari':'26.0'},social:{'Facebook':'543.0.0.55.73','Instagram':'410.1.0.63.71','TikTok':'43.9.5','LinkedIn':'4.1.1152','Twitter':'11.49.1','Snapchat':'13.72.0.55','WhatsApp':'2.25.37.77','YouTube':'20.51.39','Reddit':'2025.50.2','Telegram':'12.3.0'}},locales:{'US':{code:'en-US',iso:'US'},'UK':{code:'en-GB',iso:'GB'},'CA':{code:'en-CA',iso:'CA'},'AU':{code:'en-AU',iso:'AU'}},deviceDB:{'Samsung':['SM-S928B','SM-S928U','SM-S921B','SM-S918B','SM-G998B','SM-F946B','SM-A546B','SM-S948B','SM-S938B','SM-S931B','SM-A556B','SM-A356B','SM-A155F','SM-M556B'],'Google Pixel':['Pixel 9 Pro','Pixel 9','Pixel 8 Pro','Pixel 8','Pixel 7 Pro','Pixel 7a','Pixel 6 Pro','Pixel Fold','Pixel 9 Pro XL','Pixel 8a'],'OnePlus':['CPH2581','CPH2449','NE2210','LE2113','CPH2493','CPH2451','CPH2413','CPH2399','CPH2551','CPH2609'],'Motorola':['motorola edge 50 ultra','motorola edge 40 pro','motorola razr 50 ultra','moto g stylus 5G (2025)','moto g power 5G (2025)','motorola edge 30 ultra','moto g84 5G','moto g54 5G','motorola edge 40 neo','moto g24 power'],'Xiaomi':['2311DRK48C','2211133G','M2102K1G','23127PN0CC','23049PCD8G','23013PC75G','2210132G','22081212UG','2112123AG','2201116SG'],'Oppo':['CPH2551','CPH2499','PGEM10','PHN110','PHT110','PGU110','PGFM10','PHJ110','CPH2529','CPH2525'],'Vivo':['V2308','V2250','V2219','V2243','V2336','V2339','V2343','V2231','V2202','V2158'],'LG':['LM-V600','LM-G900','LM-G850','LM-G820','LM-V500','LM-V405','LM-Q730','LM-K920','LM-K520','LM-K420'],'Apple':['iPhone17,1','iPhone17,2','iPhone17,3','iPhone17,4','iPhone16,2','iPhone15,3','iPhone14,7','iPhone14,2','iPhone14,3','iPhone13,2','iPhone12,1','iPhone11,8','iPhone12,3','iPhone12,5']},countryBrands:{'US':['Samsung','Google Pixel','Motorola','OnePlus','Apple'],'UK':['Samsung','Google Pixel','Xiaomi','Oppo','Apple'],'CA':['Samsung','Google Pixel','LG','Motorola','Apple'],'AU':['Samsung','Google Pixel','Oppo','Vivo','Apple']},email:{maleNames:["James","John","Robert","Michael","William","David","Richard","Joseph","Thomas","Charles","Christopher","Daniel","Matthew","Anthony","Donald","Mark","Paul","Steven","Andrew","Kenneth","Joshua","George","Kevin","Brian","Edward","Ronald","Timothy","Jason","Jeffrey","Ryan","Jacob","Gary","Nicholas","Eric","Jonathan","Stephen","Larry","Justin","Scott","Brandon","Benjamin","Samuel","Frank","Gregory","Raymond","Alexander","Patrick","Jack","Dennis","Jerry","Tyler","Aaron","Jose","Adam","Henry","Nathan","Douglas","Zachary","Peter","Kyle","Walter","Ethan","Jeremy","Harold","Keith","Christian","Roger","Noah","Gerald","Carl","Terry","Sean","Austin","Arthur","Lawrence","Jesse","Dylan","Bryan","Joe","Jordan","Billy","Bruce","Albert","Willie","Gabriel","Logan","Alan","Juan","Wayne","Roy","Ralph","Randy","Eugene","Vincent","Russell","Louis","Philip","Bobby","Johnny","Bradley","Caleb"],femaleNames:["Mary","Patricia","Jennifer","Linda","Elizabeth","Barbara","Susan","Jessica","Sarah","Karen","Nancy","Lisa","Margaret","Betty","Sandra","Ashley","Dorothy","Kimberly","Emily","Donna","Michelle","Carol","Amanda","Melissa","Deborah","Stephanie","Rebecca","Laura","Sharon","Cynthia","Kathleen","Amy","Shirley","Angela","Helen","Anna","Brenda","Pamela","Nicole","Samantha","Katherine","Emma","Ruth","Christine","Catherine","Debra","Rachel","Carolyn","Janet","Virginia","Maria","Heather","Diane","Julie","Joyce","Evelyn","Joan","Victoria","Kelly","Christina","Lauren","Frances","Martha","Judith","Cheryl","Megan","Andrea","Olivia","Ann","Jean","Alice","Jacqueline","Hannah","Doris","Kathryn","Gloria","Teresa","Sara","Janice","Marie","Julia","Grace","Judy","Theresa","Madison","Beverly","Denise","Marilyn","Amber","Danielle"],titles:["Smith","Johnson","Williams","Brown","Jones","Garcia","Miller","Davis","Rodriguez","Martinez","Hernandez","Lopez","Gonzalez","Wilson","Anderson","Thomas","Taylor","Moore","Jackson","Martin","Lee","Perez","Thompson","White","Harris","Sanchez","Clark","Ramirez","Lewis","Robinson","Walker","Young","Allen","King","Wright","Scott","Torres","Nguyen","Hill","Flores","Green","Adams","Nelson","Baker","Hall","Rivera","Campbell","Mitchell","Carter","Roberts","Gomez", "Phillips","Evans","Turner","Diaz","Parker","Cruz","Edwards","Collins","Reyes","Stewart","Morris","Morales","Murphy","Cook","Rogers","Gutierrez","Ortiz","Morgan","Cooper","Peterson","Bailey","Reed","Kelly","Howard","Ramos","Kim","Cox","Ward","Richardson","Watson","Brooks","Chavez","Wood","James","Bennett","Gray","Mendoza","Ruiz","Hughes","Price","Alvarez","Castillo","Sanders","Patel","Myers","Long","Ross","Foster","Jimenez"],domains:["gmail.com","outlook.com","yahoo.com","hotmail.com","icloud.com","aol.com","protonmail.com","zoho.com","yandex.com","mail.com"]},number:{'us':{code:'+1',prefixes:['212','310','415','305','702','202','312','281','718','323','646','917','512','214','713','972','832','347','929','346','469','682'],digits:7},'uk':{code:'+44',prefixes:['71','72','73','74','75','77','78','79'],digits:8},'bd':{code:'+880',prefixes:['17','13','19','14','18','16','15'],digits:8},'ca':{code:'+1',prefixes:['416','647','604','778','514','403','905','613','587','438','289','365'],digits:7},'au':{code:'+61',prefixes:['40','41','42','43','44','45','46','47','48'],digits:7},'de':{code:'+49',prefixes:['151','152','157','160','162','170','171','175','176','163'],digits:7},'fr':{code:'+33',prefixes:['6','7'],digits:8}},address:{US:{zip:"#####",states:{"California":["Los Angeles","San Francisco","San Diego","Sacramento","San Jose","Fresno"],"New York":["New York City","Buffalo","Rochester","Yonkers"],"Texas":["Houston","San Antonio","Dallas","Austin","Fort Worth"], "Florida":["Miami", "Orlando"]}},UK:{zip:"??# #??",states:{"England":["London","Manchester","Birmingham","Liverpool","Leeds","Bristol"], "Scotland":["Glasgow"]}},CA:{zip:"?#? #?#",states:{"Ontario":["Toronto","Ottawa","Mississauga","Brampton"], "Quebec":["Montreal"]}},AU:{zip:"####",states:{"New South Wales":["Sydney","Newcastle"], "Victoria":["Melbourne"]}}},streets:["Main St","High St","Church St","King St","Queen St","Park Rd","Victoria Rd","Station Rd","London Rd","George St","Broadway","Maple Ave","Oak St","Washington St","Lakeview Dr","Sunset Blvd","River Rd","Pine St","Cedar Ln","Elm St","5th Avenue"]};
 
-// HELPERS
 const rnd = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const getBuild = () => rnd(['UP1A.231005.007', 'TP1A.220624.014', 'SP1A.210812.016', 'UKQ1.230924.001']);
 const getChromeVer = () => `143.0.${Math.floor(Math.random()*5000)}.${Math.floor(Math.random()*150)}`;
@@ -73,12 +84,8 @@ function getRandomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]
 const years = ["2020", "2021", "2022", "2023", "2024", "2025", "2026"];
 const commonNumbers = ["123", "007", "101", "1", "99", "88", "55", "777", "24", "365"];
 
-// ============================================
-// MAIN LOGIC STARTS
-// ============================================
 let isLoggedIn = false;
 let currentTool = null;
-
 
 window.onload = function() {
     setupSite();
@@ -118,21 +125,26 @@ function checkLoginStatus() {
         document.getElementById('menuPublic').classList.add('hidden');
         document.getElementById('menuPrivate').classList.remove('hidden');
         
+        // 🔥 LOGGED IN STATE CHANGES
+        document.getElementById('noticeText').innerText = "যেকোন টুলস ব্যবহারে সমস্যা হলে আমাদের সাথে যোগাযোগ করুন।";
+        document.getElementById('dashGuideBtn').classList.add('hidden'); // Hide Guide Button
+        
+        // Hide Contact Buttons
+        const contactDiv = document.getElementById('contactButtons');
+        if(contactDiv) contactDiv.classList.add('hidden');
+
         const navBtn = document.getElementById('navAuthBtn');
         navBtn.innerHTML = `<i class="ph ph-sign-out mr-1.5"></i> Logout`;
         navBtn.classList.replace('bg-white/10', 'bg-red-600');
         navBtn.onclick = logout;
 
         document.getElementById('dashUserName').innerText = user.name || "User";
-        
-        // 🚀 AUTO SYNC CALL
         syncUserPlan(user);
     }
 }
 
 function syncUserPlan(user) {
-    updateUIBasedOnPlan(user.plan); // Show Local First
-    
+    updateUIBasedOnPlan(user.plan);
     fetch(`${CONFIG.vipScriptURL}?action=check_status&email=${user.email}`)
     .then(res => res.json())
     .then(data => {
@@ -147,55 +159,28 @@ function syncUserPlan(user) {
 
 function updateUIBasedOnPlan(plan) {
     updatePlanBadge(plan);
-    
-    // 🔥 GUIDE BUTTON VS TELEGRAM BUTTON LOGIC
-    const telegramLink = "https://t.me/+vurs_IdenTE4M2Zl";
-    const guideLink = "https://youtube.com/your-guide-link"; // ইউটিউব ভিডিও লিংক এখানে
-
+    const telegramLink = "https://t.me/freelancernazmul";
+    const guideLink = "https://youtube.com/your-guide-link"; 
     const publicBtn = document.getElementById('publicGuideBtn');
-    const dashBtn = document.getElementById('dashGuideBtn');
-    const publicText = document.getElementById('publicGuideText');
-    const dashText = document.getElementById('dashGuideText');
-
+    
     if (plan && plan !== 'Free') {
-        // ✅ USER IS VIP -> SHOW TELEGRAM BUTTON
         document.getElementById('course-packages').classList.add('hidden'); 
         document.getElementById('videoPlayerSection').classList.remove('hidden');
         renderCourseVideos(); 
         document.getElementById('redeemSection').classList.add('hidden');
 
-        // Dashboard Button Update
-        if(dashBtn) {
-            dashBtn.onclick = function() { window.open(telegramLink, '_blank'); };
-            dashBtn.classList.replace('from-blue-600', 'from-sky-500'); 
-            dashBtn.classList.replace('to-cyan-600', 'to-blue-700');
-            dashBtn.querySelector('i').className = "ph-fill ph-telegram-logo text-2xl"; 
-            if(dashText) dashText.innerText = "Watch Video Course";
-        }
-        
-        // Public Button Update
         if(publicBtn) {
             publicBtn.onclick = function() { window.open(telegramLink, '_blank'); };
-            if(publicText) publicText.innerText = "Watch Video Course";
+            publicBtn.querySelector('span').innerText = "Join Premium Telegram";
         }
-
     } else {
-        // ❌ USER IS FREE -> SHOW GUIDE BUTTON
         document.getElementById('course-packages').classList.remove('hidden');
         document.getElementById('videoPlayerSection').classList.add('hidden');
         document.getElementById('redeemSection').classList.remove('hidden');
 
-        // Reset Dashboard Button
-        if(dashBtn) {
-            dashBtn.onclick = function() { window.open(guideLink, '_blank'); };
-            dashBtn.querySelector('i').className = "ph-fill ph-play-circle text-2xl";
-            if(dashText) dashText.innerText = "Watch Tutorial / Guide";
-        }
-        
-        // Reset Public Button
         if(publicBtn) {
             publicBtn.onclick = function() { window.open(guideLink, '_blank'); };
-            if(publicText) publicText.innerText = "Watch Tutorial / Guide";
+            publicBtn.querySelector('span').innerText = "Watch Tutorial / Guide";
         }
     }
 }
@@ -223,13 +208,12 @@ function updatePlanBadge(plan) {
     dashPlan.className = isPremium ? "text-green-400 font-bold" : "text-red-400 font-bold";
 
     const iconClass = isPremium ? "ph-arrow-square-out text-green-400" : "ph-lock-key text-gray-500";
-    ['ua', 'email', 'validator', 'number', 'address', 'cpa', 'ip', 'software'].forEach(id => {
+    ['ua', 'email', 'validator', 'number', 'address', 'cpa', 'ip', 'software', 'video', 'proxy', 'news', 'chat'].forEach(id => {
         const icon = document.getElementById(`lockIcon_${id}`);
         if(icon) icon.className = `ph ${iconClass} transition`;
     });
 }
 
-// Payment & Auth Functions
 function openPaymentModal(planName, amount) {
     if (!isLoggedIn) { openAuthModal(); return; }
     const modal = document.getElementById('paymentModal');
@@ -268,10 +252,8 @@ function redeemVipCode() {
     fetch(CONFIG.vipScriptURL, { method: 'POST', body: data }).then(res => res.json()).then(result => {
         if (result.result === 'success') {
             alert(`✅ Success! Activated: ${result.newPlan}`);
-            // Update local storage
             user.plan = result.newPlan;
             localStorage.setItem('proToolsUser', JSON.stringify(user));
-            // Update UI
             updateUIBasedOnPlan(result.newPlan);
             document.getElementById('paymentModal').classList.add('hidden');
             location.reload(); 
@@ -279,9 +261,6 @@ function redeemVipCode() {
     }).catch(err => { alert("❌ Network/Server Error!"); console.error(err); });
 }
 
-// ============================================
-// 🛠️ TOOL LOADERS & LOGIC
-// ============================================
 function loadTool(toolId) {
     currentTool = toolId;
     const consoleDiv = document.getElementById('toolConsole');
@@ -292,19 +271,30 @@ function loadTool(toolId) {
     window.scrollTo({ top: consoleDiv.offsetTop - 100, behavior: 'smooth' });
     output.innerHTML = ""; controls.innerHTML = "";
 
-    // 🔗 LINK TOOLS
-    if (['cpa', 'ip', 'software'].includes(toolId)) {
-        let toolName = toolId === 'cpa' ? 'CPA Networks' : (toolId === 'ip' ? 'IP Lists' : 'Course Video');
-        let icon = toolId === 'cpa' ? 'ph-globe' : (toolId === 'ip' ? 'ph-globe-ip' : 'ph-hard-drives');
+    // 🔗 LINK TOOLS (Now handles Video, Proxy, News, Chat)
+    if (['cpa', 'ip', 'software', 'video', 'proxy', 'news', 'chat'].includes(toolId)) {
+        let toolName = "Links";
+        if(toolId === 'cpa') toolName = "CPA Networks";
+        if(toolId === 'ip') toolName = "IP Lists";
+        if(toolId === 'software') toolName = "Software Vault";
+        if(toolId === 'video') toolName = "Video Courses";
+        if(toolId === 'proxy') toolName = "Proxy Lists";
+        if(toolId === 'news') toolName = "Update News";
+        if(toolId === 'chat') toolName = "Support Chat";
+
+        let icon = 'ph-globe';
+        if(toolId === 'video') icon = 'ph-video';
+        if(toolId === 'news') icon = 'ph-broadcast';
+        
         title.innerHTML = `<i class="ph-fill ${icon} text-purple-400"></i> ${toolName}`;
-    if (tools[toolId]) {const { name: toolName, icon } = tools[toolId];
-}        
-        let linksHTML = LINK_DATA[toolId].map(link => `
+        
+        let linksHTML = LINK_DATA[toolId] ? LINK_DATA[toolId].map(link => `
             <div class="flex justify-between items-center bg-white/5 p-3 rounded border border-white/10 mb-2">
                 <span class="text-sm font-bold text-gray-300">${link.name}</span>
                 <a href="${link.url}" target="_blank" class="bg-purple-600 hover:bg-purple-500 text-white px-3 py-1 rounded text-xs font-bold">Open Link <i class="ph-bold ph-arrow-square-out"></i></a>
             </div>
-        `).join('');
+        `).join('') : "<p class='text-gray-400'>No links available.</p>";
+        
         output.innerHTML = `<div class="mt-2">${linksHTML}</div>`;
         return;
     }
@@ -337,7 +327,6 @@ function loadTool(toolId) {
     }
 }
 
-// Logic Functions (Address Gen Fixed)
 function updateUABrands(){ const os=document.getElementById('uaOS').value; const c=document.getElementById('uaCountry').value; const b=document.getElementById('uaBrand'); b.innerHTML=''; if(os==='Android'){ let list=uaData.countryBrands[c]||uaData.countryBrands['US']; list.forEach(x=>b.add(new Option(x,x))); b.add(new Option('Random','Random')); } else if(os==='iOS'){ b.add(new Option('Apple','Apple')); } else { b.add(new Option('PC/Mac','PC')); } }
 function updateUAApps(){ const env=document.getElementById('uaEnv').value; const app=document.getElementById('uaApp'); app.innerHTML=''; let list=env==='browser'?uaData.versions.browser:uaData.versions.social; Object.keys(list).forEach(k=>app.add(new Option(k,k))); app.add(new Option('Random','Random')); updateUAVersion(); }
 function updateUAVersion(){ const env=document.getElementById('uaEnv').value; const app=document.getElementById('uaApp').value; const ver=document.getElementById('uaVersion'); ver.value=(app==='Random')?'Mixed':(env==='browser'?uaData.versions.browser[app]:uaData.versions.social[app]); }
@@ -349,7 +338,6 @@ function loadStates(){ const c=document.getElementById("addrCountry").value; con
 function loadCities(){ const c=document.getElementById("addrCountry").value; const s=document.getElementById("addrState").value; const ci=document.getElementById("addrCity"); ci.innerHTML='<option value="">Any City</option>'; if(c && s && uaData.address[c].states[s]){ uaData.address[c].states[s].sort().forEach(city=>{ const o=document.createElement("option"); o.value=city; o.text=city; ci.appendChild(o); }); } }
 function runAddressGenerator(){ const country=document.getElementById('addrCountry').value; const selectedState=document.getElementById('addrState').value; const selectedCity=document.getElementById('addrCity').value; const qty=parseInt(document.getElementById('addrQty').value); const div=document.getElementById('addrResult'); if(!country){ alert("Please select a country first."); return; } div.innerHTML=''; const conf=uaData.address[country]; for(let i=0;i<qty;i++){ let finalState=selectedState; let finalCity=selectedCity; if(!finalState) finalState=rnd(Object.keys(conf.states)); if(!finalCity) finalCity=rnd(conf.states[finalState]); let streetName=rnd(uaData.streets); let streetNum=Math.floor(Math.random()*999)+1; function generateZip(format){ const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ"; return format.replace(/#/g,()=>Math.floor(Math.random()*10)).replace(/\?/g,()=>letters.charAt(Math.floor(Math.random()*letters.length))); } let zip=generateZip(conf.zip); const cardHTML=`<div class="p-3 bg-white/5 rounded border border-white/5 mb-2 font-mono text-xs"><strong class="text-purple-400">Address #${i+1}</strong><br><span class="text-gray-300">${streetNum} ${streetName}<br>${finalCity}, ${finalState} ${zip}<br>${country}</span></div>`; div.innerHTML+=cardHTML; } }
 
-// Auth Functions
 function showSection(sectionId) { if(sectionId === 'dashboard' && isLoggedIn) { document.getElementById('home-section').classList.add('hidden'); document.getElementById('dashboard-section').classList.remove('hidden'); window.scrollTo(0,0); } }
 function scrollToPricing() { document.getElementById('course-packages').scrollIntoView({ behavior: 'smooth' }); }
 function openAuthModal(planInfo = 'Free') { if(isLoggedIn) return; document.getElementById('authModal').classList.remove('hidden'); document.getElementById('selectedPlan').value = planInfo; if (planInfo !== 'Free') switchTab('register'); else switchTab('login'); }
@@ -360,9 +348,6 @@ function logout() { localStorage.removeItem('proToolsUser'); location.reload(); 
 function togglePassword(inputId, icon) { const input = document.getElementById(inputId); if (input.type === "password") { input.type = "text"; icon.classList.remove('ph-eye'); icon.classList.add('ph-eye-slash'); } else { input.type = "password"; icon.classList.remove('ph-eye-slash'); icon.classList.add('ph-eye'); } }
 function checkAccess(toolId) { const user = JSON.parse(localStorage.getItem('proToolsUser')); if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } if (!user.plan || user.plan === 'Free') { document.getElementById('lockModal').classList.remove('hidden'); } else { loadTool(toolId); } }
 
-// ============================================
-// 🔥 DYNAMIC PAYMENT INFO UPDATE (New Feature)
-// ============================================
 function updatePayInfo() {
     const method = document.getElementById('payMethod').value;
     const payLabel = document.getElementById('payLabel');
@@ -371,63 +356,14 @@ function updatePayInfo() {
     const senderInput = document.getElementById('senderInput');
     
     if (method === 'Binance') {
-        // Binance Logic
         payLabel.innerText = "Binance Pay ID (Our ID)";
         payNumber.value = "745273700"; 
         senderLabel.innerText = "Binance Sender ID (Your Pay ID)";
         senderInput.placeholder = "Enter your Binance ID";
     } else {
-        // Bkash/Nagad/Rocket Logic
         payLabel.innerText = "Payment Number (Our Number)";
         payNumber.value = "01780103303"; 
         senderLabel.innerText = "Sender Number (Your Number)";
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
