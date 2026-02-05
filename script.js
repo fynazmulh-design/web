@@ -66,7 +66,7 @@ const LINK_DATA = {
     ],
     chat: [
         { name: "Contact Support (Telegram)", url: "https://t.me/freelancernazmul" },
-        { name: "WhatsApp Support", url: "https://wa.me/YOUR_NUMBER" }
+        { name: "WhatsApp Support", url: "https://wa.me/01780103303" }
     ]
 };
 
@@ -367,3 +367,4 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
