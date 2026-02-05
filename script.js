@@ -59,7 +59,7 @@ const LINK_DATA = {
 // 🔥 VIDEO LINKS
 const COURSE_VIDEOS = [
     { title: "Course: CPA Self SignUp", url: "https://www.youtube.com/embed/eSnDmLkKvlRcL33G" },
-];   Some coding has been removed from this coding, please create it correctly.
+];
 // ============================================
 // 🔥 RAW DATA (ALL 5 TOOLS FULL DATA)
 // ============================================
@@ -384,6 +384,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
