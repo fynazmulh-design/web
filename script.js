@@ -42,7 +42,7 @@ const LINK_DATA = {
     ],
     // 🔥 NEW TOOLS ADDED HERE
     video: [
-        { name: "Recorded Video Course Join Telegram Group{Video Course}👩‍💻👉", url: "https://t.me/+vurs_IdenTE4M2Zl" },
+        { name: "Recorded Video Course Join Telegram Group {Video Course}👩‍💻👉", url: "https://t.me/+vurs_IdenTE4M2Zl" },
         { name: "Send Message For Video Course Group Approval👉", url: "https://t.me/freelancernazmul" },
     ],
     proxy: [
@@ -121,7 +121,7 @@ function checkLoginStatus() {
         document.getElementById('menuPrivate').classList.remove('hidden');
         
         // 🔥 LOGGED IN STATE CHANGES
-        document.getElementById('noticeText').innerText = "যেকোন টুলস ব্যবহারে সমস্যা হলে আমাদের সাথে যোগাযোগ করুন।";
+        document.getElementById('noticeText').innerText = "Website এর সমস্ত আপডেটের কাজ চলমান রয়েছে.তাই সাময়িকভাবে কিছু অসুবিধা হতে পারে এর জন্য আমরা আন্তরিকভাবে দুঃখিত.যেকোনো পরিস্থিতিতে আপনারা কাজ চালিয়ে যান ! জরুরী প্রয়োজনে অবশ্যই সাপোর্টে যোগাযোগ করবেন";
         document.getElementById('dashGuideBtn').classList.add('hidden'); // Hide Guide Button
         
         // Hide Contact Buttons
@@ -362,6 +362,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
