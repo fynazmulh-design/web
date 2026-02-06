@@ -43,6 +43,7 @@ const LINK_DATA = {
     // 🔥 NEW TOOLS ADDED HERE
     video: [
         { name: "Recorded Video Course Join Telegram Group👩‍💻👉", url: "https://t.me/+vurs_IdenTE4M2Zl" },
+        { name: "Send Message For Approval to Join The Group👉", url: "https://t.me/freelancernazmul" },
     ],
     proxy: [
         { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
@@ -361,6 +362,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
