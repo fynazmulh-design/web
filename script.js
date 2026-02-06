@@ -58,7 +58,7 @@ const LINK_DATA = {
     ],
     news: [
         { name: "Device setup: সঠিক নিয়মে ডিভাইস সেটআপ করতে হবে যেমন-ডিভাইস সেটআপ এর জন্য অবশ্যই সফটওয়্যার ইউজার এজেন্ট এবং আইপি এই 3টি জিনিস একত্র করে ডিভাইস সেটআপ করতে হবে-ডিভাইস চেক করার ক্ষেত্রে অবশ্যই আইপি 100% হতে হবে/ইউজারজেন চেক করতে হবে এবং লোকেশন ঠিক আছে কিনা তা অবশ্যই দেখতে হবে", url: "https://t.me/freelancernazmul" },
-        { name: "Community Group", url: "#" }
+        { name: "Community Group", "#" }
     ],
     chat: [
         { name: "Contact Support Only Telegram (সাপোর্ট সপ্তাহে 6 দিন ! দুপুর 2:00 টা থেকে রাত 9:00 টা পর্যন্ত ! শুক্রবারে সাপোর্ট সম্পূর্ণ বন্ধ)", url: "https://t.me/studentssupportfn" },
@@ -362,6 +362,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
