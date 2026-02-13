@@ -46,19 +46,17 @@ const LINK_DATA = {
         { name: "Send Message For Video Course Group Approval👉", url: "https://t.me/freelancernazmul" },
     ],
     proxy: [
-        { name: "Go2proxy {1 Gb - $1} = 260 Tk", url: "https://www.go2proxy.com" },
-        { name: "Cliproxy {2 Gb - $2.90} = 510 Tk", url: "https://share.cliproxy.com/share/uyzacuaph" },
-        { name: "Cherryproxy {5 Gb - $4} = 660 Tk", url: "https://center.cherryproxy.com/Login/Register?invite=f6803719" },
-        { name: "Nodemaven {1 Gb - $4.70} = 730 Tk", url: "https://nodemaven.com/?a_aid=freelancernazmul" },
-        { name: "Dataimpulse {5 Gb - $5} = 820 Tk", url: "https://dataimpulse.com/?aff=79223" },
-        { name: "Piaproxy {5 Gb - $9} = 1350 Tk", url: "https://www.piaproxy.com/register?invitation_code=DGW10SU1" },
-        { name: "922proxy {5 Gb - $10} = 1480 Tk", url: "https://www.922proxy.com/register?inviter_code=106eb74d" },
-        { name: "Lumiproxy {10 Gb - $20} = 2800 Tk", url: "https://www.lumiproxy.com/?invite_code=3U904A" },
-        { name: "Shopsocks5 {Day 80 Ip 30 Day - $8.40} = 1280 Tk", url: "https://shopsocks5.com/register.html?invite_code=57LSVEJM" },
+        { name: "Go2proxy {1 Gb - $1+ VAT - 3 Day} = 260 Tk", url: "https://www.go2proxy.com" },
+        { name: "Cliproxy {2 Gb- $3+ VAT - 30 Day} =480 Tk", url: "https://share.cliproxy.com/share/uyzacuaph" },
+        { name: "Nodemaven {1 Gb - $4.70+ VAT - 30 Day} = 730 Tk", url: "https://nodemaven.com/?a_aid=freelancernazmul" },
+        { name: "Dataimpulse {5 Gb - $5+ VAT - 30 Day} = 820 Tk", url: "https://dataimpulse.com/?aff=79223" },
         { name: "711proxy {5 Gb - $6+ VAT - 30 Day} = 980 Tk", url: "https://www.711proxy.com/signup?code=EFFBC5" },
         { name: "Proxyshare {10 Gb - $10+ VAT - 30 Day} = 1400 Tk", url: "https://www.proxyshare.com/?invitation_code=CZ1DZX" },
         { name: "Privateproxy {10 Gb - $10+ VAT - 30 Day} = 1530 Tk", url: "https://app.privateproxy.me/from/169372" },
-        { name: "Proxy-Seller {10 Gb - $25+ VAT - 30 Day} = 3400 Tk", url: "https://proxy-seller.com" }
+        { name: "Lumiproxy {10 Gb - $20+ VAT - 30 Day} = 2800 Tk", url: "https://www.lumiproxy.com/?invite_code=3U904A" },
+        { name: "Proxy-Seller {10 Gb - $25+ VAT - 30 Day} = 3400 Tk", url: "https://proxy-seller.com" },
+        { name: "Shopsocks5 {Day 80 Ip 30 Day - $8.40+ VAT - 30 Day} = 1280 Tk", url: "https://shopsocks5.com/register.html?invite_code=57LSVEJM" },
+        { name: "Cliproxy {500 IPs Ip- $35+ VAT - 30 Day} = 4600 Tk", url: "https://share.cliproxy.com/share/uyzacuaph" }
     ],
     news: [
         { name: "Device Setup:   সঠিক নিয়মে ডিভাইস সেটআপ করতে হবে যেমন-ডিভাইস সেটআপ এর জন্য অবশ্যই Software, UserAgent, IP এই 3টি জিনিস একত্র করে ডিভাইস সেটআপ করতে হবে-ডিভাইস চেক করার ক্ষেত্রে  https://www.ip-score.com অথবা অন্য যে কোনো সাইট ব্যবহার করুন. অবশ্যই আইপি 100% হতে হবে ! Blacklists check All clear আছে কিনা তা দেখতে হবে ! UserAgent, Timezone, Language, Resolution,ঠিক আছে কিনা তা অবশ্যই দেখতে হবে ! এবং Mixed UserAgent, IP Country ব্যবহার করতে হবে!", url: "https://t.me/freelancernazmul" },
@@ -367,6 +365,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
