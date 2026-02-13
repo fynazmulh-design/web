@@ -51,11 +51,11 @@ const LINK_DATA = {
         { name: "Cherryproxy {5 Gb - $4} = 660 Tk", url: "https://center.cherryproxy.com/Login/Register?invite=f6803719" },
         { name: "Nodemaven {1 Gb - $4.70} = 730 Tk", url: "https://nodemaven.com/?a_aid=freelancernazmul" },
         { name: "Dataimpulse {5 Gb - $5} = 820 Tk", url: "https://dataimpulse.com/?aff=79223" },
-        { name: "Proxyshare {10 Gb - $9} = 1350 Tk", url: "https://www.proxyshare.com/?invitation_code=CZ1DZX" },
         { name: "Piaproxy {5 Gb - $9} = 1350 Tk", url: "https://www.piaproxy.com/register?invitation_code=DGW10SU1" },
         { name: "922proxy {5 Gb - $10} = 1480 Tk", url: "https://www.922proxy.com/register?inviter_code=106eb74d" },
         { name: "Lumiproxy {10 Gb - $20} = 2800 Tk", url: "https://www.lumiproxy.com/?invite_code=3U904A" },
         { name: "Shopsocks5 {Day 80 Ip 30 Day - $8.40} = 1280 Tk", url: "https://shopsocks5.com/register.html?invite_code=57LSVEJM" },
+        { name: "Proxyshare {10 Gb - $10+ VAT - 30 Day} = 1400 Tk", url: "https://www.proxyshare.com/?invitation_code=CZ1DZX" },
         { name: "Privateproxy {10 Gb - $10+ VAT - 30 Day} = 1530 Tk", url: "https://app.privateproxy.me/from/169372" },
         { name: "Proxy-Seller {10 Gb - $25+ VAT - 30 Day} = 3400 Tk", url: "https://proxy-seller.com" }
     ],
@@ -366,6 +366,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
