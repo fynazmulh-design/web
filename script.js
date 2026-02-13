@@ -56,7 +56,8 @@ const LINK_DATA = {
         { name: "922proxy {5 Gb - $10} = 1480 Tk", url: "https://www.922proxy.com/register?inviter_code=106eb74d" },
         { name: "Lumiproxy {10 Gb - $20} = 2800 Tk", url: "https://www.lumiproxy.com/?invite_code=3U904A" },
         { name: "Shopsocks5 {Day 80 Ip 30 Day - $8.40} = 1280 Tk", url: "https://shopsocks5.com/register.html?invite_code=57LSVEJM" },
-        { name: "Privateproxy {10 Gb - $10+ VAT} = 1530 Tk", url: "https://app.privateproxy.me/from/169372" }
+        { name: "Privateproxy {10 Gb - $10+ VAT - 30 Day} = 1530 Tk", url: "https://app.privateproxy.me/from/169372" },
+        { name: "Proxy-Seller {10 Gb - $25+ VAT - 30 Day} = 3400 Tk", url: "https://proxy-seller.com" }
     ],
     news: [
         { name: "Device Setup:   সঠিক নিয়মে ডিভাইস সেটআপ করতে হবে যেমন-ডিভাইস সেটআপ এর জন্য অবশ্যই Software, UserAgent, IP এই 3টি জিনিস একত্র করে ডিভাইস সেটআপ করতে হবে-ডিভাইস চেক করার ক্ষেত্রে  https://www.ip-score.com অথবা অন্য যে কোনো সাইট ব্যবহার করুন. অবশ্যই আইপি 100% হতে হবে ! Blacklists check All clear আছে কিনা তা দেখতে হবে ! UserAgent, Timezone, Language, Resolution,ঠিক আছে কিনা তা অবশ্যই দেখতে হবে ! এবং Mixed UserAgent, IP Country ব্যবহার করতে হবে!", url: "https://t.me/freelancernazmul" },
@@ -365,6 +366,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
