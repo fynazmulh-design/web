@@ -55,7 +55,7 @@ const LINK_DATA = {
         { name: "922proxy {5 Gb - $10} = 1480 Tk", url: "https://www.922proxy.com/register?inviter_code=106eb74d" },
         { name: "Lumiproxy {10 Gb - $20} = 2800 Tk", url: "https://www.lumiproxy.com/?invite_code=3U904A" },
         { name: "Shopsocks5 {Day 80 Ip 30 Day - $8.40} = 1280 Tk", url: "https://shopsocks5.com/register.html?invite_code=57LSVEJM" },
-        { name: "711proxy {5 Gb - $6+ VAT - 30 Day} = 980 Tk", url: "https://www.go2proxy.com" },
+        { name: "711proxy {5 Gb - $6+ VAT - 30 Day} = 980 Tk", url: "https://www.711proxy.com/signup?code=EFFBC5" },
         { name: "Proxyshare {10 Gb - $10+ VAT - 30 Day} = 1400 Tk", url: "https://www.proxyshare.com/?invitation_code=CZ1DZX" },
         { name: "Privateproxy {10 Gb - $10+ VAT - 30 Day} = 1530 Tk", url: "https://app.privateproxy.me/from/169372" },
         { name: "Proxy-Seller {10 Gb - $25+ VAT - 30 Day} = 3400 Tk", url: "https://proxy-seller.com" }
@@ -367,6 +367,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
