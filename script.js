@@ -36,9 +36,8 @@ const LINK_DATA = {
         { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" }
     ],
     software: [
-        { name: "Premium Software PC", url: "https://drive.google.com/drive/folders/1ALhPXysKsHYinfPlF6QoroarLgELRQDE?usp=drive_link" },
-        { name: "GoLogin Mobile", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
-        { name: "Orbita Mobile", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita&pcampaignid=web_share" }
+        { name: "Premium Software PC", url: "https://drive.google.com/drive/folders/1bBfu9tHhkn34QiKMnV1UfOUXlI0ynHLF?usp=sharing" },
+        { name: "Premium Software Mobile", url: "https://drive.google.com/drive/folders/1rQjO7Rxu7sNJWPdQS3T7A6lRHHnK-0Hq?usp=sharing" }
     ],
     // 🔥 NEW TOOLS ADDED HERE
     video: [
@@ -365,6 +364,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
