@@ -36,7 +36,7 @@ const LINK_DATA = {
         { name: "Pinpoint7 (Premium)", url: "https://pinpoint710086024.offer18.com" }
     ],
     software: [
-        { name: "Morelogin PC (Promo Code: AAlesSCxF5h6)", url: "https://www.morelogin.com" },
+        { name: "Premium Software PC", url: "https://drive.google.com/drive/folders/1ALhPXysKsHYinfPlF6QoroarLgELRQDE?usp=drive_link" },
         { name: "GoLogin Mobile", url: "https://play.google.com/store/apps/details?id=com.gologin.gologin_mobile&pcampaignid=web_share" },
         { name: "Orbita Mobile", url: "https://play.google.com/store/apps/details?id=org.gologin.orbita&pcampaignid=web_share" }
     ],
@@ -365,6 +365,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
