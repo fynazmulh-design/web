@@ -205,7 +205,7 @@ function updatePlanBadge(plan) {
     dashPlan.className = isPremium ? "text-green-400 font-bold" : "text-red-400 font-bold";
 
     const iconClass = isPremium ? "ph-arrow-square-out text-green-400" : "ph-lock-key text-gray-500";
-    ['ua', 'email', 'validator', 'number', 'address', 'cpa', 'ip', 'software', 'video', 'proxy', 'news', 'chat'].forEach(id => {
+    ['ua', 'email', 'validator', 'number', 'address', 'cpa', 'ip', 'software', 'video', 'proxy', 'address', 'name'].forEach(id => {
         const icon = document.getElementById(`lockIcon_${id}`);
         if(icon) icon.className = `ph ${iconClass} transition`;
     });
@@ -359,6 +359,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
