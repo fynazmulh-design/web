@@ -58,10 +58,7 @@ const LINK_DATA = {
         { name: "Cliproxy {500 IPs Ip- $35+ VAT - 30 Day} = 4600 Tk", url: "https://share.cliproxy.com/share/uyzacuaph" }
     ],
     address: [
-        { name: "Device Setup:   সঠিক নিয়মে ডিভাইস সেটআপ করতে হবে যেমন-ডিভাইস সেটআপ এর জন্য অবশ্যই Software, UserAgent, IP এই 3টি জিনিস একত্র করে ডিভাইস সেটআপ করতে হবে-ডিভাইস চেক করার ক্ষেত্রে  https://www.ip-score.com অথবা অন্য যে কোনো সাইট ব্যবহার করুন. অবশ্যই আইপি 100% হতে হবে ! Blacklists check All clear আছে কিনা তা দেখতে হবে ! UserAgent, Timezone, Language, Resolution,ঠিক আছে কিনা তা অবশ্যই দেখতে হবে ! এবং Mixed UserAgent, IP Country ব্যবহার করতে হবে!", url: "https://t.me/freelancernazmul" },
-        { name: "All Offer SignUp:   যে কোনো অফার SignUp করার আগে অবশ্যই ল্যান্ডিং পেজ তৈরি করতে হবে ! Offer SignUp করার সময় যে Mail ব্যবহার করবেন, অবশ্যই  Mail এর সাথে First Name,Last Name মিল থাকতে হবে ! Address ব্যবহারের ক্ষেত্রে ব্যবহৃত IP সাথে মিল রেখে Address বের করতে হবে এবং ব্যবহার করতে হবে ! Fresh অফারের ক্ষেত্রে কিছু survey আসবে তা কমপ্লিট করতে হবে ! এবং Dating অফারের ক্ষেত্রে অবশ্যই প্রোফাইল complete করতে হবে!", url: "https://t.me/freelancernazmul" },
-        { name: "Self SignUp Conversion:   কিভাবে কাজ করলে কনভার্শন আসবে- 1.যে অফার নিয়ে কাজ করবেন অবশ্যই  Offer Requirements দেখতে হবে কোন ট্রাফিক সোর্স গুলো Allow,বিশেষ করে ডেটিং অফারের ক্ষেত্রে Requirements বেশি থাকে ! 2. ভালো মানের IP ব্যবহার করতে হবে ! একই প্যানেলের আইপি বারবার কিনে ব্যবহার করা যাবে না ! 3.Fresh offer সাইন আপ এর ক্ষেত্রে valid জিমেইল ব্যবহার করতে হবে ও রিয়াল এড্রেস ডকুমেন্ট দিয়ে সাইন আপ করতে হবে ! Dating offer সাইন আপ এর ক্ষেত্রে valid জিমেইল ব্যবহার করতে হবে ও রিয়াল এড্রেস ডকুমেন্ট দিয়ে সাইন আপ করতে হবে এবং বয়সের ক্ষেত্রে সবসময় 30+ ব্যবহার করতে হবে এবং সাইন আপ এর সময় কখনোই Female নাম জিমেইল ব্যবহার করা যাবে না,ডেটিং একাউন্ট খুলতে হলে অবশ্যই সবসময় Male নাম Male ডকুমেন্ট দিয়ে একাউন্ট খুলতে হবে!প্রোফাইল পিকচার এড করতে হবে,এবং হোমপেজে যে পাবলিক আইডি গুলো থাকবে সে পাবলিক আইডি গুলো ভিজিট করতে হবে, এবং তাদেরকে মেসেজ করার চেষ্টা করতে হবে!", url: "https://t.me/freelancernazmul" },
-    ],
+        { name: "All Country Address Site", url: "https://www.ssa.gov/locator/results?q=new%20york%201001" },
     name: [
         { name: "Contact Support Only Telegram (সাপোর্ট সপ্তাহে 6 দিন ! দুপুর 2:00 টা থেকে রাত 9:00 টা পর্যন্ত ! শুক্রবারে সাপোর্ট সম্পূর্ণ বন্ধ) 👩‍💻👉", url: "https://t.me/studentssupportfn" },
     ]
@@ -359,6 +356,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
