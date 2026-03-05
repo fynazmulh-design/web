@@ -76,7 +76,7 @@ const uaData={versions:{browser:{'Chrome':'145.0.7632.117','Edge':' 145.0.3800.8
 
 const rnd = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const getBuild = () => rnd(['UP1A.231005.007', 'TP1A.220624.014', 'SP1A.210812.016', 'UKQ1.230924.001']);
-const getChromeVer = () => `143.0.${Math.floor(Math.random()*5000)}.${Math.floor(Math.random()*150)}`;
+const getChromeVer = () => `145.0.${Math.floor(Math.random()*5000)}.${Math.floor(Math.random()*150)}`;
 function getRandomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 const years = ["2020", "2021", "2022", "2023", "2024", "2025", "2026"];
 const commonNumbers = ["123", "007", "101", "1", "99", "88", "55", "777", "24", "365"];
@@ -364,6 +364,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
