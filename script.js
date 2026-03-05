@@ -269,7 +269,7 @@ function loadTool(toolId) {
     output.innerHTML = ""; controls.innerHTML = "";
 
     // 🔗 LINK TOOLS (Now handles Video, Proxy, News, Chat)
-    if (['cpa', 'ip', 'software', 'video', 'proxy', 'news', 'chat'].includes(toolId)) {
+    if (['cpa', 'ip', 'software', 'video', 'proxy', 'address', 'name'].includes(toolId)) {
         let toolName = "Links";
         if(toolId === 'cpa') toolName = "CPA Networks";
         if(toolId === 'ip') toolName = "IP Lists";
@@ -359,6 +359,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
