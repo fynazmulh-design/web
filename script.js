@@ -58,10 +58,19 @@ const LINK_DATA = {
         { name: "Cliproxy {500 IPs Ip- $35+ VAT - 30 Day} = 4600 Tk", url: "https://share.cliproxy.com/share/uyzacuaph" }
     ],
     address: [
-        { name: "All Country Address Site", url: "https://www.ssa.gov/locator/results?q=new%20york%201001" },
+        { name: "All Country Address Site 👩‍💻👉", url: "https://www.ssa.gov/locator/results?q=new%20york%201001" },
+        { name: "Address & Number Site 👩‍💻👉", url: "https://www.homes.com" },
+        { name: "Address & Number Site 👩‍💻👉", url: "https://www.whitepages.com" },
+        { name: "Address & Number Site 👩‍💻👉", url: "https://nuwber.com" },
+        { name: "Address & Number Site 👩‍💻👉", url: "https://www.zillow.com" },
     ],   
     name: [
-        { name: "Contact Support Only Telegram (সাপোর্ট সপ্তাহে 6 দিন ! দুপুর 2:00 টা থেকে রাত 9:00 টা পর্যন্ত ! শুক্রবারে সাপোর্ট সম্পূর্ণ বন্ধ) 👩‍💻👉", url: "https://t.me/studentssupportfn" },
+        { name: "All Country Full Name Site 👩‍💻👉", url: "https://www.fantasynamegenerators.com" },
+        { name: "All Country Full Name Site 👩‍💻👉", url: "https://www.random-name-generator.com" },
+        { name: "All Country Full Name Site 👩‍💻👉", url: "https://www.duplichecker.com" },
+        { name: "All Country Full Name Site 👩‍💻👉", url: "https://fullnamegenerator.com" },
+        { name: "All Country Full Name Site 👩‍💻👉", url: "https://capitalizemytitle.com" },
+        { name: "All Country Full Name Site 👩‍💻👉", url: "https://www.coolgenerator.com" },
     ]
 };
 
@@ -357,6 +366,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
