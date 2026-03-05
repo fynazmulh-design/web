@@ -317,11 +317,6 @@ function loadTool(toolId) {
         output.innerHTML = `<div class="generator-grid"><div><label class="gen-label">Country</label><select id="numCountry" class="gen-input"><option value="us">USA (+1)</option><option value="uk">UK (+44)</option><option value="bd">Bangladesh (+880)</option><option value="ca">Canada (+1)</option><option value="au">Australia (+61)</option><option value="de">Germany (+49)</option><option value="fr">France (+33)</option></select></div><div><label class="gen-label">Quantity</label><input type="number" id="numQty" class="gen-input" value="50"></div></div><textarea id="numResult" class="w-full h-40 bg-black/50 border border-white/10 rounded-lg p-3 mt-4 text-green-400 font-mono text-xs focus:outline-none" readonly></textarea>`;
         controls.innerHTML = `<button onclick="runNumberGenerator()" class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2 rounded-lg font-bold text-sm">Generate Numbers</button>`;
     }
-    else if(toolId === 'address') {
-        title.innerHTML = `<i class="ph-fill ph-map-pin text-yellow-400"></i> Address Generator`;
-        output.innerHTML = `<div class="generator-grid"><div><label class="gen-label">Country</label><select id="addrCountry" class="gen-input" onchange="loadStates()"><option value="">-- Select Country --</option><option value="US">United States</option><option value="UK">United Kingdom</option><option value="CA">Canada</option><option value="AU">Australia</option></select></div><div><label class="gen-label">State</label><select id="addrState" class="gen-input" onchange="loadCities()"><option value="">Any State</option></select></div><div class="full-width"><label class="gen-label">City</label><select id="addrCity" class="gen-input"><option value="">Any City</option></select></div><div><label class="gen-label">Quantity</label><input type="number" id="addrQty" class="gen-input" value="5"></div></div><div id="addrResult" class="mt-4 space-y-2 h-40 overflow-y-auto text-xs text-gray-300"></div>`;
-        controls.innerHTML = `<button onclick="runAddressGenerator()" class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2 rounded-lg font-bold text-sm">Generate Addresses</button>`;
-    }
 }
 
 function updateUABrands(){ const os=document.getElementById('uaOS').value; const c=document.getElementById('uaCountry').value; const b=document.getElementById('uaBrand'); b.innerHTML=''; if(os==='Android'){ let list=uaData.countryBrands[c]||uaData.countryBrands['US']; list.forEach(x=>b.add(new Option(x,x))); b.add(new Option('Random','Random')); } else if(os==='iOS'){ b.add(new Option('Apple','Apple')); } else { b.add(new Option('PC/Mac','PC')); } }
@@ -364,6 +359,7 @@ function updatePayInfo() {
         senderInput.placeholder = "01xxxxxxxxx";
     }
 }
+
 
 
 
