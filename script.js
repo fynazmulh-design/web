@@ -41,7 +41,7 @@ const LINK_DATA = {
     ],
     // 🔥 NEW TOOLS ADDED HERE
     video: [
-        { name: "Recorded Video Course Join Telegram Group {Video Course}👩‍💻👉", url: "https://t.me/+vurs_IdenTE4M2Zl" },
+        { name: "Recorded Video Course Join Telegram Group {Video Course}👩‍💻👉", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=true&loop=false&muted=false&preload=true&responsive=true" },
         { name: "Send Message For Video Course Group Approval👉", url: "https://t.me/freelancernazmul" },
     ],
     proxy: [
