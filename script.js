@@ -1,3 +1,7 @@
+// ============================================
+// 🏆 FREELANCER NAZMUL - MASTER SCRIPT (V27) 🏆
+// ============================================
+
 const CONFIG = {
     backendURL: "https://script.google.com/macros/s/AKfycbwv49zfBOFTbmoamPIUqNcnjkB4s1RdGWXuBzQLTIJd3_b7ls3ociGJ3MbkxRACa8S7DQ/exec"
 };
@@ -30,14 +34,21 @@ window.onload = function() {
 
 function setNotice(type) {
     const noticeEl = document.getElementById('dynamicNotice');
-    if(!noticeEl) return;
+    const noticeContainer = document.getElementById('noticeBarContainer');
+    if(!noticeEl || !noticeContainer) return;
+    
+    // Always Red Background 
+    const redNoticeClass = "fixed top-[56px] md:top-[64px] left-0 w-full h-[35px] md:h-[40px] bg-[#cc0000] border-b border-white/10 text-white text-[11px] md:text-sm font-bold flex items-center z-[40] shadow-md transition-colors duration-500";
     
     if(type === 'PUBLIC') {
         noticeEl.innerText = NOTICES.PUBLIC;
+        noticeContainer.className = redNoticeClass;
     } else if(type === 'FREE_USER') {
         noticeEl.innerText = NOTICES.FREE_USER;
+        noticeContainer.className = redNoticeClass;
     } else {
         noticeEl.innerText = NOTICES.VIP_USER;
+        noticeContainer.className = redNoticeClass;
     }
 }
 
@@ -124,7 +135,6 @@ function updateUIBasedOnPlan(user) {
         });
     }
     
-    // Tab memory persistence
     let savedTab = localStorage.getItem('lastDashTab') || 'courses';
     switchDashTab(savedTab);
 }
