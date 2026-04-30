@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>freelancer Nazmul - Premium Automation Suite</title>
+    <title>Freelancer Nazmul - Premium Automation Suite</title>
+    
+    <!-- Tailwind CSS (For fast styling) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons (For premium icons) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -17,358 +25,496 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="bg-dark text-white overflow-x-hidden selection:bg-purple-500 selection:text-white flex flex-col min-h-screen ">
-    <nav class="fixed top-0 w-full z-50 bg-yellow-400 border-b border-yellow-600 px-6 py-4 flex justify-between items-center transition-all duration-300">
-    <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.reload()">
-        <img id="imgLogo" src="" alt="Logo" class="h-8 w-8 rounded-md object-contain hidden">
-        <div id="textLogo" class="flex items-center gap-2">
-            <div class="w-8 h-8 flex items-center justify-center bg-black rounded-md shadow-lg">
-                <i class="ph-fill ph-lightning text-yellow-400 text-lg"></i>
-            </div>
-            <span class="text-xl font-bold tracking-wide text-black">Freelancer<span class="text-purple-700"> Nazmul</span></span>
-        </div>
-    </div>
     
-    <div class="hidden md:flex gap-6 text-sm font-bold text-gray-900">
-        <div id="menuPublic" class="flex gap-6">
-            <a href="#course-packages" class="hover:text-black hover:underline transition">Courses Package Preview</a>
-            <a href="#public-tools" class="hover:text-black hover:underline transition">Tools Preview</a>
-        </div>
-        <div id="menuPrivate" class="hidden gap-6">
-            <button onclick="showSection('my-course')" class="text-black font-extrabold border-b-2 border-black pb-1">My Course</button>
-            <button onclick="showSection('dashboard')" class="hover:text-black transition">Tools Dashboard</button>
-        </div>
-    </div>
+    <!-- Custom CSS (Neon Effects & Animations) -->
+    <style>
+        body { background-color: #020617; color: #f8fafc; overflow-x: hidden; }
+        
+        /* Advanced Animations */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes bg-pan { 0% { background-position: 0% 50%; } 100% { background-position: -200% 50%; } }
+        .animate-bg-pan { background-size: 200% auto; animation: bg-pan 4s linear infinite; }
+        
+        /* Sleek Panels & Neon Glows */
+        .neon-panel { background: #09090b; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; transition: all 0.4s ease; position: relative; overflow: hidden; cursor: pointer;}
+        
+        .glow-yellow:hover { border-color: rgba(250, 204, 21, 0.6); box-shadow: 0 0 30px rgba(250, 204, 21, 0.25); transform: translateY(-5px); }
+        .glow-green:hover { border-color: rgba(74, 222, 128, 0.6); box-shadow: 0 0 30px rgba(74, 222, 128, 0.25); transform: translateY(-5px); }
+        .glow-red:hover { border-color: rgba(239, 68, 68, 0.6); box-shadow: 0 0 30px rgba(239, 68, 68, 0.25); transform: translateY(-5px); }
+        .glow-cyan:hover { border-color: rgba(34, 211, 238, 0.6); box-shadow: 0 0 30px rgba(34, 211, 238, 0.25); transform: translateY(-5px); }
+        .glow-fuchsia:hover { border-color: rgba(232, 121, 249, 0.6); box-shadow: 0 0 30px rgba(232, 121, 249, 0.25); transform: translateY(-5px); }
+        
+        /* Notification Scroller */
+        .notice-container { width: 100%; overflow: hidden; white-space: nowrap; box-sizing: border-box; }
+        .notice-text { display: inline-block; padding-left: 100%; animation: notice-scroll 30s linear infinite; }
+        @keyframes notice-scroll { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+        
+        /* Background Gradient Shapes */
+        .bg-shape { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; opacity: 0.15; pointer-events: none; }
+        
+        /* Lock Icon Hover */
+        .dashboard-premium-item .ph-lock-key { transition: 0.3s; }
+        .dashboard-premium-item:hover .ph-lock-key { color: #ef4444; transform: scale(1.1); }
 
-    <div class="flex items-center gap-3">
-        <span id="userPlanBadge" class="hidden text-[10px] px-2 py-0.5 rounded bg-black/10 text-red-600 border border-red-600/30 font-mono font-bold animate-pulse">LOCKED</span>
-        <button id="navAuthBtn" onclick="openAuthModal()" class="px-7 py-3 rounded-lg bg-black text-white hover:bg-gray-800 transition text-sm font-extrabold shadow-md tracking-wide">
-            Login / Register
-        </button>
-    </div>
-</nav>
-        <div class="flex items-center gap-3">
-            <span id="userPlanBadge" class="hidden text-[10px] px-2 py-0.5 rounded bg-red-500/10 text-red-400 border border-red-500/20 font-mono font-bold animate-pulse">LOCKED</span>
-            <button id="navAuthBtn" onclick="openAuthModal()" class="px-7 py-3 rounded-lg bg-white/10 border border-white/10 hover:bg-white/20 transition text-sm font-extrabold shadow-md tracking-wide">
+        /* Public Tool Card */
+        .tool-card { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 1.2rem; transition: 0.3s; cursor: pointer; height: 100%; display: flex; flex-direction: column; }
+        .tool-card:hover { background: rgba(30, 41, 59, 0.6); border-color: rgba(168, 85, 247, 0.5); transform: translateY(-6px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .group:hover .ph-lock-key { color: #ef4444; transform: scale(1.1); }
+        
+        /* Tool Input Grid */
+        .generator-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1rem; }
+        @media (min-width: 768px) { .generator-grid { grid-template-columns: repeat(2, 1fr); } }
+        .gen-input { width: 100%; background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.1); color: white; padding: 10px 15px; border-radius: 8px; font-size: 0.875rem; outline: none; transition: 0.3s; }
+        .gen-input:focus { border-color: #a855f7; box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2); }
+        .gen-label { display: block; font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+        .full-width { grid-column: 1 / -1; }
+        
+        /* Video Container */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .video-container iframe, .video-container object, .video-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* Floating Button */
+        .telegram-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #0088cc; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; box-shadow: 0 10px 20px rgba(0, 136, 204, 0.3); z-index: 999; transition: 0.3s; border: 2px solid rgba(255, 255, 255, 0.1); }
+        .telegram-btn:hover { transform: scale(1.1) translateY(-5px); background: #0099e6; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Background Shapes -->
+    <div class="bg-shape w-96 h-96 bg-violet-600 top-20 -left-40 animate-float hidden md:block"></div>
+    <div class="bg-shape w-96 h-96 bg-blue-600 bottom-20 -right-40 animate-float hidden md:block" style="animation-delay: -3s;"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 bg-[#ffcc00] border-b border-yellow-500 px-4 md:px-8 py-3 flex justify-between items-center shadow-lg">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.reload()">
+            <div class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black rounded-lg shadow-sm">
+                <i class="ph-bold ph-lightning text-[#ffcc00] text-lg md:text-xl animate-pulse"></i>
+            </div>
+            <span class="text-lg md:text-2xl font-black tracking-tight text-black">
+                <span class="hidden sm:inline">Freelancer</span><span class="sm:hidden">F.</span> <span class="text-violet-700">Nazmul</span>
+            </span>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <button id="navAuthBtn" onclick="openAuthModal()" class="px-4 py-2 md:px-6 md:py-2.5 rounded-lg bg-black text-white hover:bg-gray-900 transition text-xs md:text-sm font-black shadow-md">
                 Login / Register
             </button>
         </div>
     </nav>
 
-    <div class="flex-grow pt-[46px]">
-        <div class="bg-red-700 border-b border-red-500 py-3 overflow-hidden relative shadow-lg z-40">
-            <div class="marquee-text-container">
-                <div id="noticeText" class="marquee-text whitespace-nowrap text-lg text-white font-bold tracking-wide">
-                    Loading updates...
-                </div>
-            </div>
+    <!-- Notification Bar -->
+    <div class="fixed top-[56px] md:top-[64px] left-0 w-full h-[35px] md:h-[40px] bg-[#cc0000] text-white text-[11px] md:text-sm font-bold flex items-center z-[40] shadow-md">
+        <div class="notice-container">
+            <div class="notice-text" id="dynamicNotice">🚀 Welcome to Freelancer Nazmul IT 🔥 Get VIP Access to Premium CPA Tools & Software! ⚡ Active Telegram Support Available.</div>
         </div>
+    </div>
 
-        <div id="home-section">
-            <header id="publicHero" class="pt-20 pb-4 px-6 text-center relative max-w-5xl mx-auto">
-                <span class="inline-block px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-green-300 text-xs font-bold uppercase mb-6">Premium Master Update Course</span>
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Recorded Video Courses Package<br>&<span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 animate-pulse"> Automation Tools</span></h1>
-                <p class="text-green-400 mb-8">Get full access to all premium tools for free with any course enrollment.</p>
-                <button onclick="document.getElementById('course-packages').scrollIntoView({behavior:'smooth'})" class="px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition shadow-xl">🔥Unlock Course Packages🔥</button>
+    <!-- Main Content Area -->
+    <div class="flex-grow pt-[100px] md:pt-[120px] pb-10 w-full">
+        
+        <!-- ============================================== -->
+        <!-- PUBLIC HOME SECTION (Visible before login) -->
+        <!-- ============================================== -->
+        <div id="home-section" class="px-4 md:px-6 max-w-7xl mx-auto relative z-10 w-full">
+            
+            <header class="pt-8 md:pt-16 pb-12 md:pb-16 text-center max-w-5xl mx-auto relative">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs font-bold uppercase mb-6 tracking-widest shadow-inner">Premium Master Update Course</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-5 text-white leading-tight tracking-tighter">
+                    Recorded Video Courses <br>Package <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 animate-bg-pan">& Automation Tools</span>
+                </h1>
+                <p class="text-sm md:text-lg text-green-400 mb-8 font-bold">Get full access to all premium tools for free with any course enrollment.</p>
+                <button onclick="document.getElementById('course-packages').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 bg-white text-black font-black rounded-xl hover:scale-105 transition shadow-[0_10px_30px_rgba(255,255,255,0.2)] mx-auto">
+                    🔥 Unlock Course Packages 🔥
+                </button>
             </header>
-            <section id="hero-marquee" class="py-8 overflow-hidden relative z-0">
-                <div class="text-center mb-4"><span class="text-[10px] font-bold text-purple-400 uppercase tracking-[0.2em] border border-purple-500/30 px-3 py-1 rounded-full"> </span></div>
-                <div class="marquee-container relative">
-                    <div id="heroCourseMarquee" class="marquee-content gap-6"></div>
-                </div>
-            </section>
-            <section id="course-packages" class="py-16 px-6 max-w-7xl mx-auto relative bg-[#0b1121] border-y border-white/5">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold mb-3 text-white">Our CPA Self SingUp Recorded Video Courses</h2>
-                    <p class="text-yellow-400 text-sm">𝐂𝐡𝐨𝐨𝐬𝐞 𝐚 𝐩𝐚𝐜𝐤𝐚𝐠𝐞 <span class="text-green-400 font-bold">ALL TOOLS FREE</span> 𝐰𝐢𝐭𝐡 𝐞𝐯𝐞𝐫𝐲 𝐜𝐨𝐮𝐫𝐬𝐞</p>
+
+            <!-- Course Pricing Table -->
+            <section id="course-packages" class="py-12 md:py-16 relative border-t border-white/5">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-4xl font-extrabold mb-2 text-white">Our CPA Self SignUp Recorded Video Courses[cite: 5]</h2>
+                    <p class="text-yellow-400 text-xs md:text-sm font-black uppercase tracking-widest">Choose a package ALL TOOLS FREE with every course</p>
                 </div>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-                    <div class="course-card group border-2 border-purple-500 rounded-xl shadow-xl shadow-purple-900/30 transform scale-105 z-10">
-                        <div class="h-44 w-full bg-gray-800 rounded-t-lg overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80" alt="1 Month" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                            <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold px-3 py-1 rounded shadow">1 Months Package</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                    <!-- Package 1 -->
+                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group">
+                        <div class="h-40 w-full bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" alt="1 Month" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">1 Months Package</div>
                         </div>
-                        <div class="p-5 flex flex-col flex-grow bg-card rounded-b-lg">
-                            <h3 class="text-lg font-bold text-white mb-1">Basic Learning</h3>
-                            <div class="flex items-baseline gap-2 mb-3"><span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">2,000 TK</span><span class="text-sm text-yellow-400 font-medium">($20)</span></div>
-                            <ul class="text-xs text-green-300 space-y-2 mb-5 flex-1">
-                                 <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-yellow-400"></i> CPA Self SignUp New Video Course</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Auto Click & Premium SignUp Software</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Unlimited UserAgent & Gmail method</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Secret Method & All Tools Free</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-clock text-red-400"></i> <b>1 Months Support & Access</b></li>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-black text-white mb-2">Basic Learning</h3>
+                            <div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">2,000 TK</span><span class="text-sm text-yellow-500 font-bold">($20)</span></div>
+                            <ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium">
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 1 Months Support & Access</li>
                             </ul>
-                            <button onclick="openPaymentModal('Basic Learning', '2,000 BDT / $20')" class="w-full py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg hover:shadow-purple-500/30 transition shadow-lg mt-auto">Buy Now</button>
+                            <button onclick="openAuthModal('Basic Learning')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button>
                         </div>
                     </div>
-                    <div class="course-card group border-2 border-purple-500 rounded-xl shadow-xl shadow-purple-900/30 transform scale-105 z-10">
-                        <div class="h-44 w-full bg-gray-800 rounded-t-lg overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="3 Month" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                            <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold px-3 py-1 rounded shadow">3 Months Package</div>
+
+                    <!-- Package 2 -->
+                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group">
+                        <div class="h-40 w-full bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&q=80" alt="3 Month" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">3 Months Package</div>
                         </div>
-                        <div class="p-5 flex flex-col flex-grow bg-card rounded-b-lg">
-                            <h3 class="text-lg font-bold text-white mb-1">Standard Learning</h3>
-                            <div class="flex items-baseline gap-2 mb-3"><span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">2,500 TK</span><span class="text-sm text-yellow-400 font-medium">($25)</span></div>
-                            <ul class="text-xs text-green-300 space-y-2 mb-5 flex-1">
-                                 <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-yellow-400"></i> CPA Self SignUp New Video Course</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Auto Click & Premium SignUp Software</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Unlimited UserAgent & Gmail method</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Secret Method & All Tools Free</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-clock text-red-400"></i> <b>3 Months Support & Update Access</b></li>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-black text-white mb-2">Standard Learning</h3>
+                            <div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">2,500 TK</span><span class="text-sm text-yellow-500 font-bold">($25)</span></div>
+                            <ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium">
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 3 Months Support & Access</li>
                             </ul>
-                            <button onclick="openPaymentModal('Standard Learning', '2500 BDT / $25')" class="w-full py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg hover:shadow-purple-500/30 transition shadow-lg mt-auto">Buy Now</button>
+                            <button onclick="openAuthModal('Standard Learning')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button>
                         </div>
                     </div>
-                    <div class="course-card group border-2 border-purple-500 rounded-xl shadow-xl shadow-purple-900/30 transform scale-105 z-10">
-                        <div class="h-44 w-full bg-gray-800 rounded-t-lg overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=80" alt="6 Month" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                            <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold px-3 py-1 rounded shadow">6 Months Package</div>
+
+                    <!-- Package 3 -->
+                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group">
+                        <div class="h-40 w-full bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=80" alt="6 Month" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">6 Months Package</div>
                         </div>
-                        <div class="p-5 flex flex-col flex-grow bg-card rounded-b-lg">
-                            <h3 class="text-lg font-bold text-white mb-1">Pro Learning</h3>
-                            <div class="flex items-baseline gap-2 mb-3"><span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">3,000 TK</span><span class="text-sm text-yellow-400 font-medium">($30)</span></div>
-                            <ul class="text-xs text-green-300 space-y-2 mb-5 flex-1">
-                                 <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-yellow-400"></i> CPA Self SignUp New Video Course</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Auto Click & Premium SignUp Software</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Unlimited UserAgent & Gmail method</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Secret Method & All Tools Free</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-clock text-red-400"></i> <b>6 Months Support & Update Access</b></li>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-black text-white mb-2">Pro Learning</h3>
+                            <div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">3,000 TK</span><span class="text-sm text-yellow-500 font-bold">($30)</span></div>
+                            <ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium">
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 6 Months Support & Access</li>
                             </ul>
-                            <button onclick="openPaymentModal('Pro Learning', '3000 BDT / $30')" class="w-full py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg hover:shadow-purple-500/30 transition shadow-lg mt-auto">Buy Now</button>
+                            <button onclick="openAuthModal('Pro Learning')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button>
                         </div>
                     </div>
-                    <div class="course-card group border-2 border-purple-500 rounded-xl shadow-xl shadow-purple-900/30 transform scale-105 z-10">
-                        <div class="h-44 w-full bg-gray-800 rounded-t-lg overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&q=80" alt="1 Year" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                            <div class="absolute top-2 right-2 bg-gradient-to-r from-purple-600 to-pink-600 text-purple text-xs font-bold px-3 py-1 rounded shadow">1 Year VIP Package</div>
+
+                    <!-- Package 4 -->
+                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group">
+                        <div class="h-40 w-full bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80" alt="1 Year" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">1 Year VIP Package</div>
                         </div>
-                        <div class="p-5 flex flex-col flex-grow bg-card rounded-b-xl border border-white/10 border-t-0">
-                            <h3 class="text-lg font-bold text-white mb-1">Legend Learning</h3>
-                            <div class="flex items-baseline gap-2 mb-3"><span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">5,000 TK</span><span class="text-sm text-yellow-400 font-medium">($50)</span></div>
-                            <ul class="text-xs text-green-300 space-y-2 mb-5 flex-1">
-                                 <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-yellow-400"></i> CPA Self SignUp New Video Course</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Auto Click & Premium SignUp Software</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Unlimited UserAgent & Gmail method</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-gift text-yellow-400"></i>Secret Method & All Tools Free</li>
-                                <li class="flex items-center gap-2"><i class="ph-fill ph-clock text-red-400"></i> <b>1 Year Support & Update Access</b></li>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-black text-white mb-2">Legend Learning</h3>
+                            <div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">5,000 TK</span><span class="text-sm text-yellow-500 font-bold">($50)</span></div>
+                            <ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium">
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li>
+                                <li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 1 Year Support & Access</li>
                             </ul>
-                            <button onclick="openPaymentModal('Legend Learning', '5000 BDT / $50')" class="w-full py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg hover:shadow-purple-500/30 transition shadow-lg mt-auto">Buy Now</button>
+                            <button onclick="openAuthModal('Legend VIP')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="public-tools" class="py-20 px-6 max-w-7xl mx-auto relative">
+            <!-- ============================================== -->
+            <!-- PUBLIC PREMIUM TOOLS SECTION (Visual Preview) -->
+            <!-- ============================================== -->
+            <section id="public-tools" class="py-20 px-6 max-w-7xl mx-auto relative border-t border-white/5">
                 <div class="text-center mb-16 mt-10">
-                    <h2 class="text-3xl font-bold mb-4">Premium Tools</h2>
-                    <p class="text-green-400">These tools are included <span class="text-red-400">FREE</span> with any course</p>
+                    <h2 class="text-3xl font-bold mb-4">Premium Tools[cite: 5]</h2>
+                    <p class="text-green-400">These tools are included <span class="text-red-400">FREE</span> with any course[cite: 5]</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-                    <div class="tool-card group border-b-4 border-yellow-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-video text-3xl text-yellow-400 drop-shadow-lg"></i><i class="ph ph-lock-key text-gray-600 group-hover:text-yellow-400 transition"></i></div><h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">New Video Course</h3></div>
-                    <div class="tool-card group border-b-4 border-yellow-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-mask-happy text-3xl text-yellow-400 drop-shadow-lg"></i><i class="ph ph-lock-key text-gray-600 group-hover:text-yellow-400 transition"></i></div><h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">UserAgent Generator</h3></div>
-                    <div class="tool-card group border-b-4 border-yellow-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-envelope-open text-3xl text-yellow-400 drop-shadow-lg"></i><i class="ph ph-lock-key text-gray-600 group-hover:text-yellow-400 transition"></i></div><h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">Email Generator</h3></div>
-                    <div class="tool-card group border-b-4 border-green-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-shield-check text-3xl text-green-400 drop-shadow-lg"></i><i class="ph ph-lock-key text-gray-600 group-hover:text-green-400 transition"></i></div><h3 class="text-xl font-bold mb-2 group-hover:text-green-400 transition">Email Checker</h3></div>
-                    <div class="tool-card group border-b-4 border-green-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-globe text-3xl text-green-400 drop-shadow-lg"></i><i class="ph ph-lock-key text-gray-600 group-hover:text-green-400 transition"></i></div><h3 class="text-xl font-bold mb-2 group-hover:text-green-400 transition">CPA Network Lists</h3></div>
-                    <div class="tool-card group border-b-4 border-green-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-network text-3xl text-green-400 drop-shadow-lg"></i><i class="ph ph-lock-key text-gray-600 group-hover:text-green-400 transition"></i></div><h3 class="text-xl font-bold mb-2 group-hover:text-green-400 transition">Best Proxy Lists</h3></div>
-                    <div class="tool-card group border-b-4 border-red-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-hard-drives text-3xl text-red-400 drop-shadow-lg"></i><i class="ph ph-lock-key text-gray-600 group-hover:text-red-400 transition"></i></div><h3 class="text-xl font-bold mb-2 group-hover:text-red-400 transition">Premium Software Bot</h3></div>
-                    <div class="tool-card group border-b-4 border-red-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-broadcast text-3xl text-red-400 drop-shadow-lg"></i><i class="ph ph-lock-key text-gray-600 group-hover:text-red-400 transition"></i></div><h3 class="text-xl font-bold mb-2 group-hover:text-red-400 transition">Address & Number</h3></div>
-                    <div class="tool-card group border-b-4 border-red-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-hard-drives text-3xl text-red-400 drop-shadow-lg"></i><i class="ph ph-lock-key text-gray-600 group-hover:text-red-400 transition"></i></div><h3 class="text-xl font-bold mb-2 group-hover:text-red-400 transition">Full Male & Female Name</h3></div>
-                </div>
-                
-                <div class="mt-12 text-center">
-                    <button id="publicGuideBtn" onclick="window.open('https://youtu.be/DboiH-xKFRs?si=Eg4wE__-d3rTOAKH', '_blank')" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:shadow-cyan-500/50 text-white font-bold rounded-xl shadow-lg transition transform hover:-translate-y-1 flex items-center gap-2 mx-auto">
-                       <i class="ph-fill ph-play-circle text-2xl"></i> <span id="publicGuideText">Watch Tutorial / Guide</span>
-                    </button>
+                    <!-- Preview Cards (Opens Login Modal) -->
+                    <div class="tool-card group border-b-4 border-yellow-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()">
+                        <div class="flex justify-between items-start mb-5">
+                            <i class="ph-fill ph-video text-3xl text-yellow-400 drop-shadow-lg"></i>
+                            <i class="ph ph-lock-key text-gray-600 group-hover:text-yellow-400 transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">New Video Course[cite: 5]</h3>
+                    </div>
+                    
+                    <div class="tool-card group border-b-4 border-yellow-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()">
+                        <div class="flex justify-between items-start mb-5">
+                            <i class="ph-fill ph-mask-happy text-3xl text-yellow-400 drop-shadow-lg"></i>
+                            <i class="ph ph-lock-key text-gray-600 group-hover:text-yellow-400 transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">UserAgent Generator[cite: 5]</h3>
+                    </div>
+                    
+                    <div class="tool-card group border-b-4 border-yellow-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()">
+                        <div class="flex justify-between items-start mb-5">
+                            <i class="ph-fill ph-envelope-open text-3xl text-yellow-400 drop-shadow-lg"></i>
+                            <i class="ph ph-lock-key text-gray-600 group-hover:text-yellow-400 transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">Email Generator[cite: 5]</h3>
+                    </div>
+                    
+                    <div class="tool-card group border-b-4 border-green-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()">
+                        <div class="flex justify-between items-start mb-5">
+                            <i class="ph-fill ph-shield-check text-3xl text-green-400 drop-shadow-lg"></i>
+                            <i class="ph ph-lock-key text-gray-600 group-hover:text-green-400 transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-green-400 transition">Email Checker[cite: 5]</h3>
+                    </div>
+                    
+                    <div class="tool-card group border-b-4 border-green-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()">
+                        <div class="flex justify-between items-start mb-5">
+                            <i class="ph-fill ph-globe text-3xl text-green-400 drop-shadow-lg"></i>
+                            <i class="ph ph-lock-key text-gray-600 group-hover:text-green-400 transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-green-400 transition">CPA Network Lists[cite: 5]</h3>
+                    </div>
+                    
+                    <div class="tool-card group border-b-4 border-green-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()">
+                        <div class="flex justify-between items-start mb-5">
+                            <i class="ph-fill ph-network text-3xl text-green-400 drop-shadow-lg"></i>
+                            <i class="ph ph-lock-key text-gray-600 group-hover:text-green-400 transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-green-400 transition">Best Proxy Lists[cite: 5]</h3>
+                    </div>
+                    
+                    <div class="tool-card group border-b-4 border-red-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()">
+                        <div class="flex justify-between items-start mb-5">
+                            <i class="ph-fill ph-hard-drives text-3xl text-red-400 drop-shadow-lg"></i>
+                            <i class="ph ph-lock-key text-gray-600 group-hover:text-red-400 transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-red-400 transition">Premium Software Bot[cite: 5]</h3>
+                    </div>
+                    
+                    <div class="tool-card group border-b-4 border-red-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()">
+                        <div class="flex justify-between items-start mb-5">
+                            <i class="ph-fill ph-broadcast text-3xl text-red-400 drop-shadow-lg"></i>
+                            <i class="ph ph-lock-key text-gray-600 group-hover:text-red-400 transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-red-400 transition">Address & Number[cite: 5]</h3>
+                    </div>
+                    
+                    <div class="tool-card group border-b-4 border-red-500 hover:-translate-y-2 transition-all duration-300" onclick="openAuthModal()">
+                        <div class="flex justify-between items-start mb-5">
+                            <i class="ph-fill ph-hard-drives text-3xl text-red-400 drop-shadow-lg"></i>
+                            <i class="ph ph-lock-key text-gray-600 group-hover:text-red-400 transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-red-400 transition">Full Male & Female Name[cite: 5]</h3>
+                    </div>
                 </div>
             </section>
         </div>
 
-        <div id="dashboard-section" class="hidden pb-10 px-6">
-            <div class="max-w-7xl mx-auto flex flex-col gap-8">
 
-                <div id="redeemSection" class="bg-card p-6 rounded-2xl border border-white/10 shadow-inner mt-6">
-                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-                        <div>
-                            <h2 class="text-xl font-bold text-white mb-3">Welcome, <span id="dashUserName" class="text-purple-400">User</span></h2>
-                            <p class="text-gray-400 text-sm">Status: <span id="dashUserPlan" class="text-red-400 font-bold">Locked 🔒</span></p>
+        <!-- ============================================== -->
+        <!-- SECURE DASHBOARD SECTION (Visible after login) -->
+        <!-- ============================================== -->
+        <div id="dashboard-section" class="hidden px-4 md:px-8 w-full max-w-[1400px] mx-auto">
+            
+            <!-- Dashboard Header & Timer -->
+            <div class="w-full border-y-2 border-violet-500/50 relative overflow-hidden bg-zinc-900 mb-8 rounded-2xl shadow-2xl mt-[100px]">
+                 <div class="absolute -top-10 -right-10 w-64 h-64 bg-violet-600/15 blur-[80px] rounded-full pointer-events-none"></div>
+                <div class="px-6 md:px-12 py-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+                    
+                    <div>
+                        <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter">Student Dashboard</h2>
+                        <div class="flex items-center gap-3 mt-3">
+                            <span class="flex h-3 w-3 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span>
+                            <p class="text-zinc-300 font-medium text-sm md:text-lg">Welcome back, <span id="dashUserName" class="text-violet-400 font-black">Student</span></p>
                         </div>
-                        </div>
-                </div>
-                <section id="premium-tools-dash">
-                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2.5 text-gray-200 mt-10"><i class="ph-fill ph-toolbox text-purple-500 text-2xl"></i>CPA Self SignUp Video Course & Premium Tools New Update 2026</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">                       
-                        <div class="tool-card group border-b-4 border-yellow-500" onclick="checkAccess('video')"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-video text-3xl text-yellow-400"></i><i id="lockIcon_video" class="ph ph-lock-key text-yellow-500 group-hover:text-yellow-400 transition"></i></div><h3 class="text-xl font-bold mb-2">New Video Course</h3></div>
-                        <div class="tool-card group border-b-4 border-yellow-500" onclick="checkAccess('ua')"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-mask-happy text-3xl text-yellow-400"></i><i id="lockIcon_ua" class="ph ph-lock-key text-yellow-500 group-hover:text-yellow-400 transition"></i></div><h3 class="text-xl font-bold mb-2">UserAgent Generator</h3></div>
-                        <div class="tool-card group border-b-4 border-yellow-500" onclick="checkAccess('email')"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-envelope-open text-3xl text-yellow-400"></i><i id="lockIcon_email" class="ph ph-lock-key text-yellow-500 group-hover:text-yellow-400 transition"></i></div><h3 class="text-xl font-bold mb-2">Email Generator</h3></div>
-                        <div class="tool-card group border-b-4 border-pink-500" onclick="checkAccess('validator')"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-shield-check text-3xl text-pink-400"></i><i id="lockIcon_validator" class="ph ph-lock-key text-gray-500 group-hover:text-red-400 transition"></i></div><h3 class="text-xl font-bold mb-2">Email Checker</h3></div>
-                        <div class="tool-card group border-b-4 border-pink-500" onclick="checkAccess('cpa')"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-globe text-3xl text-pink-400"></i><i id="lockIcon_cpa" class="ph ph-lock-key text-gray-500 group-hover:text-red-400 transition"></i></div><h3 class="text-xl font-bold mb-2">CPA Network Lists</h3></div>
-                        <div class="tool-card group border-b-4 border-pink-500" onclick="checkAccess('proxy')"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-network text-3xl text-pink-400"></i><i id="lockIcon_proxy" class="ph ph-lock-key text-gray-500 group-hover:text-red-400 transition"></i></div><h3 class="text-xl font-bold mb-2">Best Proxy Lists</h3></div>
-                        <div class="tool-card group border-b-4 border-blue-500" onclick="checkAccess('software')"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-hard-drives text-3xl text-blue-400"></i><i id="lockIcon_software" class="ph ph-lock-key text-gray-500 group-hover:text-red-400 transition"></i></div><h3 class="text-xl font-bold mb-2">Premium Software Bot</h3></div>
-                        <div class="tool-card group border-b-4 border-blue-500" onclick="checkAccess('address')"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-broadcast text-3xl text-blue-400"></i><i id="lockIcon_address" class="ph ph-lock-key text-gray-500 group-hover:text-red-400 transition"></i></div><h3 class="text-xl font-bold mb-2">Address & Number</h3></div>
-                        <div class="tool-card group border-b-4 border-blue-500" onclick="checkAccess('name')"><div class="flex justify-between items-start mb-5"><i class="ph-fill ph-hard-drives text-3xl text-blue-400"></i><i id="lockIcon_name" class="ph ph-lock-key text-gray-500 group-hover:text-red-400 transition"></i></div><h3 class="text-xl font-bold mb-2">Full Male & Female Name</h3></div> 
                     </div>
-                </section>
+                    
+                    <!-- Live Countdown Timer Container -->
+                    <div class="bg-black/50 border border-violet-500/30 rounded-2xl p-5 flex flex-col gap-2 backdrop-blur-md shadow-inner min-w-[300px]">
+                        <p class="text-xs text-zinc-400 font-bold uppercase tracking-widest text-center">Package: <span id="dashPlanName" class="text-violet-400">Loading...</span></p>
+                        
+                        <div class="flex items-center justify-center gap-4 text-center" id="countdownTimer">
+                            <!-- Timer will be injected here by JS -->
+                            <div class="text-zinc-500 font-bold text-sm">Checking Access...</div>
+                        </div>
+                        
+                        <!-- Enter VIP Code Box (Shows if Free or Expired) -->
+                        <div id="vipCodeBox" class="hidden mt-3">
+                            <div class="flex gap-2">
+                                <input type="text" id="vipCodeInput" placeholder="Enter VIP Code" class="w-full bg-[#020617] border border-white/10 rounded-lg px-3 py-2 text-white font-mono text-sm outline-none uppercase text-center focus:border-violet-500">
+                                <button onclick="redeemVipCode()" class="bg-violet-600 hover:bg-violet-500 text-white px-4 py-2 rounded-lg font-bold text-sm transition shadow-lg">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Premium Video Section -->
+            <section id="videoPlayerSection" class="hidden mb-12">
+                <h3 class="text-2xl font-black mb-6 text-white flex items-center gap-3 border-b border-zinc-800 pb-3"><i class="ph-fill ph-video-camera text-violet-500 text-3xl"></i> Premium Video Course</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="courseVideoGrid">
+                    <!-- Videos will be injected here by JS -->
+                </div>
+            </section>
+
+            <!-- Premium Tools Grid -->
+            <section id="premiumToolsSection" class="mb-12">
+                <h3 class="text-2xl font-black mb-6 text-white flex items-center gap-3 border-b border-zinc-800 pb-3"><i class="ph-fill ph-wrench text-yellow-500 text-3xl"></i> Premium Web Tools & Bots</h3>
                 
-                <div class="mt-10 text-center">
-                    <button id="dashGuideBtn" onclick="window.open('https://youtube.com/your-guide-link', '_blank')" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:shadow-cyan-500/50 text-white font-bold rounded-xl shadow-lg transition transform hover:-translate-y-1 flex items-center gap-2 mx-auto">
-                        <i class="ph-fill ph-play-circle text-2xl"></i> <span id="dashGuideText">Watch Tutorial / Guide</span>
-                    </button>
-                </div>
-                <div id="toolConsole" class="bg-[#0b1121] border border-white/10 rounded-2xl p-6 hidden shadow-2xl mt-8 relative overflow-hidden">
-                    <div class="flex justify-between items-center mb-5 border-b border-white/10 pb-3 relative z-10">
-                        <span id="activeToolName" class="text-purple-400 font-bold font-mono text-lg flex items-center gap-2"><i class="ph ph-terminal-window"></i> Select a tool</span>
-                        <button onclick="document.getElementById('toolConsole').classList.add('hidden')" class="text-gray-500 hover:text-red-400"><i class="ph ph-x-circle text-xl"></i></button>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                    <!-- The checkAccess('tool_id') function is used to protect content -->
+                    <div class="dashboard-premium-item neon-panel glow-yellow p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80" onclick="checkAccess('ua')">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_ua" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                        <i class="ph-fill ph-mask-happy text-4xl text-yellow-400 mt-4 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
+                        <h4 class="text-sm font-bold text-white">UserAgent Gen</h4>
                     </div>
-                    <div id="consoleOutput" class="text-sm"></div>
+                    
+                    <div class="dashboard-premium-item neon-panel glow-yellow p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80" onclick="checkAccess('email')">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_email" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                        <i class="ph-fill ph-envelope-open text-4xl text-yellow-400 mt-4 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
+                        <h4 class="text-sm font-bold text-white">Email Generator</h4>
+                    </div>
+                    
+                    <div class="dashboard-premium-item neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80" onclick="checkAccess('validator')">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_validator" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                        <i class="ph-fill ph-shield-check text-4xl text-green-400 mt-4 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
+                        <h4 class="text-sm font-bold text-white">Email Checker</h4>
+                    </div>
+
+                    <div class="dashboard-premium-item neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80" onclick="checkAccess('cpa')">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_cpa" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                        <i class="ph-fill ph-globe text-4xl text-green-400 mt-4 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
+                        <h4 class="text-sm font-bold text-white">CPA Networks</h4>
+                    </div>
+
+                    <div class="dashboard-premium-item neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80" onclick="checkAccess('proxy')">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_proxy" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                        <i class="ph-fill ph-network text-4xl text-green-400 mt-4 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
+                        <h4 class="text-sm font-bold text-white">Best Proxy Lists</h4>
+                    </div>
+
+                    <div class="dashboard-premium-item neon-panel glow-cyan p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80" onclick="checkAccess('software')">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_software" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                        <i class="ph-fill ph-robot text-4xl text-cyan-400 mt-4 drop-shadow-[0_0_15px_rgba(34,211,238,0.6)]"></i>
+                        <h4 class="text-sm font-bold text-white">Software Bots</h4>
+                    </div>
+
+                    <div class="dashboard-premium-item neon-panel glow-fuchsia p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80" onclick="checkAccess('address')">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_address" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                        <i class="ph-fill ph-map-pin text-4xl text-fuchsia-400 mt-4 drop-shadow-[0_0_15px_rgba(232,121,249,0.6)]"></i>
+                        <h4 class="text-sm font-bold text-white">Address Gen</h4>
+                    </div>
+
+                    <div class="dashboard-premium-item neon-panel glow-fuchsia p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80" onclick="checkAccess('name')">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_name" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                        <i class="ph-fill ph-identification-card text-4xl text-fuchsia-400 mt-4 drop-shadow-[0_0_15px_rgba(232,121,249,0.6)]"></i>
+                        <h4 class="text-sm font-bold text-white">Name Generator</h4>
+                    </div>
+                </div>
+
+                <!-- Interactive Tool Console (Hidden by default, opens when a tool is clicked) -->
+                <div id="toolConsole" class="bg-[#0b1121] border border-white/10 rounded-2xl p-6 hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] mt-10 relative overflow-hidden transition-all">
+                    <div class="flex justify-between items-center mb-5 border-b border-white/10 pb-3 relative z-10">
+                        <span id="activeToolName" class="text-violet-400 font-bold font-mono text-lg flex items-center gap-2"><i class="ph ph-terminal-window"></i> Select a tool</span>
+                        <button onclick="document.getElementById('toolConsole').classList.add('hidden')" class="text-gray-500 hover:text-red-400 transition"><i class="ph-fill ph-x-circle text-2xl"></i></button>
+                    </div>
+                    <div id="consoleOutput" class="text-sm w-full"></div>
                     <div class="mt-5 flex gap-3 relative z-10" id="toolControls"></div>
                 </div>
-            </div>
-        </div>
-    </div>
-    
-    <div id="contactButtons">
-        <a href="https://t.me/freelancernazmul" target="_blank" class="telegram-btn"><i class="ph-fill ph-telegram-logo"></i></a>
-        <a href="https://wa.me/+8801780103303" target="_blank" class="whatsapp-btn"><i class="ph-fill ph-whatsapp-logo"></i></a>
-    </div>
-
-    <footer class="bg-[#0b1121] border-t border-red/5 py-8 px-6 mt-12 text-center text-yellow-300 text-xs"><p> ©️ 2026 Freelancer Nazmul. All rights reserved.</p></footer>
-
-    <div id="paymentModal" class="hidden fixed inset-0 z-[150] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 overflow-y-auto">
-        <div class="relative w-full max-w-md bg-[#1e293b] border border-white/10 rounded-2xl shadow-2xl my-8 overflow-hidden p-6">
-            <button onclick="document.getElementById('paymentModal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="ph-bold ph-x text-xl"></i></button>
-            <div id="paymentStep1">
-                <h3 class="text-xl font-bold text-white mb-2">Confirm Payment</h3>
-                <p class="text-gray-400 text-sm mb-4">Package: <span id="payPackageName" class="text-purple-400 font-bold"></span></p>
-                <div class="bg-purple-900/20 p-4 rounded-lg border border-purple-500/30 mb-6 text-center"><span class="text-xs text-gray-400 block mb-1">Total Amount</span><span id="payAmount" class="text-3xl font-mono font-bold text-white"></span></div>
-                
-                <form onsubmit="handlePaymentSubmit(event)" class="space-y-3">
-                    <div>
-                        <label class="text-xs font-bold text-gray-500 block mb-1">Payment Method</label>
-                        <select id="payMethod" name="method" onchange="updatePayInfo()" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none">
-                            <option value="Bkash">Bkash</option>
-                            <option value="Nagad">Nagad</option>
-                            <option value="Rocket">Rocket</option>
-                            <option value="Binance">Binance</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label id="payLabel" class="text-xs font-bold text-gray-500 block mb-1">Payment Number (Our Number)</label>
-                        <input id="payNumber" type="text" value="01780103303" readonly class="w-full bg-dark/50 border border-white/5 rounded-lg px-4 py-3 text-gray-400 outline-none cursor-not-allowed">
-                    </div>
-                    <div>
-                        <label id="senderLabel" class="text-xs font-bold text-gray-500 block mb-1">Sender Number (Your Number)</label>
-                        <input id="senderInput" type="text" name="sender" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none">
-                    </div>
-                    <div>
-                        <label class="text-xs font-bold text-gray-500 block mb-1">Transaction ID</label>
-                        <input type="text" name="trxid" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none uppercase">
-                    </div>
-                    <button type="submit" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg shadow-lg mt-2">Submit Payment Request</button>
-                </form>
-            </div>
-            <div id="paymentStep2" class="hidden text-center">
-                <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-green-500 text-3xl"><i class="ph-fill ph-check-circle"></i></div>
-                <h3 class="text-xl font-bold text-white mb-2">Request Submitted!</h3>
-                <p class="text-gray-400 text-sm mb-6 bg-yellow-900/20 p-3 rounded border border-yellow-700/30">For fast access, please message <br> <a href="https://t.me/freelancernazmul" target="_blank" class="text-blue-400 underline font-bold">Telegram Support</a></p>
-                <div class="space-y-3"><label class="text-xs font-bold text-gray-500 block text-left">Enter VIP Code</label><input type="text" id="modalVipCode" placeholder="XXXX-XXXX-XXXX" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white font-mono text-center uppercase outline-none focus:border-purple-500"><button onclick="redeemVipCode()" class="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-lg shadow-lg">Unlock Access</button></div>
-            </div>
+            </section>
         </div>
     </div>
 
-    <div id="authModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 overflow-y-auto">
-        <div class="relative w-full max-w-md bg-[#1e293b] border border-white/10 rounded-2xl shadow-2xl my-8 overflow-hidden">
-            <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white"><i class="ph-bold ph-x text-xl"></i></button>
-            <div class="flex border-b border-white/10">
-                <button onclick="switchTab('login')" id="tabLogin" class="flex-1 py-4 text-sm font-bold text-white border-b-2 border-purple-500 bg-white/5">LOGIN</button>
-                <button onclick="switchTab('register')" id="tabRegister" class="flex-1 py-4 text-sm font-bold text-gray-400 hover:text-white">REGISTER</button>
+    <!-- Floating Support Button (Only Telegram) -->
+    <div id="contactButtons" class="fixed bottom-[30px] right-[30px] z-[9999]">
+        <a href="https://t.me/freelancernazmul" target="_blank" class="telegram-btn">
+            <i class="ph-fill ph-telegram-logo"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 py-5 text-center text-zinc-500 text-xs font-bold tracking-widest mt-auto z-50 relative">
+        <p> © 2026 FREELANCER NAZMUL IT. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- ============================================== -->
+    <!-- MODALS (Login / Register / Forgot Password / Lock) -->
+    <!-- ============================================== -->
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="hidden fixed inset-0 z-[99999] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 transition-opacity">
+        <div class="relative w-full max-w-md bg-zinc-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden neon-panel glow-blue">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white z-10 bg-black/50 p-1.5 rounded-full"><i class="ph-bold ph-x text-lg"></i></button>
+            
+            <div class="flex border-b border-white/10 bg-black/40">
+                <button onclick="switchTab('login')" id="tabLogin" class="flex-1 py-4 text-sm font-bold text-white border-b-2 border-violet-500 bg-white/5 transition">LOGIN</button>
+                <button onclick="switchTab('register')" id="tabRegister" class="flex-1 py-4 text-sm font-bold text-gray-400 hover:text-white transition">REGISTER</button>
             </div>
-            <form id="loginForm" class="p-8 space-y-4" onsubmit="handleAuth(event, 'login')">
-                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none">
-                <div class="relative"><input type="password" id="loginPass" name="password" placeholder="Password" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white outline-none"><i class="ph ph-eye absolute top-3.5 right-4 text-gray-400 cursor-pointer" onclick="togglePassword('loginPass', this)"></i></div>
-                <button type="submit" class="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-lg shadow-lg">Login Now</button>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="p-8 space-y-5" onsubmit="handleAuth(event, 'login')">
+                <div class="text-center mb-6">
+                    <i class="ph-fill ph-user-circle text-5xl text-violet-500 mb-2"></i>
+                    <h3 class="text-xl font-bold text-white">Welcome Back</h3>
+                </div>
+                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-violet-500 transition">
+                <div class="relative">
+                    <input type="password" id="loginPass" name="password" placeholder="Password" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-violet-500 transition">
+                    <i class="ph-bold ph-eye absolute top-3.5 right-4 text-gray-400 cursor-pointer hover:text-white" onclick="togglePassword('loginPass', this)"></i>
+                </div>
+                <div class="text-right">
+                    <button type="button" onclick="switchTab('forgot')" class="text-xs text-violet-400 hover:text-white font-bold transition">Forgot Password?</button>
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-violet-600 to-blue-600 hover:opacity-90 text-white font-bold rounded-lg shadow-lg transition transform hover:-translate-y-0.5">Login Securely</button>
             </form>
-            <form id="registerForm" class="hidden p-6 space-y-4 max-h-[80vh] overflow-y-auto" onsubmit="handleAuth(event, 'register')">
-                <div class="grid grid-cols-2 gap-3"><input type="text" name="name" placeholder="Full Name" required class="bg-dark border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none"><input type="text" name="phone" placeholder="Phone" required class="bg-dark border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none"></div>
-                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none">
-                <div class="relative"><input type="password" id="regPass" name="password" placeholder="Set Password" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none"><i class="ph ph-eye absolute top-3.5 right-4 text-gray-400 cursor-pointer" onclick="togglePassword('regPass', this)"></i></div>
-                <div class="relative"><input type="password" id="regConfirmPass" placeholder="Confirm Password" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none"><i class="ph ph-eye absolute top-3.5 right-4 text-gray-400 cursor-pointer" onclick="togglePassword('regConfirmPass', this)"></i></div>
-                <input type="hidden" name="method" value="N/A"><input type="hidden" name="sender" value="N/A"><input type="hidden" name="trxid" value="N/A"><input type="hidden" name="plan" value="Free">
-                <button type="submit" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg shadow-lg mt-2">Create Account</button>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="hidden p-8 space-y-4 max-h-[85vh] overflow-y-auto" onsubmit="handleAuth(event, 'register')">
+                 <div class="text-center mb-6">
+                    <i class="ph-fill ph-user-plus text-5xl text-blue-500 mb-2"></i>
+                    <h3 class="text-xl font-bold text-white">Create Account</h3>
+                </div>
+                <input type="text" name="name" placeholder="Full Name" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
+                <input type="text" name="phone" placeholder="Phone Number (Ex: 017...)" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
+                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
+                <div class="relative">
+                    <input type="password" id="regPass" name="password" placeholder="Set Password" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
+                    <i class="ph-bold ph-eye absolute top-3.5 right-4 text-gray-400 cursor-pointer hover:text-white" onclick="togglePassword('regPass', this)"></i>
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:opacity-90 text-white font-bold rounded-lg shadow-lg mt-2 transition transform hover:-translate-y-0.5">Register Now</button>
             </form>
-            <div id="authMessage" class="px-8 pb-6 text-center text-xs font-bold hidden animate-pulse"></div>
+
+            <!-- Forgot Password Form -->
+            <form id="forgotForm" class="hidden p-8 space-y-5" onsubmit="handleAuth(event, 'forgot_password')">
+                 <div class="text-center mb-6">
+                    <i class="ph-fill ph-lock-key-open text-5xl text-yellow-500 mb-2"></i>
+                    <h3 class="text-xl font-bold text-white">Recover Password</h3>
+                    <p class="text-xs text-gray-400 mt-2">Enter your registered email. We will send your password directly to your inbox.</p>
+                </div>
+                <input type="email" name="email" placeholder="Registered Email Address" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-yellow-500 transition">
+                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-yellow-600 to-orange-600 hover:opacity-90 text-white font-bold rounded-lg shadow-lg transition transform hover:-translate-y-0.5 text-sm">Send Password to Email</button>
+                <div class="text-center mt-2">
+                     <button type="button" onclick="switchTab('login')" class="text-xs text-gray-400 hover:text-white font-bold transition"><i class="ph-bold ph-arrow-left"></i> Back to Login</button>
+                </div>
+            </form>
+
+            <div id="authMessage" class="px-8 pb-6 text-center text-sm font-bold hidden animate-pulse bg-black/20 pt-4 border-t border-white/5"></div>
         </div>
     </div>
 
+    <!-- Feature Locked Modal -->
+    <div id="lockModal" class="hidden fixed inset-0 z-[99999] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 m-0 transition-opacity">
+        <div class="relative w-full max-w-md neon-panel glow-red rounded-3xl overflow-hidden bg-zinc-900 p-8 md:p-10 text-center border border-red-500/50 shadow-[0_20px_60px_rgba(239,68,68,0.3)]">
+            <div class="bg-red-600/15 w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center mx-auto mb-6 border border-red-500/30 relative">
+                <div class="absolute inset-0 border-4 border-red-500 rounded-full animate-ping opacity-25"></div>
+                <i class="ph-fill ph-lock-key text-4xl md:text-6xl text-red-500 relative z-10"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black text-white mb-3 tracking-tighter">Access Denied!</h3>
+            <p class="text-zinc-400 text-sm mb-8 font-medium leading-relaxed">You need an active Premium Plan or VIP Code to unlock this tool. If you have purchased, please wait for admin approval.</p>
+            <button onclick="document.getElementById('lockModal').classList.add('hidden')" class="w-full py-3.5 bg-zinc-800 text-white font-bold rounded-xl transition hover:bg-zinc-700 border border-white/10">Understood</button>
+        </div>
+    </div>
+
+    <!-- JS is linked here to keep HTML clean -->
     <script src="script.js"></script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
