@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freelancer Nazmul - Premium Automation Suite</title>
     
-    <!-- Tailwind CSS (For fast styling) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Phosphor Icons (For premium icons) -->
+    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -26,7 +23,6 @@
         }
     </script>
     
-    <!-- Custom CSS (Neon Effects & Animations) -->
     <style>
         body { background-color: #020617; color: #f8fafc; overflow-x: hidden; scroll-behavior: smooth; }
         
@@ -56,12 +52,18 @@
         .notice-text { display: inline-block; padding-left: 100%; animation: notice-scroll 35s linear infinite; }
         @keyframes notice-scroll { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
         
-        /* Background Gradient Shapes */
+        /* Marquee Scroller for Reviews */
+        .marquee-container-fast { width: 100%; overflow: hidden; white-space: nowrap; position: relative; }
+        .marquee-content-fast { display: inline-flex; animation: marquee-scroll 40s linear infinite; }
+        .marquee-content-fast:hover { animation-play-state: paused; }
+        @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Background Shapes */
         .bg-shape { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; opacity: 0.15; pointer-events: none; }
         
         /* Lock Icon Hover */
-        .dashboard-premium-item .ph-lock-key { transition: 0.3s; }
-        .dashboard-premium-item:hover .ph-lock-key { color: #ef4444; transform: scale(1.1); }
+        .ph-lock-key { transition: 0.3s; }
+        .group:hover .ph-lock-key { color: #ef4444; transform: scale(1.1); }
         
         /* Video Container */
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
@@ -76,6 +78,16 @@
         ::-webkit-scrollbar-track { background: #020617; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        /* Payment Radio UI */
+        .pay-radio-box { border: 1px solid rgba(255,255,255,0.1); background: #0f172a; border-radius: 12px; cursor: pointer; transition: all 0.3s; overflow: hidden; }
+        .pay-radio-box.active { border-color: #3b82f6; background: #1e293b; }
+        .pay-radio-header { padding: 16px; display: flex; items-center; gap: 12px; }
+        .pay-radio-circle { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #64748b; flex-shrink: 0; display: flex; align-items: center; justify-content: center;}
+        .pay-radio-box.active .pay-radio-circle { border-color: #3b82f6; }
+        .pay-radio-box.active .pay-radio-circle::after { content: ''; width: 8px; height: 8px; background: #3b82f6; border-radius: 50%; }
+        .pay-details { display: none; padding: 16px; border-top: 1px solid rgba(255,255,255,0.05); background: #020617; }
+        .pay-radio-box.active .pay-details { display: block; animation: fadeIn 0.3s; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -94,7 +106,6 @@
                 <span class="hidden sm:inline">Freelancer</span><span class="sm:hidden">F.</span> <span class="text-violet-700">Nazmul</span>
             </span>
         </div>
-        
         <div class="flex items-center gap-4">
             <button id="navAuthBtn" onclick="openAuthModal()" class="px-4 py-2 md:px-6 md:py-2.5 rounded-lg bg-black text-white hover:bg-gray-900 transition text-xs md:text-sm font-black shadow-md">
                 Login / Register
@@ -113,11 +124,10 @@
     <div class="flex-grow pt-[100px] md:pt-[120px] pb-10 w-full">
         
         <!-- ============================================== -->
-        <!-- PUBLIC HOME SECTION (Visible before login) -->
+        <!-- PUBLIC HOME SECTION -->
         <!-- ============================================== -->
         <div id="home-section" class="px-4 md:px-6 max-w-7xl mx-auto relative z-10 w-full block">
             
-            <!-- Hero Section -->
             <header class="pt-8 md:pt-16 pb-12 md:pb-16 text-center max-w-5xl mx-auto relative">
                 <span class="inline-block px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs font-bold uppercase mb-6 tracking-widest shadow-inner">Premium Master Update Course</span>
                 <h1 class="text-4xl md:text-6xl font-extrabold mb-5 text-white leading-tight tracking-tighter">
@@ -138,101 +148,25 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-                    <!-- Basic -->
-                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group">
-                        <div class="h-40 w-full bg-gray-800 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">1 Months Package</div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-black text-white mb-2">Basic Learning</h3>
-                            <div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">2,000 TK</span><span class="text-sm text-yellow-500 font-bold">($20)</span></div>
-                            <ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium">
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 1 Months Support & Access</li>
-                            </ul>
-                            <button onclick="openAuthModal('Basic Learning')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button>
-                        </div>
-                    </div>
-
-                    <!-- Standard -->
-                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group">
-                        <div class="h-40 w-full bg-gray-800 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">3 Months Package</div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-black text-white mb-2">Standard Learning</h3>
-                            <div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">2,500 TK</span><span class="text-sm text-yellow-500 font-bold">($25)</span></div>
-                            <ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium">
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 3 Months Support & Access</li>
-                            </ul>
-                            <button onclick="openAuthModal('Standard Learning')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button>
-                        </div>
-                    </div>
-
-                    <!-- Pro -->
-                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group">
-                        <div class="h-40 w-full bg-gray-800 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">6 Months Package</div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-black text-white mb-2">Pro Learning</h3>
-                            <div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">3,000 TK</span><span class="text-sm text-yellow-500 font-bold">($30)</span></div>
-                            <ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium">
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 6 Months Support & Access</li>
-                            </ul>
-                            <button onclick="openAuthModal('Pro Learning')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button>
-                        </div>
-                    </div>
-
-                    <!-- Legend -->
-                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group">
-                        <div class="h-40 w-full bg-gray-800 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">1 Year VIP Package</div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-black text-white mb-2">Legend Learning</h3>
-                            <div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">5,000 TK</span><span class="text-sm text-yellow-500 font-bold">($50)</span></div>
-                            <ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium">
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li>
-                                <li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 1 Year Support & Access</li>
-                            </ul>
-                            <button onclick="openAuthModal('Legend VIP')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button>
-                        </div>
-                    </div>
+                    <!-- Packages -->
+                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group"><div class="h-40 w-full bg-gray-800 relative overflow-hidden"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"><div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">1 Months Package</div></div><div class="p-6 flex flex-col flex-grow"><h3 class="text-xl font-black text-white mb-2">Basic Learning</h3><div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">2,000 TK</span><span class="text-sm text-yellow-500 font-bold">($20)</span></div><ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium"><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li><li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 1 Months Support & Access</li></ul><button onclick="openAuthModal('Basic Learning')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button></div></div>
+                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group"><div class="h-40 w-full bg-gray-800 relative overflow-hidden"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"><div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">3 Months Package</div></div><div class="p-6 flex flex-col flex-grow"><h3 class="text-xl font-black text-white mb-2">Standard Learning</h3><div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">2,500 TK</span><span class="text-sm text-yellow-500 font-bold">($25)</span></div><ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium"><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li><li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 3 Months Support & Access</li></ul><button onclick="openAuthModal('Standard Learning')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button></div></div>
+                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group"><div class="h-40 w-full bg-gray-800 relative overflow-hidden"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"><div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">6 Months Package</div></div><div class="p-6 flex flex-col flex-grow"><h3 class="text-xl font-black text-white mb-2">Pro Learning</h3><div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">3,000 TK</span><span class="text-sm text-yellow-500 font-bold">($30)</span></div><ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium"><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li><li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 6 Months Support & Access</li></ul><button onclick="openAuthModal('Pro Learning')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button></div></div>
+                    <div class="flex flex-col overflow-hidden bg-[#1e1e2f] rounded-xl border border-fuchsia-600/40 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.2)] transition duration-300 group"><div class="h-40 w-full bg-gray-800 relative overflow-hidden"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"><div class="absolute top-3 right-3 bg-fuchsia-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">1 Year VIP Package</div></div><div class="p-6 flex flex-col flex-grow"><h3 class="text-xl font-black text-white mb-2">Legend Learning</h3><div class="flex items-baseline gap-2 mb-5"><span class="text-3xl font-black text-fuchsia-400">5,000 TK</span><span class="text-sm text-yellow-500 font-bold">($50)</span></div><ul class="text-[13px] text-zinc-300 space-y-3 mb-8 flex-1 font-medium"><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> CPA Self SignUp Video Course</li><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Auto Click & Premium Software</li><li class="flex gap-2"><i class="ph-fill ph-seal-check text-yellow-400 text-base"></i> Unlimited UserAgent & Gmail</li><li class="flex gap-2"><i class="ph-fill ph-check-circle text-rose-500 text-base"></i> 1 Year Support & Access</li></ul><button onclick="openAuthModal('Legend VIP')" class="w-full py-3.5 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-black rounded-lg hover:opacity-90 transition">Buy Now</button></div></div>
                 </div>
             </section>
 
-            <!-- ============================================== -->
-            <!-- PUBLIC PREMIUM TOOLS SECTION (Visual Preview) -->
-            <!-- ============================================== -->
+            <!-- PUBLIC PREMIUM TOOLS SECTION -->
             <section id="public-tools" class="py-12 md:py-20 relative border-t border-white/5">
                 <div class="text-center mb-10 md:mb-16">
-                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-white">Premium Web Tools</h2>
+                    <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-white">Premium Tools</h2>
                     <p class="text-green-400 font-bold">These tools are included <span class="text-red-400">FREE</span> with any course</p>
                 </div>
                 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 relative z-10">
                     <div class="neon-panel glow-yellow p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="openAuthModal()">
                         <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i class="ph ph-lock-key text-zinc-600 group-hover:text-red-500 transition"></i></div>
-                        <i class="ph-fill ph-video-camera text-4xl text-yellow-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">New Video Course</h4>
-                    </div>
-                    <div class="neon-panel glow-yellow p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="openAuthModal()">
-                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i class="ph ph-lock-key text-zinc-600 group-hover:text-red-500 transition"></i></div>
-                        <i class="ph-fill ph-mask-happy text-4xl text-yellow-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">UserAgent Gen</h4>
+                        <i class="ph-fill ph-mask-happy text-4xl text-yellow-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">Useragent Generator</h4>
                     </div>
                     <div class="neon-panel glow-yellow p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="openAuthModal()">
                         <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i class="ph ph-lock-key text-zinc-600 group-hover:text-red-500 transition"></i></div>
@@ -240,22 +174,36 @@
                     </div>
                     <div class="neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="openAuthModal()">
                         <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i class="ph ph-lock-key text-zinc-600 group-hover:text-red-500 transition"></i></div>
-                        <i class="ph-fill ph-shield-check text-4xl text-green-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">Email Checker</h4>
+                        <i class="ph-fill ph-shield-check text-4xl text-green-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">Real Email Checker</h4>
                     </div>
                     <div class="neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="openAuthModal()">
                         <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i class="ph ph-lock-key text-zinc-600 group-hover:text-red-500 transition"></i></div>
-                        <i class="ph-fill ph-globe text-4xl text-green-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">CPA Networks</h4>
+                        <i class="ph-fill ph-globe text-4xl text-green-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">Best CPA Networks</h4>
+                    </div>
+                    <div class="neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="openAuthModal()">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i class="ph ph-lock-key text-zinc-600 group-hover:text-red-500 transition"></i></div>
+                        <i class="ph-fill ph-tree-structure text-4xl text-green-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">Best Proxy IP Lists</h4>
+                    </div>
+                    <div class="neon-panel glow-red p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="openAuthModal()">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i class="ph ph-lock-key text-zinc-600 group-hover:text-red-500 transition"></i></div>
+                        <i class="ph-fill ph-robot text-4xl text-red-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">Useragent Random Mix</h4>
+                    </div>
+                    <div class="neon-panel glow-red p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="openAuthModal()">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i class="ph ph-lock-key text-zinc-600 group-hover:text-red-500 transition"></i></div>
+                        <i class="ph-fill ph-broadcast text-4xl text-red-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">Real Address & Number</h4>
+                    </div>
+                    <div class="neon-panel glow-red p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="openAuthModal()">
+                        <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i class="ph ph-lock-key text-zinc-600 group-hover:text-red-500 transition"></i></div>
+                        <i class="ph-fill ph-hard-drives text-4xl text-red-400 mt-2"></i><h4 class="text-xs md:text-sm font-bold text-white mt-1">Upcoming</h4>
                     </div>
                 </div>
             </section>
 
-            <!-- ============================================== -->
-            <!-- PUBLIC AUTOMATION BOTS (Visual Preview) -->
-            <!-- ============================================== -->
+            <!-- PUBLIC AUTOMATION BOTS -->
             <section id="automation-software" class="py-12 md:py-20 relative border-t border-white/5">
                 <div class="text-center mb-10 md:mb-16">
                     <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-white">Private Automation Bots</h2>
-                    <p class="text-zinc-400 font-medium text-sm md:text-lg">Exclusive desktop software to automate CPA Self Signups effortlessly.</p>
+                    <p class="text-zinc-400 font-medium text-sm md:text-lg">Exclusive desktop software to automate CPA Self Signups effortlessly. Download ZIP and install.</p>
                 </div>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1200px] mx-auto relative z-10">
@@ -285,59 +233,96 @@
                 </div>
             </section>
 
-            <!-- ============================================== -->
-            <!-- STUDENT REVIEWS & SUCCESS STORIES -->
-            <!-- ============================================== -->
-            <section id="reviews" class="py-12 md:py-20 relative border-t border-white/5 bg-[#020617]">
-                <div class="text-center mb-16">
+            <!-- STUDENT REVIEWS (Marquee) -->
+            <section id="reviews" class="py-12 md:py-20 relative border-t border-white/5 bg-[#020617] overflow-hidden">
+                <div class="text-center mb-10">
                     <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-white">Our Students Review & Success Stories</h2>
                     <p class="text-green-400 font-bold text-sm md:text-lg">Trusted by thousands of successful freelancers in Bangladesh</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1200px] mx-auto relative z-10">
-                    <!-- Review 1 -->
-                    <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg hover:border-violet-500/50 transition duration-300">
-                        <div class="flex gap-4 items-center mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">A</div>
-                            <div>
-                                <h4 class="font-bold text-white">Ariful Islam</h4>
-                                <div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                <div class="marquee-container-fast w-full mt-10">
+                    <div class="marquee-content-fast gap-6 pb-4 px-6">
+                        
+                        <!-- Review 1 -->
+                        <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-violet-500">
+                            <div class="flex gap-4 items-center mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">A</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Ariful Islam</h4>
+                                    <div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                                </div>
+                            </div>
+                            <p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"The CPA course and the Auto Clicker Bot changed my life. Everything is so well explained. Got my first payment!"</p>
+                            <div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max">
+                                <i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $150
                             </div>
                         </div>
-                        <p class="text-zinc-400 text-sm italic mb-4 leading-relaxed">"The CPA course and the Auto Clicker Bot changed my life. Everything is so well explained. Got my first payment within 2 weeks!"</p>
-                        <div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2">
-                            <i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $150
-                        </div>
-                    </div>
 
-                    <!-- Review 2 -->
-                    <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg hover:border-violet-500/50 transition duration-300">
-                        <div class="flex gap-4 items-center mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">M</div>
-                            <div>
-                                <h4 class="font-bold text-white">Mehedi Hasan</h4>
-                                <div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                        <!-- Review 2 -->
+                        <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-blue-500">
+                            <div class="flex gap-4 items-center mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">M</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Mehedi Hasan</h4>
+                                    <div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                                </div>
+                            </div>
+                            <p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"Best support ever! The Anti-Detect browser provided here is premium quality. Highly recommended for CPA marketing."</p>
+                            <div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max">
+                                <i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $320
                             </div>
                         </div>
-                        <p class="text-zinc-400 text-sm italic mb-4 leading-relaxed">"Best support ever! The Anti-Detect browser provided here is premium quality. Highly recommended for CPA marketing."</p>
-                        <div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2">
-                            <i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $320
-                        </div>
-                    </div>
 
-                    <!-- Review 3 -->
-                    <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg hover:border-violet-500/50 transition duration-300">
-                        <div class="flex gap-4 items-center mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-fuchsia-500 to-pink-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">T</div>
-                            <div>
-                                <h4 class="font-bold text-white">Tariqul Islam</h4>
-                                <div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star text-zinc-600"></i></div>
+                        <!-- Review 3 -->
+                        <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-pink-500">
+                            <div class="flex gap-4 items-center mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">T</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Tariqul Islam</h4>
+                                    <div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star text-zinc-600"></i></div>
+                                </div>
+                            </div>
+                            <p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"Initially I was skeptical, but after buying the Legend VIP package, I got access to all tools. Earning steadily now."</p>
+                            <div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max">
+                                <i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $85
                             </div>
                         </div>
-                        <p class="text-zinc-400 text-sm italic mb-4 leading-relaxed">"Initially I was skeptical, but after buying the Legend VIP package, I got access to all tools. Earning steadily now."</p>
-                        <div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2">
-                            <i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $85
+
+                        <!-- Review 4 -->
+                        <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-green-500">
+                            <div class="flex gap-4 items-center mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">S</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Sabbir Hossain</h4>
+                                    <div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                                </div>
+                            </div>
+                            <p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"The email generator and useragent tools are lifesavers! Saved me hours of manual work."</p>
+                            <div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max">
+                                <i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $210
+                            </div>
                         </div>
+
+                        <!-- Review 5 -->
+                        <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-amber-500">
+                            <div class="flex gap-4 items-center mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">R</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Rakib Ahmed</h4>
+                                    <div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                                </div>
+                            </div>
+                            <p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"Everything works flawlessly. The private bots are very stable. Very happy with my purchase."</p>
+                            <div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max">
+                                <i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $450
+                            </div>
+                        </div>
+
+                        <!-- DUPLICATE FOR SEAMLESS LOOP -->
+                        <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-violet-500"><div class="flex gap-4 items-center mb-4"><div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">A</div><div><h4 class="font-bold text-white">Ariful Islam</h4><div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div></div></div><p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"The CPA course and the Auto Clicker Bot changed my life. Everything is so well explained. Got my first payment!"</p><div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max"><i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $150</div></div>
+                        <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-blue-500"><div class="flex gap-4 items-center mb-4"><div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">M</div><div><h4 class="font-bold text-white">Mehedi Hasan</h4><div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div></div></div><p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"Best support ever! The Anti-Detect browser provided here is premium quality. Highly recommended for CPA marketing."</p><div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max"><i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $320</div></div>
+                        <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-pink-500"><div class="flex gap-4 items-center mb-4"><div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">T</div><div><h4 class="font-bold text-white">Tariqul Islam</h4><div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star text-zinc-600"></i></div></div></div><p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"Initially I was skeptical, but after buying the Legend VIP package, I got access to all tools. Earning steadily now."</p><div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max"><i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $85</div></div>
+
                     </div>
                 </div>
             </section>
@@ -369,14 +354,6 @@
                         <div class="flex items-center justify-center gap-4 text-center" id="countdownTimer">
                             <div class="text-zinc-500 font-bold text-sm">Checking Access...</div>
                         </div>
-                        
-                        <!-- Enter VIP Code Box -->
-                        <div id="vipCodeBox" class="hidden mt-3">
-                            <div class="flex gap-2">
-                                <input type="text" id="vipCodeInput" placeholder="Enter VIP Code" class="w-full bg-[#020617] border border-white/10 rounded-lg px-3 py-2 text-white font-mono text-sm outline-none uppercase text-center focus:border-violet-500">
-                                <button onclick="redeemVipCode()" class="bg-violet-600 hover:bg-violet-500 text-white px-4 py-2 rounded-lg font-bold text-sm transition shadow-lg">Apply</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -402,8 +379,8 @@
                     
                     <!-- TAB 1: VIDEO COURSES -->
                     <div id="tabContent-courses" class="dash-tab-content block">
-                        <h3 class="text-2xl font-black mb-6 text-white border-b border-zinc-800 pb-3">Enrolled Video Classes</h3>
-                        <!-- Videos grid injected by JS. If locked, it will show locked thumbnails. -->
+                        <h3 class="text-2xl font-black mb-6 text-white border-b border-zinc-800 pb-3">My Video Course</h3>
+                        <!-- Video Grid (JS injects videos here, or a locked thumbnail if not purchased) -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="courseVideoGrid"></div>
                     </div>
 
@@ -412,51 +389,49 @@
                         <h3 class="text-2xl font-black mb-6 text-white border-b border-zinc-800 pb-3">Access Premium Web Tools</h3>
                         
                         <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-                            <!-- Change 'openContent' parameter to match your actual HTML file names if they are separate! -->
-                            <div class="dashboard-premium-item neon-panel glow-yellow p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80 group" onclick="openContent('/useragent-gen.html')">
+                            
+                            <div class="dashboard-premium-item neon-panel glow-yellow p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="checkAccess('/useragent-gen.html')">
                                 <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_ua" class="ph-fill ph-lock-key text-zinc-600"></i></div>
-                                <i class="ph-fill ph-mask-happy text-4xl text-yellow-400 mt-4 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
-                                <h4 class="text-sm font-bold text-white">UserAgent Gen</h4>
+                                <i class="ph-fill ph-mask-happy text-4xl text-yellow-400 mt-4"></i><h4 class="text-sm font-bold text-white">Useragent Generator</h4>
                             </div>
                             
-                            <div class="dashboard-premium-item neon-panel glow-yellow p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80 group" onclick="openContent('/email-generator.html')">
+                            <div class="dashboard-premium-item neon-panel glow-yellow p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="checkAccess('/email-generator.html')">
                                 <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_email" class="ph-fill ph-lock-key text-zinc-600"></i></div>
-                                <i class="ph-fill ph-envelope-open text-4xl text-yellow-400 mt-4 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
-                                <h4 class="text-sm font-bold text-white">Email Generator</h4>
+                                <i class="ph-fill ph-envelope-open text-4xl text-yellow-400 mt-4"></i><h4 class="text-sm font-bold text-white">Email Generator</h4>
                             </div>
                             
-                            <div class="dashboard-premium-item neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80 group" onclick="openContent('/email-checker.html')">
+                            <div class="dashboard-premium-item neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="checkAccess('/email-checker.html')">
                                 <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_validator" class="ph-fill ph-lock-key text-zinc-600"></i></div>
-                                <i class="ph-fill ph-shield-check text-4xl text-green-400 mt-4 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
-                                <h4 class="text-sm font-bold text-white">Email Checker</h4>
+                                <i class="ph-fill ph-shield-check text-4xl text-green-400 mt-4"></i><h4 class="text-sm font-bold text-white">Real Email Checker</h4>
                             </div>
 
-                            <div class="dashboard-premium-item neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80 group" onclick="openContent('cpa')">
+                            <div class="dashboard-premium-item neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="checkAccess('cpa')">
                                 <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_cpa" class="ph-fill ph-lock-key text-zinc-600"></i></div>
-                                <i class="ph-fill ph-globe text-4xl text-green-400 mt-4 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
-                                <h4 class="text-sm font-bold text-white">CPA Networks</h4>
+                                <i class="ph-fill ph-globe text-4xl text-green-400 mt-4"></i><h4 class="text-sm font-bold text-white">Best CPA Networks</h4>
                             </div>
 
-                            <div class="dashboard-premium-item neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80 group" onclick="openContent('proxy')">
+                            <div class="dashboard-premium-item neon-panel glow-green p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="checkAccess('proxy')">
                                 <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_proxy" class="ph-fill ph-lock-key text-zinc-600"></i></div>
-                                <i class="ph-fill ph-network text-4xl text-green-400 mt-4 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
-                                <h4 class="text-sm font-bold text-white">Best Proxy Lists</h4>
+                                <i class="ph-fill ph-tree-structure text-4xl text-green-400 mt-4"></i><h4 class="text-sm font-bold text-white">Best Proxy IP Lists</h4>
                             </div>
 
-                            <div class="dashboard-premium-item neon-panel glow-fuchsia p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80 group" onclick="openContent('address')">
+                            <div class="dashboard-premium-item neon-panel glow-red p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="checkAccess('software')">
+                                <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_software" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                                <i class="ph-fill ph-robot text-4xl text-red-400 mt-4"></i><h4 class="text-sm font-bold text-white">Useragent Random Mix</h4>
+                            </div>
+
+                            <div class="dashboard-premium-item neon-panel glow-red p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="checkAccess('address')">
                                 <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_address" class="ph-fill ph-lock-key text-zinc-600"></i></div>
-                                <i class="ph-fill ph-map-pin text-4xl text-fuchsia-400 mt-4 drop-shadow-[0_0_15px_rgba(232,121,249,0.6)]"></i>
-                                <h4 class="text-sm font-bold text-white">Address Gen</h4>
+                                <i class="ph-fill ph-broadcast text-4xl text-red-400 mt-4"></i><h4 class="text-sm font-bold text-white">Real Address & Number</h4>
                             </div>
 
-                            <div class="dashboard-premium-item neon-panel glow-fuchsia p-6 flex flex-col items-center text-center gap-3 cursor-pointer relative bg-zinc-900 border border-zinc-800/80 group" onclick="openContent('name')">
+                            <div class="dashboard-premium-item neon-panel glow-red p-6 flex flex-col items-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="checkAccess('name')">
                                 <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_name" class="ph-fill ph-lock-key text-zinc-600"></i></div>
-                                <i class="ph-fill ph-identification-card text-4xl text-fuchsia-400 mt-4 drop-shadow-[0_0_15px_rgba(232,121,249,0.6)]"></i>
-                                <h4 class="text-sm font-bold text-white">Name Generator</h4>
+                                <i class="ph-fill ph-hard-drives text-4xl text-red-400 mt-4"></i><h4 class="text-sm font-bold text-white">Upcoming</h4>
                             </div>
                         </div>
 
-                        <!-- Dynamic Tool Console Container (if you still want to load some tools in the same page) -->
+                        <!-- Dynamic Links Console Container -->
                         <div id="toolConsole" class="bg-[#0b1121] border border-white/10 rounded-2xl p-6 hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] mt-8 relative overflow-hidden transition-all">
                             <div class="flex justify-between items-center mb-5 border-b border-white/10 pb-3 relative z-10">
                                 <span id="activeToolName" class="text-violet-400 font-bold font-mono text-lg flex items-center gap-2"><i class="ph ph-terminal-window"></i> Area</span>
@@ -468,27 +443,29 @@
 
                     <!-- TAB 3: AUTOMATION SOFTWARE -->
                     <div id="tabContent-software" class="dash-tab-content hidden">
-                        <h3 class="text-2xl font-black mb-6 text-white border-b border-zinc-800 pb-3">Download Premium Bots & Software</h3>
+                        <h3 class="text-2xl font-black mb-6 text-white border-b border-zinc-800 pb-3">Premium Software</h3>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Bot 1 -->
-                            <div class="neon-panel glow-cyan p-8 bg-zinc-900 border border-zinc-800 border-t-4 border-t-cyan-500 flex flex-col justify-between">
-                                <div class="text-center mb-6">
+                            <!-- Auto Clicker Bot -->
+                            <div class="neon-panel glow-cyan p-8 bg-zinc-900 border border-zinc-800 border-t-4 border-t-cyan-500 flex flex-col justify-between" onclick="checkAccess('dl_clicker')">
+                                <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_dl_clicker" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                                <div class="text-center mb-6 mt-4">
                                     <div class="w-20 h-20 bg-cyan-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-cyan-500/20"><i class="ph-fill ph-robot text-5xl text-cyan-400 drop-shadow-lg"></i></div>
                                     <h4 class="text-2xl font-bold text-white mb-2">Auto Clicker Bot</h4>
                                     <p class="text-zinc-400 text-sm">Automate your tasks effortlessly. Download the ZIP file, extract and install.</p>
                                 </div>
-                                <button onclick="checkAccess('dl_clicker')" class="w-full py-3.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold rounded-xl shadow-lg transition flex justify-center items-center gap-2">
+                                <button class="w-full py-3.5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-xl shadow border border-zinc-700 transition flex justify-center items-center gap-2">
                                     <i class="ph-bold ph-download-simple text-xl"></i> Download Software (.zip)
                                 </button>
                             </div>
 
-                            <!-- Bot 2 -->
+                            <!-- Anti-Detect Browser -->
                             <div class="neon-panel glow-fuchsia p-8 bg-zinc-900 border border-zinc-800 border-t-4 border-t-fuchsia-500 flex flex-col justify-between">
-                                <div class="text-center mb-6">
+                                <div class="flex justify-between w-full absolute top-3 left-3 right-3 px-1"><span class="w-2 h-2"></span><i id="lock_dl_browser" class="ph-fill ph-lock-key text-zinc-600"></i></div>
+                                <div class="text-center mb-6 mt-4">
                                     <div class="w-20 h-20 bg-fuchsia-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-fuchsia-500/20"><i class="ph-fill ph-browser text-5xl text-fuchsia-400 drop-shadow-lg"></i></div>
                                     <h4 class="text-2xl font-bold text-white mb-2">Anti-Detect Browser</h4>
-                                    <p class="text-zinc-400 text-sm">Manage multiple accounts securely without fingerprints. Available for PC & Mobile.</p>
+                                    <p class="text-zinc-400 text-sm">Manage multiple accounts securely without fingerprints.</p>
                                 </div>
                                 <div class="flex flex-col sm:flex-row gap-3">
                                     <button onclick="checkAccess('dl_browser_pc')" class="flex-1 py-3.5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-xl shadow border border-zinc-700 transition flex justify-center items-center gap-2">
@@ -515,25 +492,26 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-black border-t border-white/10 py-5 text-center text-zinc-500 text-xs font-bold tracking-widest mt-auto z-50 relative">
+    <footer class="bg-[#020617] border-t border-white/10 py-5 text-center text-zinc-500 text-xs font-bold tracking-widest mt-auto z-50 relative">
         <p> © 2026 FREELANCER NAZMUL IT. ALL RIGHTS RESERVED.</p>
     </footer>
 
     <!-- ============================================== -->
-    <!-- MODALS (Login / Register / Forgot Password / Lock) -->
+    <!-- MODALS (Login / Register / Forgot Password / Payment) -->
     <!-- ============================================== -->
 
     <!-- Auth Modal -->
     <div id="authModal" class="hidden fixed inset-0 z-[99999] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 transition-opacity">
-        <div class="relative w-full max-w-md bg-zinc-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden neon-panel glow-blue">
+        <div class="relative w-full max-w-md bg-[#1e293b] border border-white/10 rounded-2xl shadow-2xl overflow-hidden neon-panel glow-blue">
             
             <!-- Tab Header with Perfectly Aligned Close Button -->
             <div class="flex border-b border-white/10 bg-black/40 relative">
                 <button onclick="switchTab('login')" id="tabLogin" class="flex-1 py-4 text-sm font-bold text-white border-b-2 border-violet-500 bg-white/5 transition">LOGIN</button>
                 <button onclick="switchTab('register')" id="tabRegister" class="flex-1 py-4 text-sm font-bold text-gray-400 hover:text-white transition">REGISTER</button>
-                <!-- Close Button Aligned to the Right edge of Tabs -->
-                <button onclick="closeAuthModal()" class="w-14 flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-500 transition border-l border-white/10">
-                    <i class="ph-bold ph-x text-lg"></i>
+                
+                <!-- Cross Button (Aligned horizontally with tabs) -->
+                <button onclick="closeAuthModal()" class="absolute top-1/2 -translate-y-1/2 right-4 w-8 h-8 flex items-center justify-center text-gray-400 border border-white/10 rounded-full hover:text-white hover:bg-red-500 transition shadow-lg">
+                    <i class="ph-bold ph-x text-sm"></i>
                 </button>
             </div>
 
@@ -543,9 +521,9 @@
                     <i class="ph-fill ph-user-circle text-5xl text-violet-500 mb-2"></i>
                     <h3 class="text-xl font-bold text-white">Welcome Back</h3>
                 </div>
-                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-violet-500 transition">
+                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-violet-500 transition">
                 <div class="relative">
-                    <input type="password" id="loginPass" name="password" placeholder="Password" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-violet-500 transition">
+                    <input type="password" id="loginPass" name="password" placeholder="Password" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-violet-500 transition">
                     <i class="ph-bold ph-eye absolute top-3.5 right-4 text-gray-400 cursor-pointer hover:text-white" onclick="togglePassword('loginPass', this)"></i>
                 </div>
                 <div class="text-right">
@@ -560,11 +538,11 @@
                     <i class="ph-fill ph-user-plus text-5xl text-blue-500 mb-2"></i>
                     <h3 class="text-xl font-bold text-white">Create Account</h3>
                 </div>
-                <input type="text" name="name" placeholder="Full Name" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
-                <input type="text" name="phone" placeholder="Phone Number (Ex: 017...)" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
-                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
+                <input type="text" name="name" placeholder="Full Name" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
+                <input type="text" name="phone" placeholder="Phone Number (Ex: 017...)" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
+                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
                 <div class="relative">
-                    <input type="password" id="regPass" name="password" placeholder="Set Password" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
+                    <input type="password" id="regPass" name="password" placeholder="Set Password" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
                     <i class="ph-bold ph-eye absolute top-3.5 right-4 text-gray-400 cursor-pointer hover:text-white" onclick="togglePassword('regPass', this)"></i>
                 </div>
                 <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:opacity-90 text-white font-bold rounded-lg shadow-lg mt-2 transition transform hover:-translate-y-0.5">Register Now</button>
@@ -577,7 +555,7 @@
                     <h3 class="text-xl font-bold text-white">Recover Password</h3>
                     <p class="text-xs text-gray-400 mt-2">Enter your registered email. We will send your password directly to your inbox.</p>
                 </div>
-                <input type="email" name="email" placeholder="Registered Email Address" required class="w-full bg-[#020617] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-yellow-500 transition">
+                <input type="email" name="email" placeholder="Registered Email Address" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-yellow-500 transition">
                 <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-yellow-600 to-orange-600 hover:opacity-90 text-white font-bold rounded-lg shadow-lg transition transform hover:-translate-y-0.5 text-sm">Send Password to Email</button>
                 <div class="text-center mt-2">
                      <button type="button" onclick="switchTab('login')" class="text-xs text-gray-400 hover:text-white font-bold transition"><i class="ph-bold ph-arrow-left"></i> Back to Login</button>
@@ -588,20 +566,129 @@
         </div>
     </div>
 
-    <!-- Feature Locked Modal -->
-    <div id="lockModal" class="hidden fixed inset-0 z-[99999] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 m-0 transition-opacity">
-        <div class="relative w-full max-w-md neon-panel glow-red rounded-3xl overflow-hidden bg-zinc-900 p-8 md:p-10 text-center border border-red-500/50 shadow-[0_20px_60px_rgba(239,68,68,0.3)]">
-            <div class="bg-red-600/15 w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center mx-auto mb-6 border border-red-500/30 relative">
-                <div class="absolute inset-0 border-4 border-red-500 rounded-full animate-ping opacity-25"></div>
-                <i class="ph-fill ph-lock-key text-4xl md:text-6xl text-red-500 relative z-10"></i>
+    <!-- Payment / Buy Package Modal (Replaces Lock Modal) -->
+    <div id="paymentModal" class="hidden fixed inset-0 z-[99999] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 m-0 overflow-y-auto">
+        <div class="relative w-full max-w-lg bg-[#1e293b] border border-white/10 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] my-8">
+            
+            <div class="flex justify-between items-center p-5 border-b border-white/10 bg-black/20 rounded-t-2xl">
+                <h3 class="text-xl font-black text-white flex items-center gap-2"><i class="ph-fill ph-shopping-cart text-pink-500 text-2xl"></i> Unlock Premium Access</h3>
+                <button onclick="document.getElementById('paymentModal').classList.add('hidden')" class="text-gray-400 hover:text-white hover:bg-red-500 w-8 h-8 rounded-full flex items-center justify-center transition border border-white/10"><i class="ph-bold ph-x"></i></button>
             </div>
-            <h3 class="text-2xl md:text-3xl font-black text-white mb-3 tracking-tighter">Access Denied!</h3>
-            <p class="text-zinc-400 text-sm mb-8 font-medium leading-relaxed">You need an active Premium Plan or VIP Code to unlock this section. If you have purchased, please enter your VIP code above.</p>
-            <button onclick="document.getElementById('lockModal').classList.add('hidden')" class="w-full py-3.5 bg-zinc-800 text-white font-bold rounded-xl transition hover:bg-zinc-700 border border-white/10">Understood</button>
+
+            <div id="payFormArea" class="p-6">
+                <p class="text-zinc-400 text-sm mb-5">Select a payment method below to purchase a plan and unlock all premium tools, videos, and private bots.</p>
+                
+                <div class="space-y-3">
+                    <!-- bKash -->
+                    <div class="pay-radio-box" onclick="selectPayment('bkash')">
+                        <div class="pay-radio-header">
+                            <div class="pay-radio-circle" id="circle_bkash"></div>
+                            <span class="text-white font-bold flex-grow text-lg">bKash</span>
+                            <img src="https://i.imgur.com/E0nK4qB.png" alt="bKash" class="h-6">
+                        </div>
+                        <div class="pay-details" id="detail_bkash">
+                            <p class="text-sm text-gray-300 mb-4">Please complete your bKash payment at first, then fill up the form below.</p>
+                            <div class="mb-4">
+                                <label class="text-xs text-gray-400 font-bold block mb-1">bKash Personal Number :</label>
+                                <input type="text" value="01780103303" readonly class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white font-mono outline-none">
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 mb-4">
+                                <div><label class="text-xs text-gray-400 font-bold block mb-1">bKash Number</label><input type="text" id="bkashNum" placeholder="017XXXXXXXX" class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white outline-none focus:border-pink-500"></div>
+                                <div><label class="text-xs text-gray-400 font-bold block mb-1">Transaction ID</label><input type="text" id="bkashTrx" placeholder="8N7A..." class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white outline-none focus:border-pink-500 uppercase"></div>
+                            </div>
+                            <button onclick="submitPaymentForm()" class="w-full py-3 bg-pink-600 hover:bg-pink-500 text-white font-bold rounded-lg transition">Verify Payment</button>
+                        </div>
+                    </div>
+
+                    <!-- Rocket -->
+                    <div class="pay-radio-box" onclick="selectPayment('rocket')">
+                        <div class="pay-radio-header">
+                            <div class="pay-radio-circle" id="circle_rocket"></div>
+                            <span class="text-white font-bold flex-grow text-lg">Rocket</span>
+                            <img src="https://i.imgur.com/kQJz57l.png" alt="Rocket" class="h-6">
+                        </div>
+                        <div class="pay-details" id="detail_rocket">
+                            <p class="text-sm text-gray-300 mb-4">Please complete your Rocket payment at first, then fill up the form below.</p>
+                            <div class="mb-4">
+                                <label class="text-xs text-gray-400 font-bold block mb-1">Rocket Personal Number :</label>
+                                <input type="text" value="01780103303" readonly class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white font-mono outline-none">
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 mb-4">
+                                <div><label class="text-xs text-gray-400 font-bold block mb-1">Rocket Number</label><input type="text" id="rocketNum" placeholder="017XXXXXXXX" class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white outline-none focus:border-purple-500"></div>
+                                <div><label class="text-xs text-gray-400 font-bold block mb-1">Transaction ID</label><input type="text" id="rocketTrx" placeholder="TxnID..." class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white outline-none focus:border-purple-500 uppercase"></div>
+                            </div>
+                            <button onclick="submitPaymentForm()" class="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-lg transition">Verify Payment</button>
+                        </div>
+                    </div>
+
+                    <!-- Nagad -->
+                    <div class="pay-radio-box" onclick="selectPayment('nagad')">
+                        <div class="pay-radio-header">
+                            <div class="pay-radio-circle" id="circle_nagad"></div>
+                            <span class="text-white font-bold flex-grow text-lg">Nagad</span>
+                            <img src="https://i.imgur.com/J3iE2eX.png" alt="Nagad" class="h-6">
+                        </div>
+                        <div class="pay-details" id="detail_nagad">
+                            <p class="text-sm text-gray-300 mb-4">Please complete your Nagad payment at first, then fill up the form below.</p>
+                            <div class="mb-4">
+                                <label class="text-xs text-gray-400 font-bold block mb-1">Nagad Personal Number :</label>
+                                <input type="text" value="01780103303" readonly class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white font-mono outline-none">
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 mb-4">
+                                <div><label class="text-xs text-gray-400 font-bold block mb-1">Nagad Number</label><input type="text" id="nagadNum" placeholder="017XXXXXXXX" class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white outline-none focus:border-orange-500"></div>
+                                <div><label class="text-xs text-gray-400 font-bold block mb-1">Transaction ID</label><input type="text" id="nagadTrx" placeholder="TxnID..." class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white outline-none focus:border-orange-500 uppercase"></div>
+                            </div>
+                            <button onclick="submitPaymentForm()" class="w-full py-3 bg-orange-600 hover:bg-orange-500 text-white font-bold rounded-lg transition">Verify Payment</button>
+                        </div>
+                    </div>
+
+                    <!-- Crypto / Binance -->
+                    <div class="pay-radio-box" onclick="selectPayment('crypto')">
+                        <div class="pay-radio-header">
+                            <div class="pay-radio-circle" id="circle_crypto"></div>
+                            <span class="text-white font-bold flex-grow text-lg">CryptoPay/Binance</span>
+                        </div>
+                        <div class="pay-details" id="detail_crypto">
+                            <p class="text-sm text-gray-300 mb-4 leading-relaxed">Please send the exact amount to our Binance account. After sending the money, send us a message on Telegram with your Transaction ID (TXID) or Screenshot to get instant access. Telegram id: <span class="text-blue-400 font-bold">@freelancernazmul</span></p>
+                            
+                            <div class="bg-[#020617] border border-white/10 p-4 rounded-lg font-mono text-[11px] sm:text-xs text-gray-400 mb-4 space-y-2">
+                                <p><strong class="text-white">Binance Pay ID:</strong> 745273700</p>
+                                <p><strong class="text-white">TRC20:</strong> TLcSJkHgH9ChwAzmRiPPzmTFu2TSxfETVc</p>
+                                <p><strong class="text-white">BTC:</strong> 19e9Ae5Zjj6T7bEj4Hzn7x9QWfxv8QDNVC</p>
+                                <p><strong class="text-white">LTC:</strong> LgfbBhBnQYTdsHzRfbnRm5DqGwTzMhRtNQ</p>
+                            </div>
+                            
+                            <button onclick="submitPaymentForm()" class="w-full py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-black rounded-lg transition">I Have Sent The Crypto</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Area (Hidden by Default) -->
+            <div id="paySuccessArea" class="hidden p-8 text-center">
+                <div class="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/30">
+                    <i class="ph-fill ph-check-circle text-5xl text-green-400"></i>
+                </div>
+                <h3 class="text-2xl font-black text-white mb-2">Request Sent!</h3>
+                <p class="text-green-400 text-sm mb-6 bg-green-900/20 p-4 rounded-xl border border-green-700/30 font-bold leading-relaxed">
+                    দ্রুত access পেতে vip code এর জন্য টেলিগ্ৰামে পেমেন্ট এর স্কিনশট দিয়ে ম্যাসেজ দিন।
+                </p>
+                <div class="bg-[#020617] p-5 rounded-xl border border-white/5 shadow-inner">
+                    <label class="block text-xs text-gray-400 font-bold uppercase tracking-wider mb-2 text-left">Enter VIP Code Here</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="modalVipInput" placeholder="XXXX-XXXX-XXXX" class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-white font-mono text-center outline-none uppercase focus:border-violet-500">
+                        <button onclick="applyVipFromModal()" class="bg-violet-600 hover:bg-violet-500 text-white px-5 py-3 rounded-lg font-bold transition">Apply</button>
+                    </div>
+                </div>
+                <a href="https://t.me/freelancernazmul" target="_blank" class="w-full py-4 mt-4 bg-[#0088cc] hover:bg-[#0099e6] text-white font-bold rounded-xl flex items-center justify-center gap-2 transition">
+                    <i class="ph-fill ph-telegram-logo text-xl"></i> Message Telegram Support
+                </a>
+            </div>
+
         </div>
     </div>
 
-    <!-- JS is linked here to keep HTML clean -->
+    <!-- Link JS File -->
     <script src="script.js"></script>
 
 </body>
