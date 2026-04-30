@@ -1,25 +1,26 @@
-// ============================================
-// 🏆 FREELANCER NAZMUL - MASTER SCRIPT (V21) 🏆
-// ============================================
-
-// ⚠️ আপনার Google Apps Script এর Web App URL এখানে বসান ⚠️
 const CONFIG = {
     backendURL: "https://script.google.com/macros/s/AKfycbwv49zfBOFTbmoamPIUqNcnjkB4s1RdGWXuBzQLTIJd3_b7ls3ociGJ3MbkxRACa8S7DQ/exec"
 };
 
-// 🔥 BUNNY.NET VIDEO LINKS (10 CLASSES)
-// আপনি চাইলে নিচে আরও অবজেক্ট অ্যাড করে আনলিমিটেড ক্লাস যুক্ত করতে পারবেন
+// 🔥 NOTICES
+const NOTICES = {
+    PUBLIC: "🚀 Welcome to Freelancer Nazmul IT 🔥 Get 30% OFF on Yearly Plan! ⚡ Instant Activation with Bkash/Nagad/Rocket & Crypto-Pay/Binance. Please Login or Register first to access packages.",
+    FREE_USER: "⚠️ Account Created! Please purchase a VIP package from the dashboard. Send the exact amount and submit the transaction ID to get your VIP code.",
+    VIP_USER: "🌟 Premium Access Active! Welcome to the VIP Dashboard. You now have full access to all courses, tools, and software."
+};
+
+// 🔥 BUNNY.NET VIDEO LINKS (10 CLASSES - You can add more easily here)
 const COURSE_VIDEOS = [
-    { title: "Class 1: CPA Self SignUp Mastery & Account Setup", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
-    { title: "Class 2: Setup Secret Methods for CPA", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_2?autoplay=false" },
-    { title: "Class 3: Advanced Traffic Generation", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_3?autoplay=false" },
-    { title: "Class 4: Free Marketing Strategies", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_4?autoplay=false" },
-    { title: "Class 5: Paid Ads Masterclass (FB & Google)", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_5?autoplay=false" },
-    { title: "Class 6: High-Converting Landing Pages", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_6?autoplay=false" },
-    { title: "Class 7: Email Marketing Automation", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_7?autoplay=false" },
-    { title: "Class 8: Tracking and Analytics", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_8?autoplay=false" },
-    { title: "Class 9: Scaling Your Campaigns X10", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_9?autoplay=false" },
-    { title: "Class 10: Withdrawals & Next Steps", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_10?autoplay=false" }
+    { title: "Class 1: {PART_01}_CPA_Self_SignUp_সেরা_CPA_সাইট_ও_একাউন্ট_খোলার_নিয়ম", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=true&loop=false&muted=false&preload=true&responsive=true" },
+    { title: "Class 2: {PART_02}_CPA_Self_SignUp_সিপিএ_ক্যাটাগরি_ও_সেরা_অফার_সিলেকশন", url: "https://player.mediadelivery.net/embed/631069/f43ea652-0c8c-432a-aeb9-25c37e93e1d0?autoplay=true&loop=false&muted=false&preload=true&responsive=true" },
+    { title: "Class 3: {PART_03}_CPA_Self_SignUp_সেরা_ল্যান্ডিং_পেজ_ডিজাইন_ও_তৈরি", url: "https://player.mediadelivery.net/embed/631069/1c7035a8-4251-43f3-a79d-623c42116e99?autoplay=true&loop=false&muted=false&preload=true&responsive=true" },
+    { title: "Class 4: {PART_04}_Self_Sign_Up_হাই_সিকিউরিটি_সেরা_সফটওয়্যার_Mobile_&_PC", url: "https://player.mediadelivery.net/embed/631069/0e459ad8-98b5-4428-9392-20de391438c0?autoplay=true&loop=false&muted=false&preload=true&responsive=true" },
+    { title: "Class 5: {PART_05}_Self_Sign_Up_Proxy_IP_সাইট_ও_পার্সেস_সিস্টেম", url: "https://player.mediadelivery.net/embed/631069/32a398f1-7158-4cd4-aceb-3e0ce4b9117b?autoplay=true&loop=false&muted=false&preload=true&responsive=true" },
+    { title: "Class 6: {PART_06}_আনলিমিটেড_UserAgentGmailAddress_মেথড", url: "https://player.mediadelivery.net/embed/631069/703f443f-958a-4288-8680-16b6ea6a0359?autoplay=true&loop=false&muted=false&preload=true&responsive=true" },
+    { title: "Class 7: {PART_07}_Self_Sign_Up_ComputerMobile_ডিভাইস_সেটআপ", url: "https://player.mediadelivery.net/embed/631069/7cd6e057-d7d8-4009-bb5b-02270ff59b27?autoplay=true&loop=false&muted=false&preload=true&responsive=true" },
+    { title: "Class 8: {PART_08}_Dating_Offers_সাইন_আপ_Social_Media_মেথড", url: "https://player.mediadelivery.net/embed/631069/5a91bf48-79c7-4b96-8945-07aadf06bc43?autoplay=true&loop=false&muted=false&preload=true&responsive=true" },
+    { title: "Class 9: {PART-09} Fresh Offers সাইন আপ মেথড", url: "https://player.mediadelivery.net/embed/631069/414fc4eb-78c3-40a4-b8af-f67d440aa11b?autoplay=true&loop=false&muted=false&preload=true&responsive=true" },
+    { title: "Class 10: Withdrawals & Next Steps", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" }
 ];
 
 let isLoggedIn = false;
@@ -28,6 +29,23 @@ let countdownInterval;
 window.onload = function() {
     checkLoginStatus();
 };
+
+function setNotice(type) {
+    const noticeEl = document.getElementById('dynamicNotice');
+    const noticeContainer = document.getElementById('noticeBarContainer');
+    if(!noticeEl || !noticeContainer) return;
+    
+    if(type === 'PUBLIC') {
+        noticeEl.innerText = NOTICES.PUBLIC;
+        noticeContainer.className = "fixed top-[56px] md:top-[64px] left-0 w-full h-[35px] md:h-[40px] bg-[#cc0000] text-white text-[11px] md:text-sm font-bold flex items-center z-[40] shadow-md transition-colors duration-500";
+    } else if(type === 'FREE_USER') {
+        noticeEl.innerText = NOTICES.FREE_USER;
+        noticeContainer.className = "fixed top-[56px] md:top-[64px] left-0 w-full h-[35px] md:h-[40px] bg-amber-600 text-black text-[11px] md:text-sm font-bold flex items-center z-[40] shadow-md transition-colors duration-500";
+    } else {
+        noticeEl.innerText = NOTICES.VIP_USER;
+        noticeContainer.className = "fixed top-[56px] md:top-[64px] left-0 w-full h-[35px] md:h-[40px] bg-green-600 text-white text-[11px] md:text-sm font-bold flex items-center z-[40] shadow-md transition-colors duration-500";
+    }
+}
 
 // ============================================
 // SYSTEM AUTH & STATE MANAGEMENT
@@ -47,6 +65,8 @@ function checkLoginStatus() {
 
         document.getElementById('dashUserName').innerText = user.name || "Student";
         syncUserPlan(user);
+    } else {
+        setNotice('PUBLIC');
     }
 }
 
@@ -81,12 +101,13 @@ function updateUIBasedOnPlan(user) {
     const timerBox = document.getElementById('countdownTimer');
     
     if (isPremium) {
+        setNotice('VIP_USER');
         dashPlan.innerText = `${plan} ✅`;
         dashPlan.className = "text-green-400 font-bold";
         vipCodeBox.classList.add('hidden');
         timerBox.classList.remove('hidden');
         
-        // Render 10 Videos
+        // Render All Videos
         renderCourseVideos(true);
         
         // Start Live Timer
@@ -100,6 +121,7 @@ function updateUIBasedOnPlan(user) {
         });
 
     } else {
+        setNotice('FREE_USER');
         dashPlan.innerText = "Locked (Free User) 🔒";
         dashPlan.className = "text-red-400 font-bold";
         
@@ -109,7 +131,6 @@ function updateUIBasedOnPlan(user) {
         
         // Render Locked Video Preview
         renderCourseVideos(false);
-        
         clearInterval(countdownInterval);
         
         // LOCK All Icons
@@ -134,13 +155,12 @@ function renderCourseVideos(isPremium) {
             </div>
         `).join('');
     } else {
-        // Locked State Preview
         grid.innerHTML = `
             <div class="dashboard-premium-item neon-panel glow-yellow p-6 flex flex-col items-center justify-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group h-64 relative w-full lg:col-span-2" onclick="openPaymentModal()">
                 <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
                 <i class="ph-fill ph-video-camera text-6xl text-yellow-400 mt-2"></i>
                 <h4 class="text-xl font-bold text-white mt-2">10+ Premium Classes Locked</h4>
-                <p class="text-xs text-zinc-500 font-bold mt-2 bg-black/50 px-4 py-2 rounded">Click to purchase a package and unlock all video modules.</p>
+                <p class="text-xs text-zinc-500 font-bold mt-2 bg-black/50 px-4 py-2 rounded border border-white/5">Click to purchase a package and unlock all video modules.</p>
             </div>
         `;
     }
@@ -155,7 +175,7 @@ function startCountdown(expiryTimestamp) {
     const timerDiv = document.getElementById('countdownTimer');
     
     if (!expiryTimestamp) {
-        timerDiv.innerHTML = `<div class="text-green-400 font-bold text-sm bg-green-400/10 px-4 py-2 rounded-lg">Lifetime Access</div>`;
+        timerDiv.innerHTML = `<div class="text-green-400 font-bold text-sm bg-green-400/10 px-4 py-2 rounded-lg border border-green-500/20 shadow-inner">LIFETIME VIP ACCESS</div>`;
         return;
     }
 
@@ -206,6 +226,16 @@ function switchDashTab(tName) {
     active.classList.add('bg-violet-600/20', 'border-violet-500', 'text-white', 'shadow-[0_5px_15px_rgba(139,92,246,0.2)]'); 
 }
 
+// Handle clicks from the public homepage correctly
+function handleHomeClick(planValue = 'Basic Learning|2000 BDT / $20') {
+    const user = JSON.parse(localStorage.getItem('proToolsUser')); 
+    if (!user || !user.isLoggedIn) { 
+        openAuthModal(); 
+    } else { 
+        openPaymentModal(planValue);
+    }
+}
+
 function openAuthModal() { 
     if(isLoggedIn) {
         document.getElementById('home-section').classList.add('hidden');
@@ -236,11 +266,11 @@ function switchTab(tab) {
     if (tab === 'login') { 
         loginForm.classList.remove('hidden'); 
         tabLogin.className = "flex-1 py-4 text-sm font-bold text-white border-b-2 border-violet-500 bg-white/5 transition"; 
-        tabRegister.className = "flex-1 py-4 text-sm font-bold text-gray-400 hover:text-white transition bg-black/40"; 
+        tabRegister.className = "flex-1 py-4 text-sm font-bold text-gray-400 hover:text-white transition"; 
     } else if (tab === 'register') { 
         registerForm.classList.remove('hidden'); 
         tabRegister.className = "flex-1 py-4 text-sm font-bold text-white border-b-2 border-violet-500 bg-white/5 transition"; 
-        tabLogin.className = "flex-1 py-4 text-sm font-bold text-gray-400 hover:text-white transition bg-black/40"; 
+        tabLogin.className = "flex-1 py-4 text-sm font-bold text-gray-400 hover:text-white transition"; 
     } else if (tab === 'forgot') {
         forgotForm.classList.remove('hidden');
     }
@@ -320,13 +350,14 @@ function handleAuth(event, action) {
 
 function checkAccess(urlOrAction) { 
     const user = JSON.parse(localStorage.getItem('proToolsUser')); 
-    if (!user || !user.isLoggedIn) { alert("Please login first!"); return; } 
+    if (!user || !user.isLoggedIn) { 
+        openAuthModal(); 
+        return; 
+    } 
     
     if (!user.plan || user.plan === 'Free') { 
-        // User has no plan, show payment modal
         openPaymentModal();
     } else { 
-        // User has access!
         if (urlOrAction === 'dl_clicker') {
             window.open("https://drive.google.com/drive/folders/1bBfu9tHhkn34QiKMnV1UfOUXlI0ynHLF?usp=sharing", '_blank');
         } else if (urlOrAction === 'dl_browser_pc') {
@@ -334,13 +365,11 @@ function checkAccess(urlOrAction) {
         } else if (urlOrAction === 'dl_browser_mobile') {
             window.open("https://drive.google.com/drive/folders/1rQjO7Rxu7sNJWPdQS3T7A6lRHHnK-0Hq?usp=sharing", '_blank');
         } else {
-            // Redirect to custom HTML tools
             window.location.href = urlOrAction;
         }
     } 
 }
 
-// Dynamically sets the modal package and price
 function openPaymentModal(planValue = 'Basic Learning|2000 BDT / $20') {
     document.getElementById('paymentModal').classList.remove('hidden');
     document.getElementById('payFormArea').classList.remove('hidden');
