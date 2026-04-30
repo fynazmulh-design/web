@@ -88,11 +88,6 @@
         .pay-radio-box.active .pay-radio-circle::after { content: ''; width: 8px; height: 8px; background: #3b82f6; border-radius: 50%; }
         .pay-details { display: none; padding: 16px; border-top: 1px solid rgba(255,255,255,0.05); background: #020617; }
         .pay-radio-box.active .pay-details { display: block; animation: fadeIn 0.3s; }
-        
-        /* Payment Brand Logos */
-        .brand-logo-bkash { width: auto; height: 28px; }
-        .brand-logo-nagad { width: auto; height: 32px; }
-        .brand-logo-rocket { width: auto; height: 24px; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -118,7 +113,7 @@
     </nav>
 
     <!-- Dynamic Notification Bar -->
-    <div id="noticeBarContainer" class="fixed top-[56px] md:top-[64px] left-0 w-full h-[35px] md:h-[40px] bg-[#cc0000] text-white text-[11px] md:text-sm font-bold flex items-center z-[40] shadow-md transition-colors duration-500">
+    <div id="noticeBarContainer" class="fixed top-[56px] md:top-[64px] left-0 w-full h-[35px] md:h-[40px] bg-black border-b border-white/10 text-white text-[11px] md:text-sm font-bold flex items-center z-[40] shadow-md transition-colors duration-500">
         <div class="notice-container">
             <div class="notice-text" id="dynamicNotice">🚀 Welcome to Freelancer Nazmul IT 🔥 Get 30% OFF on Yearly Plan! ⚡ Instant Activation with Bkash/Nagad/Rocket & Crypto-Pay/Binance. Please Login or Register first to access packages.</div>
         </div>
@@ -281,7 +276,7 @@
                         <!-- Live Timer -->
                         <div class="flex items-center justify-center gap-4 text-center hidden" id="countdownTimer"></div>
                         
-                        <!-- VIP Code Input Box (Visible if NO active plan) -->
+                        <!-- VIP Code Input Box -->
                         <div id="vipCodeBox" class="mt-1 block">
                             <div class="flex gap-2">
                                 <input type="text" id="dashVipInput" placeholder="Enter VIP Code Here" class="w-full bg-[#020617] border border-white/10 rounded-lg px-3 py-2 text-white font-mono text-sm outline-none uppercase text-center focus:border-violet-500 transition">
@@ -410,7 +405,7 @@
     <!-- MODALS -->
     <!-- ============================================== -->
 
-    <!-- Auth Modal (Perfectly Aligned Cross) -->
+    <!-- Auth Modal -->
     <div id="authModal" class="hidden fixed inset-0 z-[99999] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 transition-opacity">
         <div class="relative w-full max-w-md bg-[#1e293b] border border-white/10 rounded-2xl shadow-2xl overflow-hidden neon-panel glow-blue">
             <div class="flex border-b border-white/10 bg-black/40 relative">
@@ -420,6 +415,7 @@
                     <span onclick="closeAuthModal(); event.stopPropagation();" class="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-black/50 hover:bg-red-500 text-gray-300 hover:text-white rounded-full transition border border-white/10"><i class="ph-bold ph-x text-sm"></i></span>
                 </button>
             </div>
+            <!-- Login Form -->
             <form id="loginForm" class="p-8 space-y-5" onsubmit="handleAuth(event, 'login')">
                 <div class="text-center mb-6"><i class="ph-fill ph-user-circle text-5xl text-violet-500 mb-2"></i><h3 class="text-xl font-bold text-white">Welcome Back</h3></div>
                 <input type="email" name="email" placeholder="Email Address" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-violet-500 transition">
@@ -427,6 +423,7 @@
                 <div class="text-right"><button type="button" onclick="switchTab('forgot')" class="text-xs text-violet-400 hover:text-white font-bold transition">Forgot Password?</button></div>
                 <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-violet-600 to-blue-600 hover:opacity-90 text-white font-bold rounded-lg shadow-lg transition transform hover:-translate-y-0.5">Login Securely</button>
             </form>
+            <!-- Register Form -->
             <form id="registerForm" class="hidden p-8 space-y-4 max-h-[85vh] overflow-y-auto" onsubmit="handleAuth(event, 'register')">
                  <div class="text-center mb-6"><i class="ph-fill ph-user-plus text-5xl text-blue-500 mb-2"></i><h3 class="text-xl font-bold text-white">Create Account</h3></div>
                 <input type="text" name="name" placeholder="Full Name" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500">
@@ -435,6 +432,7 @@
                 <div class="relative"><input type="password" id="regPass" name="password" placeholder="Set Password" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-blue-500"><i class="ph-bold ph-eye absolute top-3.5 right-4 text-gray-400 cursor-pointer hover:text-white" onclick="togglePassword('regPass', this)"></i></div>
                 <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:opacity-90 text-white font-bold rounded-lg shadow-lg mt-2 transition transform hover:-translate-y-0.5">Register Now</button>
             </form>
+            <!-- Forgot Password Form -->
             <form id="forgotForm" class="hidden p-8 space-y-5" onsubmit="handleAuth(event, 'forgot_password')">
                  <div class="text-center mb-6"><i class="ph-fill ph-lock-key-open text-5xl text-yellow-500 mb-2"></i><h3 class="text-xl font-bold text-white">Recover Password</h3><p class="text-xs text-gray-400 mt-2">Enter your registered email. We will send your password directly to your inbox.</p></div>
                 <input type="email" name="email" placeholder="Registered Email Address" required class="w-full bg-[#0f172a] border border-white/10 rounded-lg px-4 py-3 text-white outline-none focus:border-yellow-500 transition">
@@ -445,7 +443,7 @@
         </div>
     </div>
 
-    <!-- Payment / Buy Package Modal (With Proper Logos & Package Info) -->
+    <!-- Payment / Buy Package Modal -->
     <div id="paymentModal" class="hidden fixed inset-0 z-[99999] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 m-0 overflow-y-auto">
         <div class="relative w-full max-w-lg bg-[#1e293b] border border-white/10 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] my-8">
             
@@ -455,7 +453,6 @@
             </div>
 
             <div id="payFormArea" class="p-6">
-                <!-- Package Selector -->
                 <div class="mb-6">
                     <label class="text-xs text-gray-400 font-bold block mb-2 uppercase tracking-wider">1. Select Package to Buy</label>
                     <select id="modalPackageSelect" class="w-full bg-[#020617] border border-white/10 p-3 rounded-lg text-white font-bold outline-none focus:border-pink-500 transition cursor-pointer" onchange="updateModalPrice()">
@@ -473,13 +470,8 @@
 
                 <label class="text-xs text-gray-400 font-bold block mb-3 uppercase tracking-wider">2. Select Payment Method</label>
                 <div class="space-y-3">
-                    <!-- bKash -->
                     <div class="pay-radio-box" onclick="selectPayment('bkash')">
-                        <div class="pay-radio-header">
-                            <div class="pay-radio-circle" id="circle_bkash"></div>
-                            <span class="text-white font-bold flex-grow text-lg">bKash</span>
-                            <span class="bg-pink-600 text-white px-2 py-0.5 rounded font-black text-xs tracking-wider">bKash</span>
-                        </div>
+                        <div class="pay-radio-header"><div class="pay-radio-circle" id="circle_bkash"></div><span class="text-white font-bold flex-grow text-lg">bKash</span><span class="bg-pink-600 text-white px-2 py-0.5 rounded font-black text-xs tracking-wider">bKash</span></div>
                         <div class="pay-details" id="detail_bkash">
                             <p class="text-sm text-gray-300 mb-4">Please complete your bKash payment at first, then fill up the form below.</p>
                             <div class="mb-4"><label class="text-xs text-gray-400 font-bold block mb-1">bKash Personal Number :</label><input type="text" value="01780103303" readonly class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white font-mono outline-none"></div>
@@ -490,13 +482,8 @@
                             <button onclick="submitPaymentForm()" class="w-full py-3.5 bg-pink-600 hover:bg-pink-500 text-white font-black rounded-lg transition shadow-lg">Verify Payment</button>
                         </div>
                     </div>
-                    <!-- Rocket -->
                     <div class="pay-radio-box" onclick="selectPayment('rocket')">
-                        <div class="pay-radio-header">
-                            <div class="pay-radio-circle" id="circle_rocket"></div>
-                            <span class="text-white font-bold flex-grow text-lg">Rocket</span>
-                            <span class="bg-purple-600 text-white px-2 py-0.5 rounded font-black text-xs tracking-wider">Rocket</span>
-                        </div>
+                        <div class="pay-radio-header"><div class="pay-radio-circle" id="circle_rocket"></div><span class="text-white font-bold flex-grow text-lg">Rocket</span><span class="bg-purple-600 text-white px-2 py-0.5 rounded font-black text-xs tracking-wider">Rocket</span></div>
                         <div class="pay-details" id="detail_rocket">
                             <p class="text-sm text-gray-300 mb-4">Please complete your Rocket payment at first, then fill up the form below.</p>
                             <div class="mb-4"><label class="text-xs text-gray-400 font-bold block mb-1">Rocket Personal Number :</label><input type="text" value="01780103303" readonly class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white font-mono outline-none"></div>
@@ -507,13 +494,8 @@
                             <button onclick="submitPaymentForm()" class="w-full py-3.5 bg-purple-600 hover:bg-purple-500 text-white font-black rounded-lg transition shadow-lg">Verify Payment</button>
                         </div>
                     </div>
-                    <!-- Nagad -->
                     <div class="pay-radio-box" onclick="selectPayment('nagad')">
-                        <div class="pay-radio-header">
-                            <div class="pay-radio-circle" id="circle_nagad"></div>
-                            <span class="text-white font-bold flex-grow text-lg">Nagad</span>
-                            <span class="bg-orange-600 text-white px-2 py-0.5 rounded font-black text-xs tracking-wider">Nagad</span>
-                        </div>
+                        <div class="pay-radio-header"><div class="pay-radio-circle" id="circle_nagad"></div><span class="text-white font-bold flex-grow text-lg">Nagad</span><span class="bg-orange-600 text-white px-2 py-0.5 rounded font-black text-xs tracking-wider">Nagad</span></div>
                         <div class="pay-details" id="detail_nagad">
                             <p class="text-sm text-gray-300 mb-4">Please complete your Nagad payment at first, then fill up the form below.</p>
                             <div class="mb-4"><label class="text-xs text-gray-400 font-bold block mb-1">Nagad Personal Number :</label><input type="text" value="01780103303" readonly class="w-full bg-[#020617] border border-white/10 p-3 rounded text-white font-mono outline-none"></div>
@@ -524,13 +506,8 @@
                             <button onclick="submitPaymentForm()" class="w-full py-3.5 bg-orange-600 hover:bg-orange-500 text-white font-black rounded-lg transition shadow-lg">Verify Payment</button>
                         </div>
                     </div>
-                    <!-- Crypto / Binance -->
                     <div class="pay-radio-box" onclick="selectPayment('crypto')">
-                        <div class="pay-radio-header">
-                            <div class="pay-radio-circle" id="circle_crypto"></div>
-                            <span class="text-white font-bold flex-grow text-lg">CryptoPay/Binance</span>
-                            <span class="bg-yellow-500 text-black px-2 py-0.5 rounded font-black text-xs tracking-wider">Crypto</span>
-                        </div>
+                        <div class="pay-radio-header"><div class="pay-radio-circle" id="circle_crypto"></div><span class="text-white font-bold flex-grow text-lg">CryptoPay/Binance</span><span class="bg-yellow-500 text-black px-2 py-0.5 rounded font-black text-xs tracking-wider">Crypto</span></div>
                         <div class="pay-details" id="detail_crypto">
                             <p class="text-sm text-gray-300 mb-4 leading-relaxed">Please send the exact amount to our Binance account. After sending the money, send us a message on Telegram with your Transaction ID (TXID) or Screenshot to get instant access. Telegram id: <span class="text-blue-400 font-bold">@freelancernazmul</span></p>
                             <div class="bg-[#020617] border border-white/10 p-4 rounded-lg font-mono text-[11px] sm:text-xs text-gray-400 mb-4 space-y-2">
@@ -545,24 +522,23 @@
                 </div>
             </div>
 
-            <!-- Success Area (After submitting payment) -->
             <div id="paySuccessArea" class="hidden p-8 text-center">
-                <div class="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/30">
-                    <i class="ph-fill ph-check-circle text-5xl text-green-400"></i>
-                </div>
+                <div class="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/30"><i class="ph-fill ph-check-circle text-5xl text-green-400"></i></div>
                 <h3 class="text-2xl font-black text-white mb-2">Request Sent!</h3>
-                <p class="text-green-400 text-sm mb-6 bg-green-900/20 p-4 rounded-xl border border-green-700/30 font-bold leading-relaxed shadow-inner">
-                    দ্রুত access পেতে vip code এর জন্য টেলিগ্ৰামে পেমেন্ট এর স্কিনশট দিয়ে ম্যাসেজ দিন।
-                </p>
-                <a href="https://t.me/freelancernazmul" target="_blank" class="w-full py-4 mt-4 bg-[#0088cc] hover:bg-[#0099e6] text-white font-bold rounded-xl flex items-center justify-center gap-2 transition shadow-lg">
-                    <i class="ph-fill ph-telegram-logo text-xl"></i> Message Telegram Support
-                </a>
+                <p class="text-green-400 text-sm mb-6 bg-green-900/20 p-4 rounded-xl border border-green-700/30 font-bold leading-relaxed shadow-inner">দ্রুত access পেতে vip code এর জন্য টেলিগ্ৰামে পেমেন্ট এর স্কিনশট দিয়ে ম্যাসেজ দিন।</p>
+                <div class="bg-[#020617] p-5 rounded-xl border border-white/5 shadow-inner">
+                    <label class="block text-xs text-gray-400 font-bold uppercase tracking-wider mb-2 text-left">Enter VIP Code Here</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="modalVipInput" placeholder="XXXX-XXXX-XXXX" class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-white font-mono text-center outline-none uppercase focus:border-violet-500 transition">
+                        <button onclick="applyVipFromModal()" class="bg-violet-600 hover:bg-violet-500 text-white px-5 py-3 rounded-lg font-bold transition shadow-lg">Apply</button>
+                    </div>
+                </div>
+                <a href="https://t.me/freelancernazmul" target="_blank" class="w-full py-4 mt-4 bg-[#0088cc] hover:bg-[#0099e6] text-white font-bold rounded-xl flex items-center justify-center gap-2 transition shadow-lg"><i class="ph-fill ph-telegram-logo text-xl"></i> Message Telegram Support</a>
             </div>
 
         </div>
     </div>
 
-    <!-- Link JS File -->
     <script src="script.js"></script>
 
 </body>
