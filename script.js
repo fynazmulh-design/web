@@ -1,5 +1,5 @@
 // ============================================
-// 🏆 FREELANCER NAZMUL - MASTER SCRIPT (V20) 🏆
+// 🏆 FREELANCER NAZMUL - MASTER SCRIPT (V21) 🏆
 // ============================================
 
 // ⚠️ আপনার Google Apps Script এর Web App URL এখানে বসান ⚠️
@@ -7,13 +7,19 @@ const CONFIG = {
     backendURL: "https://script.google.com/macros/s/AKfycbwv49zfBOFTbmoamPIUqNcnjkB4s1RdGWXuBzQLTIJd3_b7ls3ociGJ3MbkxRACa8S7DQ/exec"
 };
 
-// 🔥 BUNNY.NET VIDEO LINKS (EMBEDS)
+// 🔥 BUNNY.NET VIDEO LINKS (10 CLASSES)
+// আপনি চাইলে নিচে আরও অবজেক্ট অ্যাড করে আনলিমিটেড ক্লাস যুক্ত করতে পারবেন
 const COURSE_VIDEOS = [
-    { 
-        title: "Class 1: CPA Self SignUp Mastery & Tools Setup", 
-        url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false&loop=false&muted=false&preload=true&responsive=true" 
-    },
-    // আরও ভিডিও চাইলে নিচে কমা (,) দিয়ে অ্যাড করতে পারবেন
+    { title: "Class 1: CPA Self SignUp Mastery & Account Setup", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
+    { title: "Class 2: Setup Secret Methods for CPA", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_2?autoplay=false" },
+    { title: "Class 3: Advanced Traffic Generation", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_3?autoplay=false" },
+    { title: "Class 4: Free Marketing Strategies", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_4?autoplay=false" },
+    { title: "Class 5: Paid Ads Masterclass (FB & Google)", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_5?autoplay=false" },
+    { title: "Class 6: High-Converting Landing Pages", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_6?autoplay=false" },
+    { title: "Class 7: Email Marketing Automation", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_7?autoplay=false" },
+    { title: "Class 8: Tracking and Analytics", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_8?autoplay=false" },
+    { title: "Class 9: Scaling Your Campaigns X10", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_9?autoplay=false" },
+    { title: "Class 10: Withdrawals & Next Steps", url: "https://player.mediadelivery.net/embed/631069/YOUR_VIDEO_ID_10?autoplay=false" }
 ];
 
 let isLoggedIn = false;
@@ -40,8 +46,6 @@ function checkLoginStatus() {
         navBtn.onclick = logout;
 
         document.getElementById('dashUserName').innerText = user.name || "Student";
-        
-        // Always sync with database on load
         syncUserPlan(user);
     }
 }
@@ -74,42 +78,45 @@ function updateUIBasedOnPlan(user) {
     
     const dashPlan = document.getElementById('dashPlanName');
     const vipCodeBox = document.getElementById('vipCodeBox');
+    const timerBox = document.getElementById('countdownTimer');
     
     if (isPremium) {
         dashPlan.innerText = `${plan} ✅`;
         dashPlan.className = "text-green-400 font-bold";
         vipCodeBox.classList.add('hidden');
+        timerBox.classList.remove('hidden');
         
-        // Render Videos
+        // Render 10 Videos
         renderCourseVideos(true);
         
         // Start Live Timer
         startCountdown(user.expiry);
         
-        // Unlock all tools visually
-        const iconClass = "ph-fill ph-check-circle absolute top-4 right-4 text-green-400 text-xl transition";
-        ['ua', 'email', 'validator', 'cpa', 'proxy', 'software', 'address', 'name', 'dl_clicker', 'dl_browser'].forEach(id => {
-            const lockIcon = document.getElementById(`lock_${id}`);
-            if(lockIcon) lockIcon.className = iconClass;
+        // UNLOCK All Icons (Change lock to Check)
+        const unlockClass = "ph-fill ph-check-circle absolute top-4 right-4 text-green-400 text-xl transition z-10";
+        ['ua', 'email', 'validator', 'cpa', 'proxy', 'software_mix', 'address', 'name', 'dl_clicker', 'dl_browser'].forEach(id => {
+            const icon = document.getElementById(`lock_${id}`);
+            if(icon) icon.className = unlockClass;
         });
 
     } else {
         dashPlan.innerText = "Locked (Free User) 🔒";
         dashPlan.className = "text-red-400 font-bold";
-        vipCodeBox.classList.remove('hidden');
         
-        // Render Locked Videos
+        // Show VIP Box, Hide Timer
+        vipCodeBox.classList.remove('hidden');
+        timerBox.classList.add('hidden');
+        
+        // Render Locked Video Preview
         renderCourseVideos(false);
         
-        // Stop Timer
         clearInterval(countdownInterval);
-        document.getElementById('countdownTimer').innerHTML = `<div class="text-zinc-500 font-bold text-sm">Please activate a plan</div>`;
         
-        // Lock all tools visually
-        const iconClass = "ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl";
-        ['ua', 'email', 'validator', 'cpa', 'proxy', 'software', 'address', 'name', 'dl_clicker', 'dl_browser'].forEach(id => {
-            const lockIcon = document.getElementById(`lock_${id}`);
-            if(lockIcon) lockIcon.className = iconClass;
+        // LOCK All Icons
+        const lockClass = "ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10";
+        ['ua', 'email', 'validator', 'cpa', 'proxy', 'software_mix', 'address', 'name', 'dl_clicker', 'dl_browser'].forEach(id => {
+            const icon = document.getElementById(`lock_${id}`);
+            if(icon) icon.className = lockClass;
         });
     }
 }
@@ -118,8 +125,8 @@ function renderCourseVideos(isPremium) {
     const grid = document.getElementById('courseVideoGrid');
     
     if(isPremium) {
-        grid.innerHTML = COURSE_VIDEOS.map(video => `
-            <div class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-lg p-2">
+        grid.innerHTML = COURSE_VIDEOS.map((video, index) => `
+            <div class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-lg p-2 transition hover:border-violet-500/50">
                 <div class="video-container">
                     <iframe src="${video.url}" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen></iframe>
                 </div>
@@ -127,13 +134,13 @@ function renderCourseVideos(isPremium) {
             </div>
         `).join('');
     } else {
-        // Locked State
+        // Locked State Preview
         grid.innerHTML = `
-            <div class="dashboard-premium-item neon-panel glow-yellow p-6 flex flex-col items-center justify-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group h-64 relative" onclick="openPaymentModal()">
-                <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-2xl"></i>
+            <div class="dashboard-premium-item neon-panel glow-yellow p-6 flex flex-col items-center justify-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group h-64 relative w-full lg:col-span-2" onclick="openPaymentModal()">
+                <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
                 <i class="ph-fill ph-video-camera text-6xl text-yellow-400 mt-2"></i>
-                <h4 class="text-lg font-bold text-white mt-1">Class 1: CPA Self SignUp Mastery</h4>
-                <p class="text-xs text-zinc-500 font-bold mt-2 bg-black/50 px-3 py-1 rounded">Locked. Click to buy package.</p>
+                <h4 class="text-xl font-bold text-white mt-2">10+ Premium Classes Locked</h4>
+                <p class="text-xs text-zinc-500 font-bold mt-2 bg-black/50 px-4 py-2 rounded">Click to purchase a package and unlock all video modules.</p>
             </div>
         `;
     }
@@ -148,7 +155,7 @@ function startCountdown(expiryTimestamp) {
     const timerDiv = document.getElementById('countdownTimer');
     
     if (!expiryTimestamp) {
-        timerDiv.innerHTML = `<div class="text-red-500 font-bold text-sm">Lifetime Access or Invalid Date</div>`;
+        timerDiv.innerHTML = `<div class="text-green-400 font-bold text-sm bg-green-400/10 px-4 py-2 rounded-lg">Lifetime Access</div>`;
         return;
     }
 
@@ -159,8 +166,6 @@ function startCountdown(expiryTimestamp) {
         if (distance < 0) {
             clearInterval(countdownInterval);
             timerDiv.innerHTML = '<div class="text-red-500 font-bold text-xl tracking-widest bg-red-500/10 px-4 py-2 rounded-lg border border-red-500/20">EXPIRED</div>';
-            
-            // Re-sync with server to downgrade to free
             const user = JSON.parse(localStorage.getItem('proToolsUser'));
             if(user.plan !== 'Free') syncUserPlan(user);
             return;
@@ -180,7 +185,7 @@ function startCountdown(expiryTimestamp) {
     }
     
     update();
-    countdownInterval = setInterval(update, 60000); // Updates every 1 minute
+    countdownInterval = setInterval(update, 60000); 
 }
 
 // ============================================
@@ -335,11 +340,24 @@ function checkAccess(urlOrAction) {
     } 
 }
 
-function openPaymentModal() {
+// Dynamically sets the modal package and price
+function openPaymentModal(planValue = 'Basic Learning|2000 BDT / $20') {
     document.getElementById('paymentModal').classList.remove('hidden');
     document.getElementById('payFormArea').classList.remove('hidden');
     document.getElementById('paySuccessArea').classList.add('hidden');
+    
+    const select = document.getElementById('modalPackageSelect');
+    if(select) {
+        select.value = planValue;
+        updateModalPrice();
+    }
     selectPayment('bkash');
+}
+
+function updateModalPrice() {
+    const val = document.getElementById('modalPackageSelect').value;
+    const price = val.split('|')[1];
+    document.getElementById('modalPayAmount').innerText = price;
 }
 
 function selectPayment(method) {
@@ -351,17 +369,16 @@ function selectPayment(method) {
 }
 
 function submitPaymentForm() {
-    // Basic frontend validation for aesthetics
     document.getElementById('payFormArea').classList.add('hidden');
     document.getElementById('paySuccessArea').classList.remove('hidden');
 }
 
-function applyVipFromModal() {
-    executeRedeem('modalVipInput');
+function applyVipFromDash() {
+    executeRedeem('dashVipInput');
 }
 
-function redeemVipCode() {
-    executeRedeem('vipCodeInput');
+function applyVipFromModal() {
+    executeRedeem('modalVipInput');
 }
 
 function executeRedeem(inputId) {
@@ -369,6 +386,7 @@ function executeRedeem(inputId) {
     const code = codeInput.value.trim();
     const user = JSON.parse(localStorage.getItem('proToolsUser'));
     
+    if (!user || !user.isLoggedIn) { alert("Please login first!"); return; }
     if (!code) { alert("⚠️ Please enter a VIP code!"); return; }
     
     const btn = event.target;
@@ -391,7 +409,7 @@ function executeRedeem(inputId) {
             localStorage.setItem('proToolsUser', JSON.stringify(user));
             document.getElementById('paymentModal').classList.add('hidden');
             updateUIBasedOnPlan(user);
-            codeInput.value = '';
+            if(codeInput) codeInput.value = '';
         } else { 
             alert("❌ " + result.message); 
         }
