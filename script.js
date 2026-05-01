@@ -339,17 +339,17 @@ function checkAccess(urlOrAction) {
     if (!user || !user.isLoggedIn) { 
         openAuthModal(); 
         return; 
-    } 
+    } z
     
     if (!user.plan || user.plan === 'Free') { 
         openPaymentModal();
     } else { 
         if (urlOrAction === 'dl_clicker') {
-            window.open("https://drive.google.com/drive/folders/1bBfu9tHhkn34QiKMnV1UfOUXlI0ynHLF?usp=sharing", '_blank');
+            window.open("https://drive.google.com/file/d/1xab3lwinRthis9Cn_-1NZMaOvBX7vcOE/view?usp=sharing", '_blank');
         } else if (urlOrAction === 'dl_browser_pc') {
-            window.open("https://drive.google.com/drive/folders/1bBfu9tHhkn34QiKMnV1UfOUXlI0ynHLF?usp=sharing", '_blank');
+            window.open("https://drive.google.com/file/d/1nHkC4jWpuSAI5_Do1kO3OHT6wV3Pg0_n/view?usp=sharing", '_blank');
         } else if (urlOrAction === 'dl_browser_mobile') {
-            window.open("https://drive.google.com/drive/folders/1rQjO7Rxu7sNJWPdQS3T7A6lRHHnK-0Hq?usp=sharing", '_blank');
+            window.open("https://drive.google.com/file/d/1fToucChv4ASQuXtnGdeVON7XMjYsnFub/view?usp=sharing https://drive.google.com/file/d/182jSetV2HW3A82XOIsZf7pYhoS_Q4I6X/view?usp=sharing ", '_blank');
         } else {
             window.location.href = urlOrAction;
         }
