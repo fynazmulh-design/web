@@ -1,5 +1,5 @@
 // ============================================
-// 🏆 FREELANCER NAZMUL - MASTER SCRIPT (V27) 🏆
+// 🏆 FREELANCER NAZMUL - MASTER SCRIPT (V28) 🏆
 // ============================================
 
 const CONFIG = {
@@ -37,7 +37,6 @@ function setNotice(type) {
     const noticeContainer = document.getElementById('noticeBarContainer');
     if(!noticeEl || !noticeContainer) return;
     
-    // Always Red Background 
     const redNoticeClass = "fixed top-[56px] md:top-[64px] left-0 w-full h-[35px] md:h-[40px] bg-[#cc0000] border-b border-white/10 text-white text-[11px] md:text-sm font-bold flex items-center z-[40] shadow-md transition-colors duration-500";
     
     if(type === 'PUBLIC') {
