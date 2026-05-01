@@ -345,7 +345,7 @@ function checkAccess(urlOrAction) {
         } else if (urlOrAction === 'dl_browser_pc') {
             window.open("https://drive.google.com/file/d/1nHkC4jWpuSAI5_Do1kO3OHT6wV3Pg0_n/view?usp=sharing", '_blank');
         } else if (urlOrAction === 'dl_browser_mobile') {
-            window.open("https://drive.google.com/file/d/1fToucChv4ASQuXtnGdeVON7XMjYsnFub/view?usp=sharing https://drive.google.com/file/d/182jSetV2HW3A82XOIsZf7pYhoS_Q4I6X/view?usp=sharing ", '_blank');
+            window.open("https://drive.google.com/file/d/1fToucChv4ASQuXtnGdeVON7XMjYsnFub/view?usp=sharing", '_blank');
         } else {
             window.location.href = urlOrAction;
         }
