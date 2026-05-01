@@ -1,3 +1,7 @@
+// ============================================
+// 🏆 FREELANCER NAZMUL - MASTER SCRIPT (V29) 🏆
+// ============================================
+
 const CONFIG = {
     backendURL: "https://script.google.com/macros/s/AKfycbwv49zfBOFTbmoamPIUqNcnjkB4s1RdGWXuBzQLTIJd3_b7ls3ociGJ3MbkxRACa8S7DQ/exec"
 };
@@ -335,7 +339,7 @@ function checkAccess(urlOrAction) {
     if (!user || !user.isLoggedIn) { 
         openAuthModal(); 
         return; 
-    } z
+    } 
     
     if (!user.plan || user.plan === 'Free') { 
         openPaymentModal();
