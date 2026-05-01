@@ -1,7 +1,3 @@
-// ============================================
-// 🏆 FREELANCER NAZMUL - MASTER SCRIPT (V29) 🏆
-// ============================================
-
 const CONFIG = {
     backendURL: "https://script.google.com/macros/s/AKfycbwv49zfBOFTbmoamPIUqNcnjkB4s1RdGWXuBzQLTIJd3_b7ls3ociGJ3MbkxRACa8S7DQ/exec"
 };
@@ -13,15 +9,15 @@ const NOTICES = {
 };
 
 const COURSE_VIDEOS = [
-    { title: "Class 1: CPA Self SignUp Mastery & Account Setup", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
-    { title: "Class 2: Setup Secret Methods for CPA", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
-    { title: "Class 3: Advanced Traffic Generation", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
-    { title: "Class 4: Free Marketing Strategies", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
-    { title: "Class 5: Paid Ads Masterclass (FB & Google)", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
-    { title: "Class 6: High-Converting Landing Pages", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
-    { title: "Class 7: Email Marketing Automation", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
-    { title: "Class 8: Tracking and Analytics", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
-    { title: "Class 9: Scaling Your Campaigns X10", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
+    { title: "Class 1: CPA_Self_SignUp_সেরা_CPA_সাইট_ও_একাউন্ট_খোলার_নিয়ম", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
+    { title: "Class 2: CPA_Self_SignUp_সিপিএ_ক্যাটাগরি_ও_সেরা_অফার_সিলেকশন", url: "https://player.mediadelivery.net/embed/631069/f43ea652-0c8c-432a-aeb9-25c37e93e1d0?autoplay=false" },
+    { title: "Class 3: CPA_Self_SignUp_সেরা_ল্যান্ডিং_পেজ_ডিজাইন_ও_তৈরি", url: "https://player.mediadelivery.net/embed/631069/1c7035a8-4251-43f3-a79d-623c42116e99?autoplay=false" },
+    { title: "Class 4: Self_Sign_Up_হাই_সিকিউরিটি_সেরা_সফটওয়্যার_Mobile_&_PC", url: "https://player.mediadelivery.net/embed/631069/0e459ad8-98b5-4428-9392-20de391438c0?autoplay=false" },
+    { title: "Class 5: Self_Sign_Up_Proxy_IP_সাইট_ও_পার্সেস_সিস্টেম", url: "https://player.mediadelivery.net/embed/631069/32a398f1-7158-4cd4-aceb-3e0ce4b9117b?autoplay=false" },
+    { title: "Class 6: আনলিমিটেড_UserAgentGmailAddress_মেথড", url: "https://player.mediadelivery.net/embed/631069/703f443f-958a-4288-8680-16b6ea6a0359?autoplay=false" },
+    { title: "Class 7: Self_Sign_Up_ComputerMobile_ডিভাইস_সেটআপ", url: "https://player.mediadelivery.net/embed/631069/7cd6e057-d7d8-4009-bb5b-02270ff59b27?autoplay=false" },
+    { title: "Class 8: Dating_Offers_সাইন_আপ_Social_Media_মেথড", url: "https://player.mediadelivery.net/embed/631069/5a91bf48-79c7-4b96-8945-07aadf06bc43?autoplay=false" },
+    { title: "Class 9: Fresh Offers সাইন আপ মেথড", url: "https://player.mediadelivery.net/embed/631069/414fc4eb-78c3-40a4-b8af-f67d440aa11b?autoplay=false" },
     { title: "Class 10: Withdrawals & Next Steps", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" }
 ];
 
