@@ -341,7 +341,7 @@ function checkAccess(urlOrAction) {
         openPaymentModal();
     } else { 
         if (urlOrAction === 'dl_clicker') {
-            window.open("https://drive.google.com/file/d/1xab3lwinRthis9Cn_-1NZMaOvBX7vcOE/view?usp=sharing", '_blank');
+            window.open("https://drive.google.com/file/d/1k_xwpyFXs7_BeTy6wl9jJTXv14mI0ycR/view?usp=sharing", '_blank');
         } else if (urlOrAction === 'dl_browser_pc') {
             window.open("https://drive.google.com/file/d/1nHkC4jWpuSAI5_Do1kO3OHT6wV3Pg0_n/view?usp=sharing", '_blank');
         } else if (urlOrAction === 'dl_browser_mobile') {
