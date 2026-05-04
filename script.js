@@ -9,7 +9,7 @@ const NOTICES = {
 };
 
 const COURSE_VIDEOS = [
-    { title: "Class 1: CPA_Self_SignUp_সেরা_CPA_সাইট_ও_একাউন্ট_খোলার_নিয়ম", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" },
+    { title: "Class 1: What is CPA Self SignUp? Rules For Opening CPA Site Account.", url: "https://player.mediadelivery.net/play/631069/66270f20-3f83-4ac2-be65-a0a0ea07b250" },
     { title: "Class 2: CPA_Self_SignUp_সিপিএ_ক্যাটাগরি_ও_সেরা_অফার_সিলেকশন", url: "https://player.mediadelivery.net/embed/631069/f43ea652-0c8c-432a-aeb9-25c37e93e1d0?autoplay=false" },
     { title: "Class 3: CPA_Self_SignUp_সেরা_ল্যান্ডিং_পেজ_ডিজাইন_ও_তৈরি", url: "https://player.mediadelivery.net/embed/631069/1c7035a8-4251-43f3-a79d-623c42116e99?autoplay=false" },
     { title: "Class 4: Self_Sign_Up_হাই_সিকিউরিটি_সেরা_সফটওয়্যার_Mobile_&_PC", url: "https://player.mediadelivery.net/embed/631069/0e459ad8-98b5-4428-9392-20de391438c0?autoplay=false" },
