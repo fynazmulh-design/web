@@ -25,7 +25,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stealth UA Generator - Premium</title>
+    <title>UA Generator - Premium</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -274,7 +274,7 @@
                 <input type="number" id="uaQty" value="10" min="1" max="10000" class="w-full bg-[#020617] border border-zinc-800 text-white font-medium rounded-xl px-4 py-3.5 outline-none focus:border-purple-500 mb-5 transition-all text-sm">
                 
                 <button onclick="generateUAs()" class="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-[15px] rounded-xl hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(168,85,247,0.3)] flex items-center justify-center gap-2">
-                    <i class="ph-bold ph-lightning"></i> Generate Stealth UAs
+                    <i class="ph-bold ph-lightning"></i> Generate UA
                 </button>
             </div>
 
@@ -312,6 +312,26 @@
                     brandSection.style.display = 'block';
                 } else {
                     brandSection.style.display = 'none';
+                }
+            });
+        });
+
+        // Mutual Exclusivity Logic (Browser vs In-App)
+        const browserRadios = document.querySelectorAll('input[name="browser"]');
+        const inappRadios = document.querySelectorAll('input[name="inapp"]');
+
+        browserRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value !== 'None') {
+                    document.getElementById('app_none').checked = true;
+                }
+            });
+        });
+
+        inappRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value !== 'None') {
+                    document.getElementById('br_none').checked = true;
                 }
             });
         });
@@ -371,22 +391,25 @@
                 document.getElementById('br_chrome').checked = true;
             }
 
+            // PC Fallback if In-App is selected
+            if ((device === 'Windows 10' || device === 'Windows 11' || device === 'Mac') && browser === 'None') {
+                browser = 'Chrome'; 
+            }
+
             const generatedUAs = new Set();
             let loops = 0; 
-            const maxLoops = qty * 100; // Allows huge randomization to ensure absolute uniqueness
+            const maxLoops = qty * 100; 
 
             while (generatedUAs.size < qty && loops < maxLoops) {
                 loops++;
                 let ua = "";
 
-                // Very random browser versions for uniqueness
                 const cVer = `${rand(['145','146','147','148','149','150'])}.0.${randInt(1000,9999)}.${randInt(10,250)}`;
                 const eVer = `${rand(['145','146','147','148','149','150'])}.0.${randInt(1000,9999)}.${randInt(10,250)}`;
                 const fVer = `${rand(['145','146','147','148','149','150'])}.0`;
                 const sVer = `${rand(['17','18','19'])}.${randInt(1,6)}`;
                 const oVer = `${rand(['129','130','131','132'])}.0.${randInt(1000,9999)}.${randInt(10,150)}`;
 
-                // Base Brand
                 let finalBrand = selBrand;
                 if (device === 'Android' && selBrand === 'Random') {
                     finalBrand = rand(['Samsung', 'Google', 'Motorola', 'OnePlus', 'Xiaomi', 'Oppo', 'Vivo']);
@@ -433,33 +456,38 @@
                     }
 
                 } else if (device === 'Windows 10' || device === 'Windows 11') {
-                    const base = rand(HARDWARE['Windows']);
-                    if (browser === 'Chrome' || browser === 'Safari') {
+                    // Windows 11 Bypass Rule!
+                    const base = device === 'Windows 11' ? 'Windows NT 11.0; Win64; x64' : 'Windows NT 10.0; Win64; x64';
+                    let currentBrowser = browser === 'None' ? 'Chrome' : browser;
+
+                    if (currentBrowser === 'Chrome' || currentBrowser === 'Safari') {
                         ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${cVer} Safari/537.36`;
-                    } else if (browser === 'Edge') {
+                    } else if (currentBrowser === 'Edge') {
                         ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${cVer} Safari/537.36 Edg/${eVer}`;
-                    } else if (browser === 'Firefox') {
+                    } else if (currentBrowser === 'Firefox') {
                         ua = `Mozilla/5.0 (${base}; rv:${fVer}) Gecko/20100101 Firefox/${fVer}`;
-                    } else if (browser === 'Opera') {
+                    } else if (currentBrowser === 'Opera') {
                         ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${cVer} Safari/537.36 OPR/${oVer}`;
                     }
 
                 } else if (device === 'Mac') {
                     const base = rand(HARDWARE['Mac']);
-                    if (browser === 'Safari') {
+                    let currentBrowser = browser === 'None' ? 'Chrome' : browser;
+
+                    if (currentBrowser === 'Safari') {
                         ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${sVer} Safari/605.1.15`;
-                    } else if (browser === 'Chrome' || browser === 'Edge') {
+                    } else if (currentBrowser === 'Chrome' || currentBrowser === 'Edge') {
                         ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${cVer} Safari/537.36`;
-                        if(browser === 'Edge') ua += ` Edg/${eVer}`;
-                    } else if (browser === 'Firefox') {
+                        if(currentBrowser === 'Edge') ua += ` Edg/${eVer}`;
+                    } else if (currentBrowser === 'Firefox') {
                         ua = `Mozilla/5.0 (${base}; rv:${fVer}) Gecko/20100101 Firefox/${fVer}`;
-                    } else if (browser === 'Opera') {
+                    } else if (currentBrowser === 'Opera') {
                         ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${cVer} Safari/537.36 OPR/${oVer}`;
                     }
                 }
 
                 // ==========================================
-                // 2. SOCIAL APP STRINGS (REAL APP FORMATS)
+                // 2. SOCIAL APP STRINGS 
                 // ==========================================
                 if (inapp !== 'None') {
                     let appString = "";
@@ -481,7 +509,7 @@
                             const hw = device === 'iPad' ? rand(HARDWARE['iPad']) : rand(HARDWARE['iPhone']);
                             appString = ` Safari/604.1 [FBAN/FBIOS;FBAV/${fbVer};FBBV/${randInt(800000000, 999999999)};FBDV/${hw};FBMD/${device==='iPad'?'iPad':'iPhone'};FBSN/iOS;FBSV/${rand(VERSIONS['iOS']).replace(/_/g, '.')};FBSS/3;FBID/phone;FBLC/${geoUnder};FBOP/5;FBRV/${randInt(80000000, 99999999)};IABMV/1]`;
                         } else {
-                            appString = ` (Facebook ${fbVer})`;
+                            appString = ` FacebookPC/${fbVer}`;
                         }
                     } 
                     else if (inapp === 'Instagram') {
@@ -499,7 +527,7 @@
                             const res = rand(['960x2079', '1170x2532', '1290x2796']);
                             appString = ` Instagram ${igVer} (${hw}; iOS ${osVer}; ${geoUnder}; en; scale=3.00; ${res}; ${randInt(1000000000, 1999999999)}; IABMV/1)`;
                         } else {
-                            appString = ` (Instagram ${igVer})`;
+                            appString = ` InstagramPC/${igVer}`;
                         }
                     }
                     else if (inapp === 'TikTok') {
@@ -509,9 +537,8 @@
                         } else if (device === 'iPhone' || device === 'iPad') {
                             ua = `Mozilla/5.0 (${device==='iPad'?rand(HARDWARE['iPad']):rand(HARDWARE['iPhone'])}; CPU ${device==='iPad'?'OS':'iPhone OS'} ${rand(VERSIONS['iOS']).replace(/\./g, '_')} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) TikTok/${ttVer} (iOS ${rand(VERSIONS['iOS'])}; ${geoUnder})`;
                         } else {
-                            ua += ` TikTok/${ttVer}`; 
+                            appString = ` TikTokPC/${ttVer}`; 
                         }
-                        appString = ""; 
                     }
                     else if (inapp === 'Snapchat') {
                         const snapVer = `14.${randInt(10, 99)}.0.${randInt(10, 99)}`;
@@ -520,9 +547,8 @@
                         } else if (device === 'iPhone' || device === 'iPad') {
                             ua = `Snapchat/${snapVer} (iOS ${rand(VERSIONS['iOS']).replace(/_/g, '.')}; ${device==='iPad'?rand(HARDWARE['iPad']):rand(HARDWARE['iPhone'])})`;
                         } else {
-                            ua += ` Snapchat/${snapVer}`;
+                            appString = ` SnapchatPC/${snapVer}`;
                         }
-                        appString = "";
                     }
                     else if (inapp === 'Twitter') {
                         const tVer = `${rand(APP_VERSIONS['Twitter'])}.${randInt(10, 99)}.0-release.${randInt(0, 9)}`;
@@ -531,9 +557,8 @@
                         } else if (device === 'iPhone' || device === 'iPad') {
                             ua = `Mozilla/5.0 (${device==='iPad'?rand(HARDWARE['iPad']):rand(HARDWARE['iPhone'])}; CPU ${device==='iPad'?'OS':'iPhone OS'} ${rand(VERSIONS['iOS']).replace(/\./g, '_')} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/${rand(['15E148', '21E219'])} TwitteriPhone/${tVer} Locale/${geoUnder}`;
                         } else {
-                            ua += ` Twitter/${tVer}`;
+                            appString = ` TwitterPC/${tVer}`;
                         }
-                        appString = "";
                     }
                     else if (inapp === 'LinkedIn') {
                         const inVer = rand(APP_VERSIONS['LinkedIn']);
@@ -542,9 +567,8 @@
                         } else if (device === 'iPhone' || device === 'iPad') {
                             ua = `Mozilla/5.0 (${device==='iPad'?rand(HARDWARE['iPad']):rand(HARDWARE['iPhone'])}; CPU ${device==='iPad'?'OS':'iPhone OS'} ${rand(VERSIONS['iOS']).replace(/\./g, '_')} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/${rand(['15E148', '21E219'])} LinkedInApp/${inVer} (${geoUnder})`;
                         } else {
-                            ua += ` LinkedIn/${inVer}`;
+                            appString = ` LinkedInPC/${inVer}`;
                         }
-                        appString = "";
                     }
                     else if (inapp === 'Reddit') {
                         const rVer = device === 'Android' ? rand(APP_VERSIONS['RedditAndroid']) : rand(APP_VERSIONS['RedditIOS']) + `.${randInt(0,9)}`;
@@ -553,9 +577,8 @@
                         } else if (device === 'iPhone' || device === 'iPad') {
                             ua = `Reddit/Version ${rVer}/Build ${randInt(1000000, 9999999)} (${device==='iPad'?rand(HARDWARE['iPad']):rand(HARDWARE['iPhone'])}; iOS ${rand(VERSIONS['iOS']).replace(/_/g, '.')})`;
                         } else {
-                            ua += ` Reddit/${rVer}`;
+                            appString = ` RedditPC/${rVer}`;
                         }
-                        appString = "";
                     }
                     else if (inapp === 'WhatsApp') {
                         const waVer = `2.26.${randInt(10, 30)}.${randInt(10, 99)}`;
@@ -564,9 +587,8 @@
                         } else if (device === 'iPhone' || device === 'iPad') {
                             ua = `WhatsApp/${waVer} i`;
                         } else {
-                            ua += ` WhatsApp/${waVer}`;
+                            appString = ` WhatsAppPC/${waVer}`;
                         }
-                        appString = "";
                     }
 
                     ua = ua + appString;
@@ -578,7 +600,7 @@
             renderOutput(Array.from(generatedUAs));
         }
 
-        // --- DO NOT ALTER THESE RENDERING FUNCTIONS ---
+        // --- RENDERING & COPY ---
         function renderOutput(uaList) {
             const container = document.getElementById('outputContainer');
             const emptyState = document.getElementById('emptyState');
