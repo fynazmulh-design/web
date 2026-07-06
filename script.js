@@ -216,7 +216,12 @@ function switchDashTab(tName) {
         active.classList.add('bg-violet-600/20', 'border-violet-500', 'text-white', 'shadow-[0_5px_15px_rgba(139,92,246,0.2)]'); 
     }
 }
+// Browser Back Support for Dashboard Tabs
+window.addEventListener("popstate", function () {
 
+    switchDashTab("tools");
+
+});
 function handleHomeClick(planValue = 'Basic Learning|2000 BDT / $20') {
     const user = JSON.parse(localStorage.getItem('proToolsUser')); 
     if (!user || !user.isLoggedIn) { 
