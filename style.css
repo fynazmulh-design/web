@@ -1,0 +1,75 @@
+body { background-color: #020617; color: #f8fafc; overflow-x: hidden; scroll-behavior: smooth; }
+
+/* Animations */
+@keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+.animate-float { animation: float 6s ease-in-out infinite; }
+@keyframes bg-pan { 0% { background-position: 0% 50%; } 100% { background-position: -200% 50%; } }
+.animate-bg-pan { background-size: 200% auto; animation: bg-pan 4s linear infinite; }
+
+/* Neon Panels */
+.neon-panel { background: #09090b; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; transition: all 0.4s ease; position: relative; overflow: hidden; cursor: pointer;}
+
+.glow-yellow:hover { border-color: rgba(250, 204, 21, 0.6); box-shadow: 0 0 30px rgba(250, 204, 21, 0.25); transform: translateY(-5px); }
+.glow-green:hover { border-color: rgba(74, 222, 128, 0.6); box-shadow: 0 0 30px rgba(74, 222, 128, 0.25); transform: translateY(-5px); }
+.glow-red:hover { border-color: rgba(239, 68, 68, 0.6); box-shadow: 0 0 30px rgba(239, 68, 68, 0.25); transform: translateY(-5px); }
+.glow-cyan:hover { border-color: rgba(34, 211, 238, 0.6); box-shadow: 0 0 30px rgba(34, 211, 238, 0.25); transform: translateY(-5px); }
+.glow-fuchsia:hover { border-color: rgba(232, 121, 249, 0.6); box-shadow: 0 0 30px rgba(232, 121, 249, 0.25); transform: translateY(-5px); }
+.glow-amber:hover { border-color: rgba(251, 191, 36, 0.6); box-shadow: 0 0 30px rgba(251, 191, 36, 0.25); transform: translateY(-5px); }
+.glow-blue:hover { border-color: rgba(59, 130, 246, 0.8); box-shadow: 0 0 40px rgba(59, 130, 246, 0.35); transform: translateY(-5px); }
+
+.dash-tab-content { animation: fadeIn 0.4s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Scroller */
+.notice-container { width: 100%; overflow: hidden; white-space: nowrap; box-sizing: border-box; }
+.notice-text { display: inline-block; padding-left: 100%; animation: notice-scroll 35s linear infinite; }
+@keyframes notice-scroll { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+
+.marquee-container-fast { width: 100%; overflow: hidden; white-space: nowrap; position: relative; }
+.marquee-content-fast { display: inline-flex; animation: marquee-scroll 40s linear infinite; }
+.marquee-content-fast:hover { animation-play-state: paused; }
+@keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+.bg-shape { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; opacity: 0.15; pointer-events: none; }
+
+/* Full Width Breakout Hack for Reviews */
+.breakout-full-width {
+    width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    max-width: 100vw !important;
+}
+
+/* Fixed Lock Icon Hover */
+.ph-lock-key { transition: 0.3s; }
+.group:hover .ph-lock-key { color: #ef4444; transform: scale(1.1); }
+
+/* Video Container */
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+.video-container iframe, .video-container object, .video-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* Telegram Button */
+.telegram-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #0088cc; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; box-shadow: 0 10px 20px rgba(0, 136, 204, 0.3); z-index: 9999; transition: 0.3s; border: 2px solid rgba(255, 255, 255, 0.1); }
+.telegram-btn:hover { transform: scale(1.1) translateY(-5px); background: #0099e6; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #020617; border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; border: 2px solid #020617; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* Dashboard Scroll Area */
+.dash-scroll-area { max-height: 800px; overflow-y: auto; overflow-x: hidden; padding-right: 12px; }
+
+/* Payment UI */
+.pay-radio-box { border: 1px solid rgba(255,255,255,0.1); background: #0f172a; border-radius: 12px; cursor: pointer; transition: all 0.3s; overflow: hidden; }
+.pay-radio-box.active { border-color: #3b82f6; background: #1e293b; }
+.pay-radio-header { padding: 16px; display: flex; align-items: center; gap: 12px; }
+.pay-radio-circle { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #64748b; flex-shrink: 0; display: flex; align-items: center; justify-content: center;}
+.pay-radio-box.active .pay-radio-circle { border-color: #3b82f6; }
+.pay-radio-box.active .pay-radio-circle::after { content: ''; width: 8px; height: 8px; background: #3b82f6; border-radius: 50%; }
+.pay-details { display: none; padding: 16px; border-top: 1px solid rgba(255,255,255,0.05); background: #020617; }
+.pay-radio-box.active .pay-details { display: block; animation: fadeIn 0.3s; }
