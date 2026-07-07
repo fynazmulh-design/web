@@ -63,13 +63,21 @@ function updateUIBasedOnPlan(user) {
     const dashPlan = document.getElementById('dashPlanName');
     const vipCodeBox = document.getElementById('vipCodeBox');
     const timerBox = document.getElementById('countdownTimer');
+    const freeContent = document.getElementById('freeUserContent');
+    const premiumContent = document.getElementById('premiumUserContent');
     
     if (isPremium) {
         setNotice("Premium Access Active! Welcome to the VIP Dashboard. You now have full access to all courses, tools, and software.");
-        dashPlan.innerText = `${plan} ✅`;
-        dashPlan.className = "text-green-400 font-bold";
+        
+        dashPlan.innerHTML = `${plan} <i class="ph-fill ph-check-circle text-green-400"></i>`;
+        dashPlan.className = "text-green-400 font-bold flex items-center justify-center gap-1";
+        
         vipCodeBox.classList.add('hidden');
         timerBox.classList.remove('hidden');
+        
+        // Toggle Views: Show Premium Grid, Hide Course Packages
+        if(freeContent) freeContent.classList.add('hidden');
+        if(premiumContent) premiumContent.classList.remove('hidden');
         
         startCountdown(user.expiry);
         
@@ -82,11 +90,16 @@ function updateUIBasedOnPlan(user) {
 
     } else {
         setNotice("Your account is restricted. Please enter your VIP code or purchase a package to unlock full workspace access.");
-        dashPlan.innerText = "Access Locked 🔒";
-        dashPlan.className = "text-red-400 font-bold";
+        
+        dashPlan.innerHTML = `ACCESS LOCKED <i class="ph-fill ph-lock-key text-red-400"></i>`;
+        dashPlan.className = "text-red-400 font-bold flex items-center justify-center gap-1";
         
         vipCodeBox.classList.remove('hidden');
         timerBox.classList.add('hidden');
+        
+        // Toggle Views: Show Course Packages, Hide Premium Grid
+        if(freeContent) freeContent.classList.remove('hidden');
+        if(premiumContent) premiumContent.classList.add('hidden');
         
         clearInterval(countdownInterval);
         
