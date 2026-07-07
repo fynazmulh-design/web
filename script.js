@@ -1,25 +1,7 @@
 const CONFIG = {
+    
     backendURL: "https://script.google.com/macros/s/AKfycbwv49zfBOFTbmoamPIUqNcnjkB4s1RdGWXuBzQLTIJd3_b7ls3ociGJ3MbkxRACa8S7DQ/exec"
 };
-
-const NOTICES = {
-    PUBLIC: "🚀 Welcome to Freelancer Nazmul IT 🔥 Get 30% OFF on Yearly Plan! ⚡ Instant Activation with Bkash/Nagad/Rocket & Crypto-Pay/Binance. Please Login or Register first to access packages.",
-    FREE_USER: "⚠️ Account Created! Please purchase a VIP package from the dashboard. Send the exact amount and submit the transaction ID to get your VIP code.",
-    VIP_USER: "🌟 Premium Access Active! Welcome to the VIP Dashboard. You now have full access to all courses, tools, and software."
-};
-
-const COURSE_VIDEOS = [
-    { title: "PART 01 :- What is CPA Self SignUp? Rules For Opening CPA Site Account.", url: "https://player.mediadelivery.net/play/631069/66270f20-3f83-4ac2-be65-a0a0ea07b250" },
-    { title: "Class 2: CPA_Self_SignUp_সিপিএ_ক্যাটাগরি_ও_সেরা_অফার_সিলেকশন", url: "https://player.mediadelivery.net/embed/631069/f43ea652-0c8c-432a-aeb9-25c37e93e1d0?autoplay=false" },
-    { title: "Class 3: CPA_Self_SignUp_সেরা_ল্যান্ডিং_পেজ_ডিজাইন_ও_তৈরি", url: "https://player.mediadelivery.net/embed/631069/1c7035a8-4251-43f3-a79d-623c42116e99?autoplay=false" },
-    { title: "Class 4: Self_Sign_Up_হাই_সিকিউরিটি_সেরা_সফটওয়্যার_Mobile_&_PC", url: "https://player.mediadelivery.net/embed/631069/0e459ad8-98b5-4428-9392-20de391438c0?autoplay=false" },
-    { title: "Class 5: Self_Sign_Up_Proxy_IP_সাইট_ও_পার্সেস_সিস্টেম", url: "https://player.mediadelivery.net/embed/631069/32a398f1-7158-4cd4-aceb-3e0ce4b9117b?autoplay=false" },
-    { title: "Class 6: আনলিমিটেড_UserAgentGmailAddress_মেথড", url: "https://player.mediadelivery.net/embed/631069/703f443f-958a-4288-8680-16b6ea6a0359?autoplay=false" },
-    { title: "Class 7: Self_Sign_Up_ComputerMobile_ডিভাইস_সেটআপ", url: "https://player.mediadelivery.net/embed/631069/7cd6e057-d7d8-4009-bb5b-02270ff59b27?autoplay=false" },
-    { title: "Class 8: Dating_Offers_সাইন_আপ_Social_Media_মেথড", url: "https://player.mediadelivery.net/embed/631069/5a91bf48-79c7-4b96-8945-07aadf06bc43?autoplay=false" },
-    { title: "Class 9: Fresh Offers সাইন আপ মেথড", url: "https://player.mediadelivery.net/embed/631069/414fc4eb-78c3-40a4-b8af-f67d440aa11b?autoplay=false" },
-    { title: "Class 10: Withdrawals & Next Steps", url: "https://player.mediadelivery.net/embed/631069/0bc51550-af74-4bc2-824a-8c0ee4af4446?autoplay=false" }
-];
 
 let isLoggedIn = false;
 let countdownInterval;
@@ -28,23 +10,9 @@ window.onload = function() {
     checkLoginStatus();
 };
 
-function setNotice(type) {
+function setNotice(msg) {
     const noticeEl = document.getElementById('dynamicNotice');
-    const noticeContainer = document.getElementById('noticeBarContainer');
-    if(!noticeEl || !noticeContainer) return;
-    
-    const redNoticeClass = "fixed top-[56px] md:top-[64px] left-0 w-full h-[35px] md:h-[40px] bg-[#cc0000] border-b border-white/10 text-white text-[11px] md:text-sm font-bold flex items-center z-[40] shadow-md transition-colors duration-500";
-    
-    if(type === 'PUBLIC') {
-        noticeEl.innerText = NOTICES.PUBLIC;
-        noticeContainer.className = redNoticeClass;
-    } else if(type === 'FREE_USER') {
-        noticeEl.innerText = NOTICES.FREE_USER;
-        noticeContainer.className = redNoticeClass;
-    } else {
-        noticeEl.innerText = NOTICES.VIP_USER;
-        noticeContainer.className = redNoticeClass;
-    }
+    if(noticeEl) noticeEl.innerText = msg;
 }
 
 function checkLoginStatus() {
@@ -56,13 +24,13 @@ function checkLoginStatus() {
         
         const navBtn = document.getElementById('navAuthBtn');
         navBtn.innerHTML = `<i class="ph-bold ph-sign-out mr-1.5"></i> Logout`;
-        navBtn.classList.replace('bg-black', 'bg-red-600');
+        navBtn.classList.replace('bg-black', 'bg-red-500');
         navBtn.onclick = logout;
 
         document.getElementById('dashUserName').innerText = user.name || "Student";
         syncUserPlan(user);
     } else {
-        setNotice('PUBLIC');
+        setNotice("🚀 Welcome to Freelancer Nazmul IT 🔥 Get 30% OFF on Yearly Plan! ⚡ Instant Activation with Bkash/Nagad/Rocket & Crypto-Pay/Binance. Please Login or Register first to access packages.");
     }
 }
 
@@ -97,66 +65,37 @@ function updateUIBasedOnPlan(user) {
     const timerBox = document.getElementById('countdownTimer');
     
     if (isPremium) {
-        setNotice('VIP_USER');
+        setNotice("Premium Access Active! Welcome to the VIP Dashboard. You now have full access to all courses, tools, and software.");
         dashPlan.innerText = `${plan} ✅`;
         dashPlan.className = "text-green-400 font-bold";
         vipCodeBox.classList.add('hidden');
         timerBox.classList.remove('hidden');
         
-        renderCourseVideos(true);
         startCountdown(user.expiry);
         
-        const unlockClass = "ph-fill ph-check-circle absolute top-4 right-4 text-green-400 text-xl transition z-10";
-        ['ua', 'email', 'validator', 'cpa', 'proxy', 'software_mix', 'address', 'name', 'dl_clicker', 'dl_browser'].forEach(id => {
+        // UNLOCK All Grid Icons
+        const unlockClass = "ph-fill ph-check-circle absolute top-5 right-5 text-green-400 text-2xl transition z-10";
+        ['course', 'ua', 'email', 'software', 'validator', 'cpa', 'proxy', 'software_mix', 'address', 'name'].forEach(id => {
             const icon = document.getElementById(`lock_${id}`);
             if(icon) icon.className = unlockClass;
         });
 
     } else {
-        setNotice('FREE_USER');
-        dashPlan.innerText = "Locked (Free User) 🔒";
+        setNotice("Your account is restricted. Please enter your VIP code or purchase a package to unlock full workspace access.");
+        dashPlan.innerText = "Access Locked 🔒";
         dashPlan.className = "text-red-400 font-bold";
         
         vipCodeBox.classList.remove('hidden');
         timerBox.classList.add('hidden');
         
-        renderCourseVideos(false);
         clearInterval(countdownInterval);
         
-        const lockClass = "ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10";
-        ['ua', 'email', 'validator', 'cpa', 'proxy', 'software_mix', 'address', 'name', 'dl_clicker', 'dl_browser'].forEach(id => {
+        // LOCK All Grid Icons
+        const lockClass = "ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10";
+        ['course', 'ua', 'email', 'software', 'validator', 'cpa', 'proxy', 'software_mix', 'address', 'name'].forEach(id => {
             const icon = document.getElementById(`lock_${id}`);
             if(icon) icon.className = lockClass;
         });
-    }
-    
-    let savedTab = localStorage.getItem('lastDashTab') || 'courses';
-    switchDashTab(savedTab);
-}
-
-function renderCourseVideos(isPremium) {
-    const grid = document.getElementById('courseVideoGrid');
-    
-    if(isPremium) {
-        grid.innerHTML = COURSE_VIDEOS.map((video, index) => {
-            const safeUrl = video.url.replace('autoplay=true', 'autoplay=false');
-            return `
-            <div class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-lg p-2 transition hover:border-violet-500/50">
-                <div class="video-container">
-                    <iframe src="${safeUrl}" allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowfullscreen></iframe>
-                </div>
-                <p class="p-4 text-white font-bold text-sm bg-black/40 border-t border-zinc-800">${video.title}</p>
-            </div>
-        `}).join('');
-    } else {
-        grid.innerHTML = `
-            <div class="dashboard-premium-item neon-panel glow-yellow p-6 flex flex-col items-center justify-center text-center gap-3 cursor-pointer bg-zinc-900 border border-zinc-800/80 group h-64 relative w-full lg:col-span-2" onclick="openPaymentModal()">
-                <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
-                <i class="ph-fill ph-video-camera text-6xl text-yellow-400 mt-2"></i>
-                <h4 class="text-xl font-bold text-white mt-2">10+ Premium Classes Locked</h4>
-                <p class="text-xs text-zinc-500 font-bold mt-2 bg-black/50 px-4 py-2 rounded border border-white/5">Click to purchase a package and unlock all video modules.</p>
-            </div>
-        `;
     }
 }
 
@@ -165,7 +104,7 @@ function startCountdown(expiryTimestamp) {
     const timerDiv = document.getElementById('countdownTimer');
     
     if (!expiryTimestamp) {
-        timerDiv.innerHTML = `<div class="text-green-400 font-bold text-sm bg-green-400/10 px-4 py-2 rounded-lg border border-green-500/20 shadow-inner">LIFETIME VIP ACCESS</div>`;
+        timerDiv.innerHTML = `<div class="text-green-400 font-bold text-sm bg-green-500/10 px-4 py-2 rounded-lg border border-green-500/20">LIFETIME ACCESS</div>`;
         return;
     }
 
@@ -175,7 +114,7 @@ function startCountdown(expiryTimestamp) {
         
         if (distance < 0) {
             clearInterval(countdownInterval);
-            timerDiv.innerHTML = '<div class="text-red-500 font-bold text-xl tracking-widest bg-red-500/10 px-4 py-2 rounded-lg border border-red-500/20">EXPIRED</div>';
+            timerDiv.innerHTML = '<div class="text-red-500 font-bold text-sm bg-red-500/10 px-4 py-2 rounded-lg border border-red-500/20">ACCESS EXPIRED</div>';
             const user = JSON.parse(localStorage.getItem('proToolsUser'));
             if(user.plan !== 'Free') syncUserPlan(user);
             return;
@@ -186,11 +125,11 @@ function startCountdown(expiryTimestamp) {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         
         timerDiv.innerHTML = `
-            <div class="bg-[#020617] border border-white/10 rounded-lg p-3 min-w-[70px] shadow-inner"><span class="text-2xl text-white font-mono font-black block">${days}</span><span class="text-[10px] text-zinc-500 font-bold">DAYS</span></div>
-            <div class="text-zinc-600 font-black text-2xl">:</div>
-            <div class="bg-[#020617] border border-white/10 rounded-lg p-3 min-w-[70px] shadow-inner"><span class="text-2xl text-white font-mono font-black block">${hours}</span><span class="text-[10px] text-zinc-500 font-bold">HRS</span></div>
-            <div class="text-zinc-600 font-black text-2xl">:</div>
-            <div class="bg-[#020617] border border-white/10 rounded-lg p-3 min-w-[70px] shadow-inner"><span class="text-2xl text-white font-mono font-black block">${minutes}</span><span class="text-[10px] text-zinc-500 font-bold">MIN</span></div>
+            <div class="flex gap-2 justify-center">
+                <div class="bg-[#020617] border border-white/10 rounded-lg p-2 min-w-[50px]"><span class="text-lg text-white font-mono font-bold block leading-none">${days}</span><span class="text-[9px] text-zinc-500">DAYS</span></div>
+                <div class="bg-[#020617] border border-white/10 rounded-lg p-2 min-w-[50px]"><span class="text-lg text-white font-mono font-bold block leading-none">${hours}</span><span class="text-[9px] text-zinc-500">HRS</span></div>
+                <div class="bg-[#020617] border border-white/10 rounded-lg p-2 min-w-[50px]"><span class="text-lg text-white font-mono font-bold block leading-none">${minutes}</span><span class="text-[9px] text-zinc-500">MIN</span></div>
+            </div>
         `;
     }
     
@@ -198,30 +137,6 @@ function startCountdown(expiryTimestamp) {
     countdownInterval = setInterval(update, 60000); 
 }
 
-function switchDashTab(tName) {
-    localStorage.setItem('lastDashTab', tName);
-    
-    document.querySelectorAll('.dash-tab-content').forEach(e => e.classList.add('hidden'));
-    document.querySelectorAll('[id^="tabBtn-"]').forEach(b => { 
-        b.classList.remove('bg-violet-600/20', 'border-violet-500', 'text-white', 'shadow-[0_5px_15px_rgba(139,92,246,0.2)]'); 
-        b.classList.add('bg-zinc-900', 'text-zinc-400', 'border-zinc-800'); 
-    });
-    
-    const contentBox = document.getElementById('tabContent-' + tName);
-    if(contentBox) contentBox.classList.remove('hidden');
-    
-    const active = document.getElementById('tabBtn-' + tName);
-    if(active) {
-        active.classList.remove('bg-zinc-900', 'text-zinc-400', 'border-zinc-800'); 
-        active.classList.add('bg-violet-600/20', 'border-violet-500', 'text-white', 'shadow-[0_5px_15px_rgba(139,92,246,0.2)]'); 
-    }
-}
-// Browser Back Support for Dashboard Tabs
-window.addEventListener("popstate", function () {
-
-    switchDashTab("tools");
-
-});
 function handleHomeClick(planValue = 'Basic Learning|2000 BDT / $20') {
     const user = JSON.parse(localStorage.getItem('proToolsUser')); 
     if (!user || !user.isLoggedIn) { 
@@ -250,7 +165,7 @@ function closeAuthModal() {
 function switchTab(tab) { 
     const loginForm = document.getElementById('loginForm'); 
     const registerForm = document.getElementById('registerForm'); 
-    const forgotForm = document.getElementById('forgotForm'); 
+    const forgotForm = document.getElementById('forgotForm');
     const tabLogin = document.getElementById('tabLogin'); 
     const tabRegister = document.getElementById('tabRegister'); 
     
@@ -268,6 +183,8 @@ function switchTab(tab) {
         tabLogin.className = "flex-1 py-4 text-sm font-bold text-gray-400 hover:text-white transition"; 
     } else if (tab === 'forgot') {
         forgotForm.classList.remove('hidden');
+        tabLogin.className = "flex-1 py-4 text-sm font-bold text-gray-400 hover:text-white transition";
+        tabRegister.className = "flex-1 py-4 text-sm font-bold text-gray-400 hover:text-white transition relative";
     }
 }
 
@@ -293,7 +210,7 @@ function handleAuth(event, action) {
     const btn = form.querySelector('button[type="submit"]'); 
     const originalText = btn.innerText; 
     
-    btn.innerHTML = `<i class="ph-bold ph-spinner animate-spin"></i> Processing...`; 
+    btn.innerHTML = `Processing...`; 
     btn.disabled = true; 
     msgDiv.classList.add('hidden'); 
     
@@ -316,8 +233,6 @@ function handleAuth(event, action) {
             } else if (action === 'register') { 
                 form.reset(); 
                 setTimeout(() => { switchTab('login'); msgDiv.innerText = "Registration Success! Please Login."; }, 2000); 
-            } else {
-                form.reset();
             }
         } else { 
             msgDiv.className = "px-8 pb-6 text-center text-sm font-bold text-red-400 bg-black/20 pt-4 border-t border-white/5"; 
@@ -345,15 +260,7 @@ function checkAccess(urlOrAction) {
     if (!user.plan || user.plan === 'Free') { 
         openPaymentModal();
     } else { 
-        if (urlOrAction === 'dl_clicker') {
-            window.open("https://drive.google.com/file/d/1Byn3SLjaJF7NQb4Qi4R0cDGqZ7SiRZub/view?usp=sharing", '_blank');
-        } else if (urlOrAction === 'dl_browser_pc') {
-            window.open("https://drive.google.com/file/d/1nHkC4jWpuSAI5_Do1kO3OHT6wV3Pg0_n/view?usp=sharing", '_blank');
-        } else if (urlOrAction === 'dl_browser_mobile') {
-            window.open("https://drive.google.com/file/d/1fToucChv4ASQuXtnGdeVON7XMjYsnFub/view?usp=sharing", '_blank');
-        } else {
-            window.location.href = urlOrAction;
-        }
+        window.location.href = urlOrAction;
     } 
 }
 
@@ -407,7 +314,7 @@ function executeRedeem(inputId) {
     
     const btn = event.target;
     const originalText = btn.innerText;
-    btn.innerHTML = `Wait..`;
+    btn.innerHTML = `Verifying...`;
     btn.disabled = true;
 
     const data = new URLSearchParams();
@@ -424,8 +331,7 @@ function executeRedeem(inputId) {
             user.expiry = result.newExpiry;
             localStorage.setItem('proToolsUser', JSON.stringify(user));
             document.getElementById('paymentModal').classList.add('hidden');
-            updateUIBasedOnPlan(user);
-            if(codeInput) codeInput.value = '';
+            location.reload();
         } else { 
             alert("❌ " + result.message); 
         }
