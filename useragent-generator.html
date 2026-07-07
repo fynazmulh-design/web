@@ -122,20 +122,6 @@
                 </div>
             </div>
 
-            <div id="brandSection" style="display: none;">
-                <h3 class="text-sm font-bold text-zinc-300 flex items-center gap-2"><i class="ph-fill ph-cpu text-orange-400"></i> Android Brand</h3>
-                <div class="ua-grid">
-                    <input type="radio" name="brand" id="brd_random" value="Random" class="ua-option" checked>
-                    <label for="brd_random" class="ua-label">Random</label>
-
-                    <input type="radio" name="brand" id="brd_samsung" value="Samsung" class="ua-option">
-                    <label for="brd_samsung" class="ua-label">Samsung</label>
-
-                    <input type="radio" name="brand" id="brd_pixel" value="Google" class="ua-option">
-                    <label for="brd_pixel" class="ua-label">Google Pixel</label>
-                </div>
-            </div>
-
             <div>
                 <h3 class="text-sm font-bold text-zinc-300 flex items-center gap-2 mt-2"><i class="ph-fill ph-browser text-green-400"></i> Base Browser</h3>
                 <div class="ua-grid">
@@ -189,40 +175,45 @@
     </div>
 
     <script>
-        // Brand UI logic handler
-        const deviceRadios = document.querySelectorAll('input[name="device"]');
-        const brandSection = document.getElementById('brandSection');
-        
-        deviceRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'Android' || this.value === 'Random Mix') {
-                    brandSection.style.display = 'block';
-                } else {
-                    brandSection.style.display = 'none';
-                }
-            });
-        });
-
-        // Initialize display rules based on default checked option
-        window.onload = function() {
-            if (document.querySelector('input[name="device"]:checked').value === 'Random Mix') {
-                brandSection.style.display = 'block';
-            }
-        };
-
         // --- DATABASE ---
         const ANDROID_MODELS = [
+            // Samsung Models
+            { brand: 'Samsung', model: 'SM-S938B', os: ['15', '16', '17'] }, // Galaxy S25 Ultra
+            { brand: 'Samsung', model: 'SM-S936B', os: ['15', '16', '17'] }, // Galaxy S25+
             { brand: 'Samsung', model: 'SM-S931B', os: ['15', '16', '17'] }, // Galaxy S25
             { brand: 'Samsung', model: 'SM-S928B', os: ['14', '15', '16', '17'] }, // Galaxy S24 Ultra
+            { brand: 'Samsung', model: 'SM-S926B', os: ['14', '15', '16', '17'] }, // Galaxy S24+
+            { brand: 'Samsung', model: 'SM-S921B', os: ['14', '15', '16', '17'] }, // Galaxy S24
+            { brand: 'Samsung', model: 'SM-S918B', os: ['13', '14', '15', '16'] }, // Galaxy S23 Ultra
             { brand: 'Samsung', model: 'SM-S911B', os: ['13', '14', '15', '16'] }, // Galaxy S23
             { brand: 'Samsung', model: 'SM-S901B', os: ['16'] }, // Galaxy S22 - STRICT 16
+            { brand: 'Samsung', model: 'SM-G998B', os: ['13', '14', '15'] }, // Galaxy S21 Ultra
             { brand: 'Samsung', model: 'SM-G991B', os: ['13', '14', '15'] }, // Galaxy S21
             { brand: 'Samsung', model: 'SM-G981B', os: ['13'] }, // Galaxy S20 - STRICT 13
-            { brand: 'Samsung', model: 'SM-A546B', os: ['14', '15', '16'] }, // Galaxy A54
+            { brand: 'Samsung', model: 'SM-F966B', os: ['15', '16', '17'] }, // Z Fold 7
+            { brand: 'Samsung', model: 'SM-F956B', os: ['14', '15', '16', '17'] }, // Z Fold 6
+            { brand: 'Samsung', model: 'SM-F946B', os: ['13', '14', '15', '16'] }, // Z Fold 5
+            { brand: 'Samsung', model: 'SM-F741B', os: ['14', '15', '16', '17'] }, // Z Flip 6
+            { brand: 'Samsung', model: 'SM-F731B', os: ['13', '14', '15', '16'] }, // Z Flip 5
+            { brand: 'Samsung', model: 'SM-A556B', os: ['14', '15', '16'] }, // Galaxy A55
+            { brand: 'Samsung', model: 'SM-A546B', os: ['13', '14', '15', '16'] }, // Galaxy A54
+            { brand: 'Samsung', model: 'SM-A356B', os: ['14', '15', '16'] }, // Galaxy A35
+            
+            // Google Pixel Models
+            { brand: 'Google', model: 'Pixel 10 Pro', os: ['15', '16', '17'] },
+            { brand: 'Google', model: 'Pixel 10', os: ['15', '16', '17'] },
+            { brand: 'Google', model: 'Pixel 9 Pro XL', os: ['14', '15', '16', '17'] },
+            { brand: 'Google', model: 'Pixel 9 Pro Fold', os: ['14', '15', '16', '17'] },
             { brand: 'Google', model: 'Pixel 9 Pro', os: ['14', '15', '16', '17'] },
-            { brand: 'Google', model: 'Pixel 8 Pro', os: ['15', '16', '17'] },
+            { brand: 'Google', model: 'Pixel 9', os: ['14', '15', '16', '17'] },
+            { brand: 'Google', model: 'Pixel 8 Pro', os: ['14', '15', '16', '17'] },
+            { brand: 'Google', model: 'Pixel 8', os: ['14', '15', '16', '17'] },
+            { brand: 'Google', model: 'Pixel 8a', os: ['14', '15', '16', '17'] },
             { brand: 'Google', model: 'Pixel 7 Pro', os: ['13', '14', '15', '16'] },
-            { brand: 'Google', model: 'Pixel 6 Pro', os: ['13', '14', '15'] }
+            { brand: 'Google', model: 'Pixel 7', os: ['13', '14', '15', '16'] },
+            { brand: 'Google', model: 'Pixel 7a', os: ['13', '14', '15', '16'] },
+            { brand: 'Google', model: 'Pixel 6 Pro', os: ['13', '14', '15'] },
+            { brand: 'Google', model: 'Pixel Fold', os: ['13', '14', '15', '16'] }
         ];
 
         const IPHONE_MODELS = [
@@ -259,7 +250,6 @@
         function generateUAs() {
             const qty = parseInt(document.getElementById('uaQty').value) || 10;
             const deviceSelection = document.querySelector('input[name="device"]:checked').value;
-            const selBrand = document.querySelector('input[name="brand"]:checked').value;
             const browser = document.querySelector('input[name="browser"]:checked').value;
 
             const generatedUAs = new Set();
@@ -283,11 +273,8 @@
                 const chromeCore = rand(BROWSERS['Chrome']);
 
                 if (currentDevice === 'Android') {
-                    // Resolve Brand & Strict Model Mapping
-                    let currentBrand = selBrand;
-                    if (selBrand === 'Random' || deviceSelection === 'Random Mix') {
-                        currentBrand = rand(['Samsung', 'Google']);
-                    }
+                    // Strictly pick Samsung or Google Pixel
+                    let currentBrand = rand(['Samsung', 'Google']);
                     
                     let availableModels = ANDROID_MODELS.filter(m => m.brand === currentBrand);
                     let chosenModelObj = rand(availableModels);
