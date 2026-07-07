@@ -3,17 +3,14 @@
         const user = JSON.parse(localStorage.getItem('proToolsUser'));
         const now = new Date().getTime();
 
-        // ১. যদি লগইন করা না থাকে
         if (!user || !user.isLoggedIn) {
             alert("⚠️ Please login to access premium tools!");
-            window.location.replace("index.html"); // হোমপেজে পাঠিয়ে দেবে
+            window.location.replace("index.html"); 
         } 
-        // ২. যদি প্যাকেজ কেনা না থাকে বা ফ্রি ইউজার হয়
         else if (!user.plan || user.plan === 'Free') {
             alert("🔒 Access Denied! Please buy a VIP package to unlock this tool.");
             window.location.replace("index.html"); 
         } 
-        // ৩. যদি প্যাকেজের মেয়াদ শেষ হয়ে যায়
         else if (user.expiry && now > user.expiry) {
             alert("⏳ Your premium package has expired! Please renew.");
             window.location.replace("index.html");
@@ -38,13 +35,11 @@
       
       .neon-panel { background-color: #12121a; border: 1px solid #27272a; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
       
-      /* Custom Scrollbar */
       ::-webkit-scrollbar { width: 8px; }
       ::-webkit-scrollbar-track { background: transparent; }
       ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 10px; }
       ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
 
-      /* EXACT PILL DESIGN */
       .ua-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; margin-bottom: 24px; }
       .ua-option { display: none; }
       .ua-label { 
@@ -64,14 +59,12 @@
       }
       .ua-label:hover { border-color: #3f3f46; color: #c4c4cc; }
       
-      /* Selected States */
       .ua-option:checked + .ua-label {
           background: rgba(168, 85, 247, 0.1);
           border-color: #a855f7;
           color: #c084fc;
       }
 
-      /* Output List Styles */
       .ua-list-item {
           background: rgba(255, 255, 255, 0.02);
           border: 1px solid rgba(255, 255, 255, 0.05);
@@ -100,7 +93,7 @@
             </button>
             <div>
                 <span class="text-base font-bold text-white leading-none">Stealth UA Generator</span>
-                <span class="text-[11px] text-purple-400 font-bold block mt-1">2026 Anti-Detect Standard • 100% Unique</span>
+                <span class="text-[11px] text-purple-400 font-bold block mt-1">Strict OS Model • 100% Unique</span>
             </div>
         </div>
     </nav>
@@ -121,21 +114,15 @@
                     <input type="radio" name="device" id="dev_iphone" value="iPhone" class="ua-option">
                     <label for="dev_iphone" class="ua-label"><i class="ph-fill ph-apple-logo"></i> iPhone</label>
                     
-                    <input type="radio" name="device" id="dev_ipad" value="iPad" class="ua-option">
-                    <label for="dev_ipad" class="ua-label"><i class="ph-fill ph-device-tablet"></i> iPad</label>
-                    
-                    <input type="radio" name="device" id="dev_win10" value="Windows 10" class="ua-option">
-                    <label for="dev_win10" class="ua-label"><i class="ph-fill ph-windows-logo"></i> Windows 10</label>
-
-                    <input type="radio" name="device" id="dev_win11" value="Windows 11" class="ua-option">
-                    <label for="dev_win11" class="ua-label"><i class="ph-fill ph-windows-logo"></i> Windows 11</label>
+                    <input type="radio" name="device" id="dev_win" value="Windows" class="ua-option">
+                    <label for="dev_win" class="ua-label"><i class="ph-fill ph-windows-logo"></i> Windows</label>
 
                     <input type="radio" name="device" id="dev_mac" value="Mac" class="ua-option">
                     <label for="dev_mac" class="ua-label"><i class="ph-fill ph-desktop"></i> MacOS</label>
                 </div>
             </div>
 
-            <div id="brandSection">
+            <div id="brandSection" style="display: none;">
                 <h3 class="text-sm font-bold text-zinc-300 flex items-center gap-2"><i class="ph-fill ph-cpu text-orange-400"></i> Android Brand</h3>
                 <div class="ua-grid">
                     <input type="radio" name="brand" id="brd_random" value="Random" class="ua-option" checked>
@@ -146,24 +133,6 @@
 
                     <input type="radio" name="brand" id="brd_pixel" value="Google" class="ua-option">
                     <label for="brd_pixel" class="ua-label">Google Pixel</label>
-
-                    <input type="radio" name="brand" id="brd_moto" value="Motorola" class="ua-option">
-                    <label for="brd_moto" class="ua-label">Motorola</label>
-
-                    <input type="radio" name="brand" id="brd_oneplus" value="OnePlus" class="ua-option">
-                    <label for="brd_oneplus" class="ua-label">OnePlus</label>
-
-                    <input type="radio" name="brand" id="brd_xiaomi" value="Xiaomi" class="ua-option">
-                    <label for="brd_xiaomi" class="ua-label">Xiaomi</label>
-
-                    <input type="radio" name="brand" id="brd_oppo" value="Oppo" class="ua-option">
-                    <label for="brd_oppo" class="ua-label">Oppo</label>
-
-                    <input type="radio" name="brand" id="brd_vivo" value="Vivo" class="ua-option">
-                    <label for="brd_vivo" class="ua-label">Vivo</label>
-
-                    <input type="radio" name="brand" id="brd_realme" value="Realme" class="ua-option">
-                    <label for="brd_realme" class="ua-label">Realme</label>
                 </div>
             </div>
 
@@ -220,7 +189,7 @@
     </div>
 
     <script>
-        // UI Logic for Brand Visibility
+        // Brand UI logic handler
         const deviceRadios = document.querySelectorAll('input[name="device"]');
         const brandSection = document.getElementById('brandSection');
         
@@ -234,30 +203,38 @@
             });
         });
 
-        // 2022-2026 Latest Phone Models Data
-        const HARDWARE = {
-            'Samsung': ['SM-S948B', 'SM-S938B', 'SM-S928B', 'SM-S918B', 'SM-S908B', 'SM-S941B', 'SM-S931B', 'SM-S921B', 'SM-S911B', 'SM-S901B', 'SM-F966B', 'SM-F956B', 'SM-F946B', 'SM-F936B', 'SM-F741B', 'SM-F731B', 'SM-A556B', 'SM-A546B', 'SM-A536B'],
-            'Google': ['Pixel 10 Pro', 'Pixel 9 Pro XL', 'Pixel 9 Pro', 'Pixel 9', 'Pixel 8 Pro', 'Pixel 8', 'Pixel 8a', 'Pixel 7 Pro', 'Pixel 7', 'Pixel 6a', 'Pixel Fold'],
-            'Motorola': ['motorola edge 50 ultra', 'motorola edge 50 pro', 'motorola edge 40 pro', 'motorola edge 30 ultra', 'motorola razr 50 ultra', 'motorola razr 40 ultra', 'moto g stylus 5G (2024)', 'moto g stylus 5G (2023)', 'moto g power 5G (2024)'],
-            'OnePlus': ['OnePlus 13', 'OnePlus 12', 'OnePlus 11', 'OnePlus 10 Pro', 'CPH2581', 'CPH2449', 'CPH2451', 'NE2210', 'NE2213'],
-            'Xiaomi': ['Xiaomi 15 Pro', 'Xiaomi 14 Ultra', 'Xiaomi 14 Pro', 'Xiaomi 13 Pro', 'Xiaomi 12 Pro', '24030PN60G', '23127PN0CG', '2210132G', 'Redmi Note 13 Pro+', 'Redmi Note 12 Pro'],
-            'Oppo': ['Find X7 Ultra', 'Find X6 Pro', 'Find X5 Pro', 'Reno 11 Pro', 'Reno 10 Pro', 'Reno 8 Pro', 'CPH2529', 'CPH2499', 'PHN110'],
-            'Vivo': ['X100 Pro', 'X90 Pro', 'X80 Pro', 'V29 Pro', 'V27 Pro', 'V2308', 'V2250', 'V2158'],
-            'Realme': ['Realme GT 5 Pro', 'Realme GT 3', 'Realme GT 2 Pro', 'Realme 12 Pro+', 'Realme 11 Pro+', 'RMX3888', 'RMX3700'],
-            'iPhone': ['iPhone17,3', 'iPhone17,2', 'iPhone17,1', 'iPhone16,2', 'iPhone16,1', 'iPhone15,3', 'iPhone15,2', 'iPhone14,7', 'iPhone14,5', 'iPhone14,3', 'iPhone14,2'],
-            'iPad': ['iPad16,3', 'iPad15,3', 'iPad14,1', 'iPad13,16'],
-            'Mac': ['Macintosh; Intel Mac OS X 14_0', 'Macintosh; Intel Mac OS X 15_777', 'Macintosh; Intel Mac OS X 26_5_2'],
-            'Windows': ['Windows NT 10.0; Win64; x64', 'Windows NT 11.0; Win64; x64']
+        // Initialize display rules based on default checked option
+        window.onload = function() {
+            if (document.querySelector('input[name="device"]:checked').value === 'Random Mix') {
+                brandSection.style.display = 'block';
+            }
         };
 
-        // Exact Versions per Prompt Request
-        const VERSIONS = {
-            'Android': ['15', '16', '17'],
-            'iOS': ['17.0', '18.0', '26.0']
-        };
+        // --- DATABASE ---
+        const ANDROID_MODELS = [
+            { brand: 'Samsung', model: 'SM-S931B', os: ['15', '16', '17'] }, // Galaxy S25
+            { brand: 'Samsung', model: 'SM-S928B', os: ['14', '15', '16', '17'] }, // Galaxy S24 Ultra
+            { brand: 'Samsung', model: 'SM-S911B', os: ['13', '14', '15', '16'] }, // Galaxy S23
+            { brand: 'Samsung', model: 'SM-S901B', os: ['16'] }, // Galaxy S22 - STRICT 16
+            { brand: 'Samsung', model: 'SM-G991B', os: ['13', '14', '15'] }, // Galaxy S21
+            { brand: 'Samsung', model: 'SM-G981B', os: ['13'] }, // Galaxy S20 - STRICT 13
+            { brand: 'Samsung', model: 'SM-A546B', os: ['14', '15', '16'] }, // Galaxy A54
+            { brand: 'Google', model: 'Pixel 9 Pro', os: ['14', '15', '16', '17'] },
+            { brand: 'Google', model: 'Pixel 8 Pro', os: ['15', '16', '17'] },
+            { brand: 'Google', model: 'Pixel 7 Pro', os: ['13', '14', '15', '16'] },
+            { brand: 'Google', model: 'Pixel 6 Pro', os: ['13', '14', '15'] }
+        ];
 
-        // Last two versions for each browser
-        const APP_VERSIONS = {
+        const IPHONE_MODELS = [
+            'iPhone17,1', 'iPhone17,2', 'iPhone17,3', 'iPhone17,4', // iPhone 16 series
+            'iPhone16,2', 'iPhone15,3', 'iPhone14,7', 'iPhone14,2'
+        ];
+        const IOS_VERSIONS = ['17_5_1', '18_3_1', '26_0'];
+
+        const MAC_VERSIONS = ['14_0', '15_777', '26_5_2']; 
+        const WIN_VERSIONS = ['Windows NT 10.0; Win64; x64', 'Windows NT 11.0; Win64; x64'];
+
+        const BROWSERS = {
             'Chrome': ['150.0.7871.47', '149.0.7827.159'],
             'Edge': ['150.0.4078.48', '149.0.3650.96'],
             'Opera': ['133.0.5932.20', '132.0.5729.49'],
@@ -268,14 +245,15 @@
         const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
         const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-        // Create highly randomized and unique build numbers
+        // Generate highly random and unlimited unique build numbers
         function generateAndroidBuild() {
             const prefixes = ['UP1A', 'TP1A', 'SP1A', 'UKQ1', 'RP1A', 'CP1A', 'BP1A', 'AP3A'];
             const year = randInt(23, 26);
             const month = String(randInt(1, 12)).padStart(2, '0');
             const day = String(randInt(1, 28)).padStart(2, '0');
             const revision = String(randInt(1, 999)).padStart(3, '0');
-            return `${rand(prefixes)}.${year}${month}${day}.${revision}`;
+            const suffix = rand(['', '.A1', '.A2', '.B3']);
+            return `${rand(prefixes)}.${year}${month}${day}.${revision}${suffix}`;
         }
 
         function generateUAs() {
@@ -289,98 +267,99 @@
             const maxLoops = qty * 100; 
 
             // Device types to iterate through if Random Mix is selected
-            const deviceTypes = ['Android', 'iPhone', 'iPad', 'Windows 10', 'Windows 11', 'Mac'];
+            const mixDeviceTypes = ['Android', 'iPhone', 'Windows', 'Mac'];
 
             while (generatedUAs.size < qty && loops < maxLoops) {
                 loops++;
                 let ua = "";
 
                 // Resolve current device (Handle Random Mix)
-                let currentDevice = deviceSelection === 'Random Mix' ? rand(deviceTypes) : deviceSelection;
-
-                // Resolve Chrome Core Version for Webkits
-                const chromeCore = rand(APP_VERSIONS['Chrome']);
-
-                // Resolve Brand for Android
-                let finalBrand = selBrand;
-                if (currentDevice === 'Android') {
-                    if (deviceSelection === 'Random Mix' || selBrand === 'Random') {
-                        finalBrand = rand(['Samsung', 'Google', 'Motorola', 'OnePlus', 'Xiaomi', 'Oppo', 'Vivo', 'Realme']);
-                    }
+                let currentDevice = deviceSelection;
+                if (deviceSelection === 'Random Mix') {
+                    currentDevice = rand(mixDeviceTypes);
                 }
 
-                // ==========================================
-                // USER AGENT CONSTRUCTION
-                // ==========================================
+                // Setup Chrome Core string for webkit-based browsers
+                const chromeCore = rand(BROWSERS['Chrome']);
+
                 if (currentDevice === 'Android') {
-                    const osVer = rand(VERSIONS['Android']);
-                    const hw = rand(HARDWARE[finalBrand]);
-                    const build = generateAndroidBuild();
+                    // Resolve Brand & Strict Model Mapping
+                    let currentBrand = selBrand;
+                    if (selBrand === 'Random' || deviceSelection === 'Random Mix') {
+                        currentBrand = rand(['Samsung', 'Google']);
+                    }
+                    
+                    let availableModels = ANDROID_MODELS.filter(m => m.brand === currentBrand);
+                    let chosenModelObj = rand(availableModels);
+                    
+                    let modelName = chosenModelObj.model;
+                    let androidOsVer = rand(chosenModelObj.os);
+                    let build = generateAndroidBuild();
                     
                     if (browser === 'Chrome') {
-                        ua = `Mozilla/5.0 (Linux; Android ${osVer}; ${hw} Build/${build}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${rand(APP_VERSIONS['Chrome'])} Mobile Safari/537.36`;
+                        ua = `Mozilla/5.0 (Linux; Android ${androidOsVer}; ${modelName} Build/${build}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Mobile Safari/537.36`;
                     } else if (browser === 'Edge') {
-                        ua = `Mozilla/5.0 (Linux; Android ${osVer}; ${hw} Build/${build}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Mobile Safari/537.36 EdgA/${rand(APP_VERSIONS['Edge'])}`;
+                        ua = `Mozilla/5.0 (Linux; Android ${androidOsVer}; ${modelName} Build/${build}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Mobile Safari/537.36 EdgA/${rand(BROWSERS['Edge'])}`;
                     } else if (browser === 'Firefox') {
-                        const ffVer = rand(APP_VERSIONS['Firefox']);
+                        const ffVer = rand(BROWSERS['Firefox']);
                         const ffMajor = ffVer.split('.')[0];
-                        ua = `Mozilla/5.0 (Android ${osVer}; Mobile; ${hw} Build/${build}; rv:${ffMajor}.0) Gecko/${ffMajor}.0 Firefox/${ffVer}`;
+                        ua = `Mozilla/5.0 (Android ${androidOsVer}; Mobile; ${modelName} Build/${build}; rv:${ffMajor}.0) Gecko/${ffMajor}.0 Firefox/${ffVer}`;
                     } else if (browser === 'Opera') {
-                        ua = `Mozilla/5.0 (Linux; Android ${osVer}; ${hw} Build/${build}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Mobile Safari/537.36 OPR/${rand(APP_VERSIONS['Opera'])}`;
+                        ua = `Mozilla/5.0 (Linux; Android ${androidOsVer}; ${modelName} Build/${build}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Mobile Safari/537.36 OPR/${rand(BROWSERS['Opera'])}`;
                     } else if (browser === 'Safari') {
-                        // Fallback to Chrome for Android Safari requests
-                        ua = `Mozilla/5.0 (Linux; Android ${osVer}; ${hw} Build/${build}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Mobile Safari/537.36`;
+                        // Fallback to Chrome format for Android Webkit Safari requests
+                        ua = `Mozilla/5.0 (Linux; Android ${androidOsVer}; ${modelName} Build/${build}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Mobile Safari/537.36`;
                     }
 
-                } else if (currentDevice === 'iPhone' || currentDevice === 'iPad') {
-                    const isIpad = currentDevice === 'iPad';
-                    const osVerRaw = rand(VERSIONS['iOS']); 
-                    const osVerUnder = osVerRaw.replace(/\./g, '_'); 
-                    const hw = isIpad ? rand(HARDWARE['iPad']) : rand(HARDWARE['iPhone']);
-                    const base = isIpad ? `${hw}; CPU OS ${osVerUnder} like Mac OS X` : `${hw}; CPU iPhone OS ${osVerUnder} like Mac OS X`;
+                } else if (currentDevice === 'iPhone') {
+                    const osVerRaw = rand(IOS_VERSIONS); 
+                    const osVerUnder = osVerRaw; // e.g. 18_3_1
+                    const osVerDot = osVerRaw.replace(/_/g, '.'); // e.g. 18.3.1
+                    const hw = rand(IPHONE_MODELS);
+                    const base = `${hw}; CPU iPhone OS ${osVerUnder} like Mac OS X`;
                     const safBuild = rand(['15E148', '21E219', '21H20', '23D8133']);
 
                     if (browser === 'Safari') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${rand(APP_VERSIONS['Safari'])} Mobile/${safBuild} Safari/604.1`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${rand(BROWSERS['Safari'])} Mobile/${safBuild} Safari/604.1`;
                     } else if (browser === 'Chrome') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/${rand(APP_VERSIONS['Chrome'])} Mobile/${safBuild} Safari/604.1`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/${chromeCore} Mobile/${safBuild} Safari/604.1`;
                     } else if (browser === 'Edge') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${rand(APP_VERSIONS['Safari'])} Mobile/${safBuild} Safari/604.1 EdgiOS/${rand(APP_VERSIONS['Edge'])}`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${rand(BROWSERS['Safari'])} Mobile/${safBuild} Safari/604.1 EdgiOS/${rand(BROWSERS['Edge'])}`;
                     } else if (browser === 'Firefox') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/${rand(APP_VERSIONS['Firefox'])} Mobile/${safBuild} Safari/605.1.15`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/${rand(BROWSERS['Firefox'])} Mobile/${safBuild} Safari/605.1.15`;
                     } else if (browser === 'Opera') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) OPiOS/${rand(APP_VERSIONS['Opera'])} Mobile/${safBuild} Safari/605.1.15`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) OPiOS/${rand(BROWSERS['Opera'])} Mobile/${safBuild} Safari/605.1.15`;
                     }
 
-                } else if (currentDevice === 'Windows 10' || currentDevice === 'Windows 11') {
-                    const base = currentDevice === 'Windows 11' ? 'Windows NT 11.0; Win64; x64' : 'Windows NT 10.0; Win64; x64';
+                } else if (currentDevice === 'Windows') {
+                    const base = rand(WIN_VERSIONS);
 
                     if (browser === 'Chrome' || browser === 'Safari') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${rand(APP_VERSIONS['Chrome'])} Safari/537.36`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Safari/537.36`;
                     } else if (browser === 'Edge') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Safari/537.36 Edg/${rand(APP_VERSIONS['Edge'])}`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Safari/537.36 Edg/${rand(BROWSERS['Edge'])}`;
                     } else if (browser === 'Firefox') {
-                        const ffVer = rand(APP_VERSIONS['Firefox']);
+                        const ffVer = rand(BROWSERS['Firefox']);
                         const ffMajor = ffVer.split('.')[0];
                         ua = `Mozilla/5.0 (${base}; rv:${ffMajor}.0) Gecko/20100101 Firefox/${ffVer}`;
                     } else if (browser === 'Opera') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Safari/537.36 OPR/${rand(APP_VERSIONS['Opera'])}`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Safari/537.36 OPR/${rand(BROWSERS['Opera'])}`;
                     }
 
                 } else if (currentDevice === 'Mac') {
-                    const base = rand(HARDWARE['Mac']);
+                    const base = `Macintosh; Intel Mac OS X ${rand(MAC_VERSIONS)}`;
 
                     if (browser === 'Safari') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${rand(APP_VERSIONS['Safari'])} Safari/605.1.15`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${rand(BROWSERS['Safari'])} Safari/605.1.15`;
                     } else if (browser === 'Chrome' || browser === 'Edge') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${rand(APP_VERSIONS['Chrome'])} Safari/537.36`;
-                        if(browser === 'Edge') ua += ` Edg/${rand(APP_VERSIONS['Edge'])}`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Safari/537.36`;
+                        if(browser === 'Edge') ua += ` Edg/${rand(BROWSERS['Edge'])}`;
                     } else if (browser === 'Firefox') {
-                        const ffVer = rand(APP_VERSIONS['Firefox']);
+                        const ffVer = rand(BROWSERS['Firefox']);
                         const ffMajor = ffVer.split('.')[0];
                         ua = `Mozilla/5.0 (${base}; rv:${ffMajor}.0) Gecko/20100101 Firefox/${ffVer}`;
                     } else if (browser === 'Opera') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Safari/537.36 OPR/${rand(APP_VERSIONS['Opera'])}`;
+                        ua = `Mozilla/5.0 (${base}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeCore} Safari/537.36 OPR/${rand(BROWSERS['Opera'])}`;
                     }
                 }
 
@@ -392,7 +371,6 @@
             renderOutput(Array.from(generatedUAs));
         }
 
-        // --- RENDERING & COPY ---
         function renderOutput(uaList) {
             const container = document.getElementById('outputContainer');
             const emptyState = document.getElementById('emptyState');
