@@ -43,7 +43,6 @@
         .glow-amber:hover { border-color: rgba(251, 191, 36, 0.6); box-shadow: 0 0 30px rgba(251, 191, 36, 0.25); transform: translateY(-5px); }
         .glow-blue:hover { border-color: rgba(59, 130, 246, 0.8); box-shadow: 0 0 40px rgba(59, 130, 246, 0.35); transform: translateY(-5px); }
 
-        .dash-tab-content { animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Scroller */
@@ -73,10 +72,6 @@
         .ph-lock-key { transition: 0.3s; }
         .group:hover .ph-lock-key { color: #ef4444; transform: scale(1.1); }
         
-        /* Video Container */
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
-        .video-container iframe, .video-container object, .video-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
         /* Telegram Button */
         .telegram-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #0088cc; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; box-shadow: 0 10px 20px rgba(0, 136, 204, 0.3); z-index: 9999; transition: 0.3s; border: 2px solid rgba(255, 255, 255, 0.1); }
         .telegram-btn:hover { transform: scale(1.1) translateY(-5px); background: #0099e6; }
@@ -123,7 +118,7 @@
         </div>
     </nav>
 
-    <!-- Dynamic Notification Bar (Always Red Background) -->
+    <!-- Dynamic Notification Bar -->
     <div id="noticeBarContainer" class="fixed top-[56px] md:top-[64px] left-0 w-full h-[35px] md:h-[40px] bg-[#cc0000] border-b border-white/10 text-white text-[11px] md:text-sm font-bold flex items-center z-[40] shadow-md transition-colors duration-500">
         <div class="notice-container">
             <div class="notice-text" id="dynamicNotice">🚀 Welcome to Freelancer Nazmul IT 🔥 Get 30% OFF on Yearly Plan! ⚡ Instant Activation with Bkash/Nagad/Rocket & Crypto-Pay/Binance. Please Login or Register first to access packages.</div>
@@ -140,7 +135,7 @@
             <div class="px-4 md:px-6 max-w-7xl mx-auto relative z-10 w-full">
                 <header class="pt-8 md:pt-16 pb-12 md:pb-16 text-center max-w-5xl mx-auto relative">
                     <span class="inline-block px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs font-bold uppercase mb-6 tracking-widest shadow-inner">Premium Master Update Course</span>
-                    <h1 class="text-5xl md:text-6xl font-extrabold mb-5 text-white leading-tight tracking-tighter">
+                    <h1 class="text-4xl md:text-6xl font-extrabold mb-5 text-white leading-tight tracking-tighter">
                         Recorded Video Courses <br>Package <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 animate-bg-pan">& Automation Tools</span>
                     </h1>
@@ -153,7 +148,7 @@
                 <!-- Course Packages -->
                 <section id="course-packages" class="py-12 md:py-16 relative border-t border-white/5">
                     <div class="text-center mb-10">
-                        <h2 class="text-2xl md:text-5xl font-extrabold mb-2 text-white">Our CPA Self SignUp Recorded Video Courses</h2>
+                        <h2 class="text-2xl md:text-4xl font-extrabold mb-2 text-white">Our CPA Self SignUp Recorded Video Courses</h2>
                         <p class="text-yellow-400 text-xs md:text-sm font-black uppercase tracking-widest mt-1">Choose a package <span class="text-green-400">ALL TOOLS FREE</span> with every course</p>
                     </div>
                     
@@ -172,53 +167,53 @@
                         <p class="text-green-400 font-bold">These tools are included <span class="text-red-400">FREE</span> with any course</p>
                     </div>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-                        <div class="neon-panel glow-yellow p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-yellow-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+                        <div class="neon-panel glow-yellow p-8 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-yellow-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
                             <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                            <i class="ph-fill ph-video-camera text-5xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
-                            <h4 class="text-xl font-bold text-white mt-2">New Video Course</h4>
+                            <i class="ph-fill ph-video-camera text-4xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
+                            <h4 class="text-lg font-bold text-white mt-2">New Video Course</h4>
                         </div>
-                        <div class="neon-panel glow-yellow p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-yellow-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                        <div class="neon-panel glow-yellow p-8 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-yellow-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
                             <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                            <i class="ph-fill ph-mask-happy text-5xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
-                            <h4 class="text-xl font-bold text-white mt-2">Useragent Generator</h4>
+                            <i class="ph-fill ph-mask-happy text-4xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
+                            <h4 class="text-lg font-bold text-white mt-2">Useragent Generator</h4>
                         </div>
-                        <div class="neon-panel glow-yellow p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-yellow-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                        <div class="neon-panel glow-yellow p-8 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-yellow-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
                             <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                            <i class="ph-fill ph-envelope-open text-5xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
-                            <h4 class="text-xl font-bold text-white mt-2">Email Generator</h4>
-                        </div>
-
-                        <div class="neon-panel glow-green p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
-                            <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                            <i class="ph-fill ph-shield-check text-5xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
-                            <h4 class="text-xl font-bold text-white mt-2">Real Email Checker</h4>
-                        </div>
-                        <div class="neon-panel glow-green p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
-                            <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                            <i class="ph-fill ph-globe text-5xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
-                            <h4 class="text-xl font-bold text-white mt-2">Best CPA Networks</h4>
-                        </div>
-                        <div class="neon-panel glow-green p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
-                            <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                            <i class="ph-fill ph-tree-structure text-5xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
-                            <h4 class="text-xl font-bold text-white mt-2">Best Proxy IP Lists</h4>
+                            <i class="ph-fill ph-envelope-open text-4xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
+                            <h4 class="text-lg font-bold text-white mt-2">Email Generator</h4>
                         </div>
 
-                        <div class="neon-panel glow-red p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                        <div class="neon-panel glow-green p-8 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
                             <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                            <i class="ph-fill ph-robot text-5xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i>
-                            <h4 class="text-xl font-bold text-white mt-2">Useragent Random Mix</h4>
+                            <i class="ph-fill ph-shield-check text-4xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
+                            <h4 class="text-lg font-bold text-white mt-2">Real Email Checker</h4>
                         </div>
-                        <div class="neon-panel glow-red p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                        <div class="neon-panel glow-green p-8 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
                             <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                            <i class="ph-fill ph-broadcast text-5xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i>
-                            <h4 class="text-xl font-bold text-white mt-2">Real Address & Number</h4>
+                            <i class="ph-fill ph-globe text-4xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
+                            <h4 class="text-lg font-bold text-white mt-2">Best CPA Networks</h4>
                         </div>
-                        <div class="neon-panel glow-red p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                        <div class="neon-panel glow-green p-8 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
                             <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                            <i class="ph-fill ph-hard-drives text-5xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i>
-                            <h4 class="text-xl font-bold text-white mt-2">Upcoming</h4>
+                            <i class="ph-fill ph-tree-structure text-4xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
+                            <h4 class="text-lg font-bold text-white mt-2">Best Proxy IP Lists</h4>
+                        </div>
+
+                        <div class="neon-panel glow-red p-8 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                            <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
+                            <i class="ph-fill ph-robot text-4xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i>
+                            <h4 class="text-lg font-bold text-white mt-2">Useragent Random Mix</h4>
+                        </div>
+                        <div class="neon-panel glow-red p-8 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                            <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
+                            <i class="ph-fill ph-broadcast text-4xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i>
+                            <h4 class="text-lg font-bold text-white mt-2">Real Address & Number</h4>
+                        </div>
+                        <div class="neon-panel glow-red p-8 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                            <i class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
+                            <i class="ph-fill ph-hard-drives text-4xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i>
+                            <h4 class="text-lg font-bold text-white mt-2">Upcoming</h4>
                         </div>
                     </div>
                 </section>
@@ -231,23 +226,23 @@
                     </div>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1200px] mx-auto relative z-10">
-                        <div class="neon-panel glow-cyan p-10 flex flex-col items-center text-center cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
-                            <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-4"><i class="ph-fill ph-robot text-5xl text-cyan-400"></i></div>
+                        <div class="neon-panel glow-cyan p-8 flex flex-col items-center text-center cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                            <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-4"><i class="ph-fill ph-robot text-4xl text-cyan-400"></i></div>
                             <h3 class="text-xl font-bold text-white mb-4">Auto Clicker Bot</h3>
                             <div class="w-full py-2 bg-zinc-800 text-zinc-500 font-bold rounded flex items-center justify-center gap-2"><i class="ph-fill ph-lock-key"></i> Locked</div>
                         </div>
-                        <div class="neon-panel glow-fuchsia p-10 flex flex-col items-center text-center cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
-                            <div class="w-16 h-16 bg-fuchsia-500/10 rounded-2xl flex items-center justify-center mb-4"><i class="ph-fill ph-browser text-5xl text-fuchsia-400"></i></div>
+                        <div class="neon-panel glow-fuchsia p-8 flex flex-col items-center text-center cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                            <div class="w-16 h-16 bg-fuchsia-500/10 rounded-2xl flex items-center justify-center mb-4"><i class="ph-fill ph-browser text-4xl text-fuchsia-400"></i></div>
                             <h3 class="text-xl font-bold text-white mb-4">Anti-Detect Browser</h3>
                             <div class="w-full py-2 bg-zinc-800 text-zinc-500 font-bold rounded flex items-center justify-center gap-2"><i class="ph-fill ph-lock-key"></i> Locked</div>
                         </div>
-                        <div class="neon-panel glow-amber p-10 flex flex-col items-center text-center cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
-                            <div class="w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-4"><i class="ph-fill ph-globe-hemisphere-east text-5xl text-amber-400"></i></div>
+                        <div class="neon-panel glow-amber p-8 flex flex-col items-center text-center cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                            <div class="w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-4"><i class="ph-fill ph-globe-hemisphere-east text-4xl text-amber-400"></i></div>
                             <h3 class="text-xl font-bold text-amber-400 mb-4">Our Proxy Site</h3>
                             <div class="w-full py-2 bg-zinc-800 text-zinc-500 font-bold rounded flex items-center justify-center gap-2"><i class="ph-fill ph-lock-key"></i> Locked</div>
                         </div>
-                        <div class="neon-panel glow-blue p-10 flex flex-col items-center text-center cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
-                            <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-4"><i class="ph-fill ph-code text-5xl text-blue-400"></i></div>
+                        <div class="neon-panel glow-blue p-8 flex flex-col items-center text-center cursor-pointer bg-zinc-900 border border-zinc-800/80 group" onclick="handleHomeClick('Basic Learning|2000 BDT / $20')">
+                            <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-4"><i class="ph-fill ph-code text-4xl text-blue-400"></i></div>
                             <h3 class="text-xl font-bold text-blue-400 mb-4">Auto Lead Gen Bot</h3>
                             <div class="w-full py-2 bg-zinc-800 text-zinc-500 font-bold rounded flex items-center justify-center gap-2"><i class="ph-fill ph-lock-key"></i> Locked</div>
                         </div>
@@ -255,7 +250,7 @@
                 </section>
             </div>
 
-            <!-- STUDENT REVIEWS & SUCCESS STORIES (FULL WIDTH INSIDE HOME SECTION) -->
+            <!-- STUDENT REVIEWS & SUCCESS STORIES -->
             <section id="reviews" class="py-12 md:py-20 relative border-t border-white/5 bg-[#020617] overflow-hidden breakout-full-width">
                 <div class="text-center mb-10 px-4">
                     <h2 class="text-3xl md:text-5xl font-extrabold mb-4 text-white">Our Students Review & Success Stories</h2>
@@ -283,23 +278,19 @@
                             <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-green-500"><div class="flex gap-4 items-center mb-4"><div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">S</div><div><h4 class="font-bold text-white">Sabbir Hossain</h4><div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div></div></div><p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"The email generator and useragent tools are lifesavers! Saved me hours of manual work."</p><div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max"><i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $210</div></div>
                             <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-amber-500"><div class="flex gap-4 items-center mb-4"><div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">R</div><div><h4 class="font-bold text-white">Rakib Ahmed</h4><div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div></div></div><p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"Everything works flawlessly. The private bots are very stable. Very happy with my purchase."</p><div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max"><i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $450</div></div>
                             <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-cyan-500"><div class="flex gap-4 items-center mb-4"><div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">K</div><div><h4 class="font-bold text-white">Kamrul Hasan</h4><div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div></div></div><p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"Using the Email Validator and CPA network list. Best investment I have made this year!"</p><div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max"><i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $280</div></div>
-                            <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-yellow-500"><div class="flex gap-4 items-center mb-4"><div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">F</div><div><h4 class="font-bold text-white">Fahim Rahman</h4><div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div></div></div><p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"I was struggling with getting approvals, but the Secret Methods from Class 2 got me in."</p><div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max"><i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $190</div></div>
-                            <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-emerald-500"><div class="flex gap-4 items-center mb-4"><div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">J</div><div><h4 class="font-bold text-white">Jahidul Islam</h4><div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star text-zinc-600"></i></div></div></div><p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"The Mobile Anti-Detect browser is super smooth. Successfully completed 50+ signups."</p><div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max"><i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $410</div></div>
-                            <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl shadow-lg w-[350px] inline-block whitespace-normal align-top border-t-4 border-t-rose-500"><div class="flex gap-4 items-center mb-4"><div class="w-12 h-12 bg-gradient-to-br from-rose-500 to-red-600 rounded-full flex justify-center items-center font-bold text-xl text-white shadow-md">N</div><div><h4 class="font-bold text-white">Nayeem Uddin</h4><div class="flex text-yellow-400 text-xs mt-1"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div></div></div><p class="text-zinc-400 text-sm italic mb-4 leading-relaxed line-clamp-3">"Fastest ROI! Spent $50 on Legend VIP and made it back in just 3 days using their proxy list."</p><div class="bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold px-3 py-2 rounded flex items-center justify-center gap-2 w-max"><i class="ph-fill ph-check-circle text-lg"></i> Payment Received: $600</div></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Trusted Animated Banner below reviews -->
                 <div class="mt-12 bg-gradient-to-r from-[#020617] via-violet-900/20 to-[#020617] border-y border-white/5 py-8 w-full relative overflow-hidden flex flex-col items-center justify-center">
                     <h3 class="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-green-400 uppercase tracking-widest mb-6 animate-pulse z-10 flex items-center gap-3">
                         <i class="ph-fill ph-shield-check text-green-400"></i> 100% Verified & Trusted Platform
                     </h3>
                     <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 z-10 px-4">
-                        <div class="flex flex-col items-center gap-2"><i class="ph-fill ph-users text-5xl text-blue-400 animate-bounce"></i><span class="text-xs font-bold text-gray-400 uppercase">5000+ Students</span></div>
-                        <div class="flex flex-col items-center gap-2"><i class="ph-fill ph-star text-5xl text-yellow-400 animate-bounce" style="animation-delay: 0.2s;"></i><span class="text-xs font-bold text-gray-400 uppercase">4.9/5 Ratings</span></div>
-                        <div class="flex flex-col items-center gap-2"><i class="ph-fill ph-headset text-5xl text-fuchsia-400 animate-bounce" style="animation-delay: 0.4s;"></i><span class="text-xs font-bold text-gray-400 uppercase">24/7 Support</span></div>
-                        <div class="flex flex-col items-center gap-2"><i class="ph-fill ph-currency-circle-dollar text-5xl text-green-400 animate-bounce" style="animation-delay: 0.6s;"></i><span class="text-xs font-bold text-gray-400 uppercase">Secure Payments</span></div>
+                        <div class="flex flex-col items-center gap-2"><i class="ph-fill ph-users text-4xl text-blue-400 animate-bounce"></i><span class="text-xs font-bold text-gray-400 uppercase">5000+ Students</span></div>
+                        <div class="flex flex-col items-center gap-2"><i class="ph-fill ph-star text-4xl text-yellow-400 animate-bounce" style="animation-delay: 0.2s;"></i><span class="text-xs font-bold text-gray-400 uppercase">4.9/5 Ratings</span></div>
+                        <div class="flex flex-col items-center gap-2"><i class="ph-fill ph-headset text-4xl text-fuchsia-400 animate-bounce" style="animation-delay: 0.4s;"></i><span class="text-xs font-bold text-gray-400 uppercase">24/7 Support</span></div>
+                        <div class="flex flex-col items-center gap-2"><i class="ph-fill ph-currency-circle-dollar text-4xl text-green-400 animate-bounce" style="animation-delay: 0.6s;"></i><span class="text-xs font-bold text-gray-400 uppercase">Secure Payments</span></div>
                     </div>
                 </div>
             </section>
@@ -308,9 +299,9 @@
         <!-- ============================================== -->
         <!-- SECURE DASHBOARD SECTION (Visible after login) -->
         <!-- ============================================== -->
-        <div id="dashboard-section" class="hidden px-4 md:px-8 w-full max-w-[1400px] mx-auto mt-6">
+        <div id="dashboard-section" class="hidden px-4 md:px-8 w-full max-w-[1500px] mx-auto mt-6">
             
-            <div class="w-full border-y-2 border-violet-500/50 relative overflow-hidden bg-zinc-900 mb-8 rounded-2xl shadow-2xl">
+            <div class="w-full border-y-2 border-violet-500/50 relative overflow-hidden bg-zinc-900 mb-10 rounded-2xl shadow-2xl">
                  <div class="absolute -top-10 -right-10 w-64 h-64 bg-violet-600/15 blur-[80px] rounded-full pointer-events-none"></div>
                 <div class="px-6 md:px-12 py-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
                     <div>
@@ -339,101 +330,85 @@
                 </div>
             </div>
 
-            <!-- DASHBOARD CONTENT -->
-<div class="w-full flex-grow dash-scroll-area">
+            <!-- DASHBOARD CONTENT: SINGLE GRID (NO TABS) -->
+            <div class="w-full mt-8">
+                <h3 class="text-3xl font-black mb-8 text-white border-b border-zinc-800 pb-4">All Premium Access</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 pb-10">
                     
-                    <!-- TAB 1: VIDEO COURSES -->
-                    <div id="tabContent-courses" class="dash-tab-content block">
-                        <h3 class="text-2xl font-black mb-6 text-white border-b border-zinc-800 pb-3">My Video Course</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="courseVideoGrid"></div>
+                    <!-- 1. Video Course -->
+                    <div class="neon-panel glow-blue p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-blue-500/50 group relative" onclick="checkAccess('videocourse.html')">
+                        <i id="lock_course" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
+                        <i class="ph-fill ph-video-camera text-6xl text-blue-400 drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]"></i>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mt-2">My Video Course</h4>
                     </div>
 
-                    <!-- TAB 2: PREMIUM TOOLS -->
-                    <div id="tabContent-tools" class="dash-tab-content hidden">
-                        <h3 class="text-2xl font-black mb-6 text-white border-b border-zinc-800 pb-3">Access Premium Web Tools</h3>
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            
-<div class="dashboard-premium-item neon-panel glow-blue p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-blue-500/50 group relative" onclick="history.pushState({},'', '#courses'); switchDashTab('courses');">
-<i class="ph-fill ph-video-camera text-5xl text-blue-400"></i>
-<h4 class="text-xl font-bold text-white">My Video Course</h4>
-</div>
-<div class="dashboard-premium-item neon-panel glow-yellow p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-yellow-500/50 group relative" onclick="checkAccess('useragent-generator.html')">
-                                <i id="lock_ua" class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                                <i class="ph-fill ph-mask-happy text-5xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i><h4 class="text-xl font-bold text-white mt-2">Useragent Generator</h4>
-                            </div>
-                            <div class="dashboard-premium-item neon-panel glow-yellow p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-yellow-500/50 group relative" onclick="checkAccess('email-generator.html')">
-                                <i id="lock_email" class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                                <i class="ph-fill ph-envelope-open text-5xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i><h4 class="text-xl font-bold text-white mt-2">Email Generator</h4>
-                            </div>
-                            
-<div class="dashboard-premium-item neon-panel glow-fuchsia p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-fuchsia-500/50 group relative" onclick="history.pushState({},'', '#software'); switchDashTab('software');">
-<i class="ph-fill ph-robot text-5xl text-fuchsia-400"></i>
-<h4 class="text-xl font-bold text-white">Premium Software</h4>
-</div>
-<div class="dashboard-premium-item neon-panel glow-green p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="checkAccess('email-checker.html')">
-                                <i id="lock_validator" class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                                <i class="ph-fill ph-shield-check text-5xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i><h4 class="text-xl font-bold text-white mt-2">Real Email Checker</h4>
-                            </div>
-                            <div class="dashboard-premium-item neon-panel glow-green p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="checkAccess('cpa-networks.html')">
-                                <i id="lock_cpa" class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                                <i class="ph-fill ph-globe text-5xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i><h4 class="text-xl font-bold text-white mt-2">Best CPA Networks</h4>
-                            </div>
-                            <div class="dashboard-premium-item neon-panel glow-green p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="checkAccess('proxy-lists.html')">
-                                <i id="lock_proxy" class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                                <i class="ph-fill ph-tree-structure text-5xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i><h4 class="text-xl font-bold text-white mt-2">Best Proxy IP Lists</h4>
-                            </div>
-                            <div class="dashboard-premium-item neon-panel glow-red p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="checkAccess('useragent-random-mix.html')">
-                                <i id="lock_software_mix" class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                                <i class="ph-fill ph-robot text-5xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i><h4 class="text-xl font-bold text-white mt-2">Useragent Random Mix</h4>
-                            </div>
-                            <div class="dashboard-premium-item neon-panel glow-red p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="checkAccess('address-number.html')">
-                                <i id="lock_address" class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                                <i class="ph-fill ph-broadcast text-5xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i><h4 class="text-xl font-bold text-white mt-2">Real Address & Number</h4>
-                            </div>
-                            <div class="dashboard-premium-item neon-panel glow-red p-10 flex flex-col items-start justify-center gap-4 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="checkAccess('upcoming.html')">
-                                <i id="lock_name" class="ph-fill ph-lock-key absolute top-4 right-4 text-zinc-600 group-hover:text-red-500 transition text-xl z-10"></i>
-                                <i class="ph-fill ph-hard-drives text-5xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i><h4 class="text-xl font-bold text-white mt-2">Upcoming</h4>
-                            </div>
-                        </div>
+                    <!-- 2. UA Generator -->
+                    <div class="neon-panel glow-yellow p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-yellow-500/50 group relative" onclick="checkAccess('useragent-generator.html')">
+                        <i id="lock_ua" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
+                        <i class="ph-fill ph-mask-happy text-6xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mt-2">UA Generator</h4>
                     </div>
 
-                    <!-- TAB 3: AUTOMATION SOFTWARE -->
-                    <div id="tabContent-software" class="dash-tab-content hidden">
-                        <h3 class="text-2xl font-black mb-6 text-white border-b border-zinc-800 pb-3">Premium Software</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="neon-panel glow-cyan p-8 bg-zinc-900 border border-zinc-800 border-t-4 border-t-cyan-500 flex flex-col justify-between group relative" onclick="checkAccess('dl_clicker')">
-                                <i id="lock_dl_clicker" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
-                                <div class="text-center mb-6 mt-2">
-                                    <div class="w-20 h-20 bg-cyan-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-cyan-500/20"><i class="ph-fill ph-robot text-5xl text-cyan-400 drop-shadow-lg"></i></div>
-                                    <h4 class="text-2xl font-bold text-white mb-2">Auto Clicker Bot</h4>
-                                    <p class="text-zinc-400 text-sm">Automate your tasks effortlessly. Download the ZIP file, extract and install.</p>
-                                </div>
-                                <button class="w-full py-3.5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-xl shadow border border-zinc-700 transition flex justify-center items-center gap-2">
-                                    <i class="ph-bold ph-download-simple text-xl"></i> Download Software (.zip)
-                                </button>
-                            </div>
-                            <div class="neon-panel glow-fuchsia p-8 bg-zinc-900 border border-zinc-800 border-t-4 border-t-fuchsia-500 flex flex-col justify-between group relative">
-                                <i id="lock_dl_browser" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
-                                <div class="text-center mb-6 mt-2">
-                                    <div class="w-20 h-20 bg-fuchsia-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-fuchsia-500/20"><i class="ph-fill ph-browser text-5xl text-fuchsia-400 drop-shadow-lg"></i></div>
-                                    <h4 class="text-2xl font-bold text-white mb-2">Anti-Detect Browser</h4>
-                                    <p class="text-zinc-400 text-sm">Manage multiple accounts securely without fingerprints.</p>
-                                </div>
-                                <div class="flex flex-col sm:flex-row gap-3">
-                                    <button onclick="checkAccess('dl_browser_pc'); event.stopPropagation();" class="flex-1 py-3.5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-xl shadow border border-zinc-700 transition flex justify-center items-center gap-2 z-10 relative">
-                                        <i class="ph-fill ph-desktop text-xl text-blue-400"></i> For PC
-                                    </button>
-                                    <button onclick="checkAccess('dl_browser_mobile'); event.stopPropagation();" class="flex-1 py-3.5 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-xl shadow border border-zinc-700 transition flex justify-center items-center gap-2 z-10 relative">
-                                        <i class="ph-fill ph-device-mobile text-xl text-green-400"></i> For Mobile
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- 3. Email Generator -->
+                    <div class="neon-panel glow-yellow p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-yellow-500/50 group relative" onclick="checkAccess('email-generator.html')">
+                        <i id="lock_email" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
+                        <i class="ph-fill ph-envelope-open text-6xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.6)]"></i>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mt-2">Email Generator</h4>
+                    </div>
+
+                    <!-- 4. Premium Software -->
+                    <div class="neon-panel glow-fuchsia p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-fuchsia-500/50 group relative" onclick="checkAccess('software.html')">
+                        <i id="lock_software" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
+                        <i class="ph-fill ph-robot text-6xl text-fuchsia-400 drop-shadow-[0_0_15px_rgba(217,70,239,0.6)]"></i>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mt-2">Premium Software</h4>
+                    </div>
+
+                    <!-- 5. Email Checker -->
+                    <div class="neon-panel glow-green p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="checkAccess('email-checker.html')">
+                        <i id="lock_validator" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
+                        <i class="ph-fill ph-shield-check text-6xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mt-2">Real Email Checker</h4>
+                    </div>
+
+                    <!-- 6. CPA Networks -->
+                    <div class="neon-panel glow-green p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="checkAccess('cpa-networks.html')">
+                        <i id="lock_cpa" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
+                        <i class="ph-fill ph-globe text-6xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mt-2">CPA Networks</h4>
+                    </div>
+
+                    <!-- 7. Proxy Lists -->
+                    <div class="neon-panel glow-green p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-green-500/50 group relative" onclick="checkAccess('proxy-lists.html')">
+                        <i id="lock_proxy" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
+                        <i class="ph-fill ph-tree-structure text-6xl text-green-400 drop-shadow-[0_0_15px_rgba(74,222,128,0.6)]"></i>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mt-2">Best Proxy IP Lists</h4>
+                    </div>
+
+                    <!-- 8. Random Mix -->
+                    <div class="neon-panel glow-red p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="checkAccess('useragent-random-mix.html')">
+                        <i id="lock_software_mix" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
+                        <i class="ph-fill ph-robot text-6xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mt-2">Useragent Random Mix</h4>
+                    </div>
+
+                    <!-- 9. Address Number -->
+                    <div class="neon-panel glow-red p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="checkAccess('address-number.html')">
+                        <i id="lock_address" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
+                        <i class="ph-fill ph-broadcast text-6xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mt-2">Real Address & Number</h4>
+                    </div>
+
+                    <!-- 10. Upcoming -->
+                    <div class="neon-panel glow-red p-10 flex flex-col items-start justify-center gap-5 cursor-pointer bg-[#09090b] border border-red-500/50 group relative" onclick="checkAccess('upcoming.html')">
+                        <i id="lock_name" class="ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10"></i>
+                        <i class="ph-fill ph-hard-drives text-6xl text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.6)]"></i>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mt-2">Upcoming</h4>
                     </div>
 
                 </div>
             </div>
+
         </div>
     </div>
 
