@@ -14,7 +14,6 @@
             window.location.replace("index.html");
         }
     })();
-
 </script>
 <!DOCTYPE html>
 <html lang="en">
@@ -226,7 +225,8 @@
                     document.getElementById('br_chrome').checked = true;
                 }
             } else if (device === 'iPhone' || device === 'Mac') {
-                [lblSafari].forEach(el => el.style.display = 'inline-flex');
+                // FIXED: Only Safari is shown for iPhone and Mac
+                [lblSafari].forEach(el => el.style.display = 'inline-flex'); 
                 document.getElementById('br_safari').checked = true;
             } else if (device === 'Windows') {
                 [lblChrome, lblFirefox, lblEdge, lblOpera].forEach(el => el.style.display = 'inline-flex');
@@ -310,6 +310,13 @@
             return `${rand(prefixes)}.${year}${month}${day}.${revision}`;
         }
 
+        function generateIOSBuild() {
+            const buildMajor = randInt(14, 25);
+            const buildLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26)); // A-Z
+            const buildMinor = randInt(10, 999);
+            return `${buildMajor}${buildLetter}${buildMinor}`; // e.g., 15E148
+        }
+
         function generateUAs() {
             const qty = parseInt(document.getElementById('uaQty').value) || 10;
             const deviceSelection = document.querySelector('input[name="device"]:checked').value;
@@ -376,22 +383,27 @@
                     }
 
                 } else if (currentDevice === 'iPhone') {
-                    const osVerUnder = rand(IOS_OS_VERSIONS); // e.g. 18_7
-                    const hw = rand(IPHONE_MODELS);
-                    const base = `${hw}; CPU iPhone OS ${osVerUnder} like Mac OS X`;
-                    const safBuild = rand(['23A355', '24E220', '21E219']);
+                    const safBuild = generateIOSBuild(); 
 
                     if (currentBrowser === 'Safari') {
-                        // Strict specific format user requested: Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0.1 Mobile/23A355 Safari/604.1
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${safariCore} Mobile/${safBuild} Safari/604.1`;
+                        // Strict specific format for iPhone Safari
+                        ua = `Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5.2 Mobile/${safBuild} Safari/604.1`;
                     } else if (currentBrowser === 'Chrome') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/${chromeCore} Mobile/${safBuild} Safari/604.1`;
-                    } else if (currentBrowser === 'Edge') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${safariCore} Mobile/${safBuild} Safari/604.1 EdgiOS/${edgeCore}`;
-                    } else if (currentBrowser === 'Firefox') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/${firefoxCore} Mobile/${safBuild} Safari/605.1.15`;
-                    } else if (currentBrowser === 'Opera') {
-                        ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) OPiOS/${operaCore} Mobile/${safBuild} Safari/605.1.15`;
+                        // Strict specific format for iPhone Chrome (if selected via Random Mix)
+                        ua = `Mozilla/5.0 (iPhone; CPU iPhone OS 26_5_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/150.0.7871.51 Mobile/${safBuild} Safari/604.1`;
+                    } else {
+                        // Fallback logic for other browsers
+                        const osVerUnder = rand(IOS_OS_VERSIONS);
+                        const hwRand = rand(IPHONE_MODELS);
+                        const base = `${hwRand}; CPU iPhone OS ${osVerUnder} like Mac OS X`;
+                        
+                        if (currentBrowser === 'Edge') {
+                            ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${safariCore} Mobile/${safBuild} Safari/604.1 EdgiOS/${edgeCore}`;
+                        } else if (currentBrowser === 'Firefox') {
+                            ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/${firefoxCore} Mobile/${safBuild} Safari/605.1.15`;
+                        } else if (currentBrowser === 'Opera') {
+                            ua = `Mozilla/5.0 (${base}) AppleWebKit/605.1.15 (KHTML, like Gecko) OPiOS/${operaCore} Mobile/${safBuild} Safari/605.1.15`;
+                        }
                     }
 
                 } else if (currentDevice === 'Windows' || currentDevice === 'Windows 10' || currentDevice === 'Windows 11') {
