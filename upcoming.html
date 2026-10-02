@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coming Soon</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #020617;
+
+    font-family: "Inter", sans-serif;
+}
+
+/* Subtle animated background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 650px;
+    height: 650px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 55, 85, 0.13) 0%,
+        rgba(255, 55, 85, 0.05) 35%,
+        transparent 70%
+    );
+
+    animation: glowPulse 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: .55;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.15);
+        opacity: 1;
+    }
+}
+
+
+/* Main */
+.coming-soon {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Badge */
+.badge {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 22px;
+
+    margin-bottom: 28px;
+
+    border-radius: 50px;
+
+    background: rgba(255, 35, 70, 0.06);
+
+    border: 1px solid rgba(255, 65, 90, 0.55);
+
+    color: #ff7180;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    box-shadow:
+        0 0 20px rgba(255, 45, 70, 0.08);
+
+    animation: badgePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        box-shadow:
+            0 0 10px rgba(255, 45, 70, 0.05);
+    }
+
+    50% {
+        box-shadow:
+            0 0 28px rgba(255, 45, 70, 0.22);
+    }
+}
+
+
+/* Small moving light around badge */
+.badge::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #ff6878;
+
+    box-shadow: 0 0 12px #ff6878;
+
+    left: 8px;
+
+    animation: lightMove 2.5s linear infinite;
+}
+
+@keyframes lightMove {
+
+    0% {
+        left: 8px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        left: calc(100% - 13px);
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 0;
+    }
+
+    100% {
+        left: 8px;
+        opacity: 0;
+    }
+}
+
+
+/* Heading */
+h1 {
+    position: relative;
+
+    font-size: clamp(48px, 6.5vw, 78px);
+
+    line-height: 1.04;
+
+    font-weight: 800;
+
+    letter-spacing: -3px;
+
+    background: linear-gradient(
+        110deg,
+        #ff6678 0%,
+        #ffb1b9 45%,
+        #ffffff 50%,
+        #ff8b98 58%,
+        #ff6678 100%
+    );
+
+    background-size: 250% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        textShine 4s linear infinite,
+        textFloat 3s ease-in-out infinite;
+}
+
+
+/* Moving shine */
+@keyframes textShine {
+    0% {
+        background-position: 200% center;
+    }
+
+    100% {
+        background-position: -50% center;
+    }
+}
+
+
+/* Very subtle floating effect */
+@keyframes textFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 43px;
+        letter-spacing: -1.5px;
+    }
+
+    .badge {
+        font-size: 10px;
+        padding: 8px 18px;
+        margin-bottom: 23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="coming-soon">
+
+    <div class="badge">
+        🚀 &nbsp; COMING SOON
+    </div>
+
+    <h1>
+        More Powerful<br>
+        Tools Are Coming
+    </h1>
+
+</div>
+
+</body>
+</html>
