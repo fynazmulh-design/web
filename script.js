@@ -6,9 +6,10 @@ const CONFIG = {
 let isLoggedIn = false;
 let countdownInterval;
 
-window.onload = function() {
+
+document.addEventListener('DOMContentLoaded', () => {
     checkLoginStatus();
-};
+});
 
 function setNotice(msg) {
     const noticeEl = document.getElementById('dynamicNotice');
@@ -28,6 +29,11 @@ function checkLoginStatus() {
         navBtn.onclick = logout;
 
         document.getElementById('dashUserName').innerText = user.name || "Student";
+        
+        
+        updateUIBasedOnPlan(user);
+        
+        
         syncUserPlan(user);
     } else {
         setNotice("🚀 Welcome to Freelancer Nazmul IT 🔥 Get 30% OFF on Yearly Plan! ⚡ Instant Activation with Bkash/Nagad/Rocket & Crypto-Pay/Binance. Please Login or Register first to access packages.");
@@ -43,16 +49,19 @@ function syncUserPlan(user) {
     .then(res => res.json())
     .then(result => {
         if (result.result === 'success') {
-            user.plan = result.plan;
-            user.expiry = result.expiry || "";
-            localStorage.setItem('proToolsUser', JSON.stringify(user));
-            updateUIBasedOnPlan(user);
+            
+            if (user.plan !== result.plan || user.expiry !== result.expiry) {
+                user.plan = result.plan;
+                user.expiry = result.expiry || "";
+                localStorage.setItem('proToolsUser', JSON.stringify(user));
+                updateUIBasedOnPlan(user);
+            }
         } else {
             logout();
         }
     })
     .catch(err => {
-        updateUIBasedOnPlan(user);
+        console.log("Background sync pending...");
     });
 }
 
@@ -69,13 +78,15 @@ function updateUIBasedOnPlan(user) {
     if (isPremium) {
         setNotice("Premium Access Active! Welcome to the VIP Dashboard. You now have full access to all courses, tools, and software.");
         
-        dashPlan.innerHTML = `${plan} <i class="ph-fill ph-check-circle text-green-400"></i>`;
-        dashPlan.className = "text-green-400 font-bold flex items-center justify-center gap-1";
+        if (dashPlan) {
+            dashPlan.innerHTML = `${plan} <i class="ph-fill ph-check-circle text-green-400"></i>`;
+            dashPlan.className = "text-green-400 font-bold flex items-center justify-center gap-1";
+        }
         
-        vipCodeBox.classList.add('hidden');
-        timerBox.classList.remove('hidden');
+        if(vipCodeBox) vipCodeBox.classList.add('hidden');
+        if(timerBox) timerBox.classList.remove('hidden');
         
-        // Toggle Views: Show Premium Grid, Hide Course Packages
+        // Show Premium Grid, Hide Course Packages
         if(freeContent) freeContent.classList.add('hidden');
         if(premiumContent) premiumContent.classList.remove('hidden');
         
@@ -91,13 +102,15 @@ function updateUIBasedOnPlan(user) {
     } else {
         setNotice("Your account is restricted. Please enter your VIP code or purchase a package to unlock full workspace access.");
         
-        dashPlan.innerHTML = `ACCESS LOCKED <i class="ph-fill ph-lock-key text-red-400"></i>`;
-        dashPlan.className = "text-red-400 font-bold flex items-center justify-center gap-1";
+        if (dashPlan) {
+            dashPlan.innerHTML = `ACCESS LOCKED <i class="ph-fill ph-lock-key text-red-400"></i>`;
+            dashPlan.className = "text-red-400 font-bold flex items-center justify-center gap-1";
+        }
         
-        vipCodeBox.classList.remove('hidden');
-        timerBox.classList.add('hidden');
+        if(vipCodeBox) vipCodeBox.classList.remove('hidden');
+        if(timerBox) timerBox.classList.add('hidden');
         
-        // Toggle Views: Show Course Packages, Hide Premium Grid
+        // Show Course Packages, Hide Premium Grid
         if(freeContent) freeContent.classList.remove('hidden');
         if(premiumContent) premiumContent.classList.add('hidden');
         
@@ -115,6 +128,7 @@ function updateUIBasedOnPlan(user) {
 function startCountdown(expiryTimestamp) {
     clearInterval(countdownInterval);
     const timerDiv = document.getElementById('countdownTimer');
+    if (!timerDiv) return;
     
     if (!expiryTimestamp) {
         timerDiv.innerHTML = `<div class="text-green-400 font-bold text-sm bg-green-500/10 px-4 py-2 rounded-lg border border-green-500/20">LIFETIME ACCESS</div>`;
@@ -129,7 +143,7 @@ function startCountdown(expiryTimestamp) {
             clearInterval(countdownInterval);
             timerDiv.innerHTML = '<div class="text-red-500 font-bold text-sm bg-red-500/10 px-4 py-2 rounded-lg border border-red-500/20">ACCESS EXPIRED</div>';
             const user = JSON.parse(localStorage.getItem('proToolsUser'));
-            if(user.plan !== 'Free') syncUserPlan(user);
+            if(user && user.plan !== 'Free') syncUserPlan(user);
             return;
         }
         
@@ -344,7 +358,10 @@ function executeRedeem(inputId) {
             user.expiry = result.newExpiry;
             localStorage.setItem('proToolsUser', JSON.stringify(user));
             document.getElementById('paymentModal').classList.add('hidden');
-            location.reload();
+            
+            
+            updateUIBasedOnPlan(user);
+            if(codeInput) codeInput.value = '';
         } else { 
             alert("❌ " + result.message); 
         }
