@@ -1,22 +1,19 @@
-<!-- ========================================= -->
-<!-- 🔒 VIP SECURITY CHECK (DO NOT REMOVE) 🔒 -->
-<!-- ========================================= -->
 <script>
     (function() {
         const user = JSON.parse(localStorage.getItem('proToolsUser'));
         const now = new Date().getTime();
 
-        // ১. যদি লগইন করা না থাকে
+        
         if (!user || !user.isLoggedIn) {
             alert("⚠️ Please login to access premium tools!");
-            window.location.replace("index.html"); // হোমপেজে পাঠিয়ে দেবে
+            window.location.replace("index.html");
         } 
-        // ২. যদি প্যাকেজ কেনা না থাকে বা ফ্রি ইউজার হয়
+        
         else if (!user.plan || user.plan === 'Free') {
             alert("🔒 Access Denied! Please buy a VIP package to unlock this tool.");
             window.location.replace("index.html"); 
         } 
-        // ৩. যদি প্যাকেজের মেয়াদ শেষ হয়ে যায়
+        
         else if (user.expiry && now > user.expiry) {
             alert("⏳ Your premium package has expired! Please renew.");
             window.location.replace("index.html");
@@ -241,7 +238,7 @@
         <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
                 <h3 class="text-lg md:text-xl font-black text-white flex items-center gap-2 tracking-tight">
-                    <i class="ph-fill ph-mailbox text-yellow-400"></i> Quick Access Temp Mails
+                    <i class="ph-fill ph-mailbox text-yellow-400"></i> Special For Dating Offer
                 </h3>
                 <p class="text-sm text-zinc-400 mt-1 font-medium">Instantly open premium temporary email services for quick verifications.</p>
             </div>
@@ -305,9 +302,104 @@
     // MASSIVE DATABASE PER COUNTRY (Male, Female, Last Names)
     const nameDb = {
         'US': {
-            m: ['James','John','Robert','Michael','William','David','Richard','Joseph','Thomas','Charles','Christopher','Daniel','Matthew','Anthony','Mark','Donald','Steven','Paul','Andrew','Joshua','Kenneth','Kevin','Brian','George','Edward','Ronald','Timothy','Jason','Jeffrey','Ryan','Jacob','Gary','Nicholas','Eric','Jonathan','Stephen','Larry','Justin','Scott','Brandon'],
-            f: ['Mary','Patricia','Jennifer','Linda','Elizabeth','Barbara','Susan','Jessica','Sarah','Karen','Nancy','Lisa','Betty','Margaret','Sandra','Ashley','Kimberly','Emily','Donna','Michelle','Dorothy','Carol','Amanda','Melissa','Deborah','Stephanie','Rebecca','Sharon','Laura','Cynthia','Kathleen','Amy','Shirley','Angela','Helen','Anna','Brenda','Pamela','Nicole','Emma'],
-            l: ['Smith','Johnson','Williams','Brown','Jones','Garcia','Miller','Davis','Rodriguez','Martinez','Hernandez','Lopez','Gonzalez','Wilson','Anderson','Thomas','Taylor','Moore','Jackson','Martin','Lee','Perez','Thompson','White','Harris','Sanchez','Clark','Ramirez','Lewis','Robinson','Walker','Young','Allen','King','Wright','Scott','Torres','Nguyen','Hill','Flores']
+            m: ['James','John','Robert','Michael','William','David','Richard','Joseph','Thomas','Charles','Christopher','Daniel','Matthew','Anthony','Mark','Donald','Steven','Paul','Andrew','Joshua','Kenneth','Kevin','Brian','George','Edward','Ronald','Timothy','Jason','Jeffrey','Ryan','Jacob','Gary','Nicholas','Eric','Jonathan','Stephen','Larry','Justin','Scott','Liam','Ethan','Mason','Hudson','Carter','Owen','Caleb','Nolan',
+  'Grayson','Bennett','Declan','Gavin','Emmett','Brooks','Holden',
+  'Beckett','Miles','Finn','Asher','Rowan','Silas','Jasper','Wesley',
+  'Elliot','Rhett','Blake','Dawson','Spencer','Lachlan','Hamish',
+  'Callum','Angus','Flynn','Darcy','Beau','Kieran','Jett','Bodhi',
+  'Cruz','Ronan','Cillian','Fionn','Eoghan','Tadhg','Niall','Darragh',
+  'Oisin','Cormac','Lorcan','Daan','Thijs','Bram','Sven','Luuk','Joris',
+  'Noud','Mees','Timo','Stijn','Sem','Joep','Floris','Gijs','Teun',
+  'Mikkel','Magnus','Emil','Malthe','Frederik','Asger','Valdemar','Viggo',
+  'Lauge','Aksel','Theodor','Otto','Storm','Eero','Aapo','Onni','Oskari',
+  'Veeti','Joonas','Lauri','Arttu','Rasmus','Viljami','Otso','Samu',
+  'Maximilian','Felix','Lukas','Leon','Jonas','Moritz','Oskar','Anton',
+  'Theo','Paul','Jakob','Niklas','Julian','Linus','Friedrich','Konrad',
+  'Gabriel','Louis','Arthur','Jules','Hugo','Raphaël','Nathan','Gabin',
+  'Léo','Noé','Mathis','Maël','Sacha','Gaspard','Antoine','Alejandro',
+  'Mateo','Pablo','Álvaro','Bruno','Adrián','Diego','Martín','Iker',
+  'Nicolás','Gael','Thiago','Gonzalo','Rodrigo','Lorenzo','Francesco',
+  'Alessandro','Edoardo','Tommaso','Gabriele','Riccardo','Federico',
+  'Giulio','Samuele','Emanuele','Mattia','Filippo','Pietro','João','Miguel',
+  'Afonso','Gonçalo','Diogo','Tiago','Duarte','Martim','Rodrigo','Tomás',
+  'Santiago','Sebastián','Leonardo','Emiliano','Julián','Fernando','Andrés',
+  'Aarav','Vihaan','Aditya','Arjun','Reyansh','Kabir','Atharv','Ishaan',
+  'Dhruv','Rudra','Ayaan','Vivaan','Krishna','Shaurya','Advait','Arnav',
+  'Haruto','Riku','Sota','Yuto','Ren','Kaito','Haruki','Sora','Itsuki',
+  'Minato','Daiki','Takumi','Hayato','Kenta','Ryo'],
+            f: ['Mary','Patricia','Jennifer','Linda','Elizabeth','Barbara','Susan','Jessica','Sarah','Karen','Nancy','Lisa','Betty','Margaret','Sandra','Ashley','Kimberly','Emily','Donna','Michelle','Dorothy','Carol','Amanda','Melissa','Deborah','Stephanie','Rebecca','Sharon','Laura','Cynthia','Kathleen','Amy','Shirley','Angela','Helen','Anna','Brenda','Pamela','Nicole','Charlotte','Amelia','Aurora','Violet','Hazel','Clara','Evelyn','Ivy',
+  'Willow','Quinn','Sienna','Maeve','Elodie','Freya','Cora','Adeline',
+  'Piper','Emery','Nora','Wren','Delilah','Briar','Daphne','Lyla',
+  'Juniper','Isla','Rosalie','Margot','Celeste','Noelle','Matilda','Poppy',
+  'Evie','Elsie','Imogen','Milla','Tahlia','Indie','Zara','Lara','Marnie',
+  'Tilly','Harper','Billie','Eloise','Mabel','Thea','Summer','Cleo','Eliza',
+  'Aoife','Saoirse','Niamh','Ciara','Orla','Roisin','Grainne','Maeve',
+  'Siobhan','Aisling','Caoimhe','Clodagh','Eimear','Sinead','Deirdre',
+  'Fiona','Brigid','Sorcha','Emer','Aino','Eevi','Helmi','Venla','Sofia',
+  'Emilia','Iida','Ella','Veera','Siiri','Anni','Vilma','Sanni','Nea',
+  'Pinja','Lotta','Saara','Hilla','Kerttu','Hannah','Mia','Lina','Leonie',
+  'Lena','Emma','Anna','Marie','Luisa','Amelie','Frieda','Ida','Greta',
+  'Johanna','Marlene','Helena','Antonia','Pauline','Louise','Jade','Chloé',
+  'Manon','Camille','Inès','Léa','Zoé','Alice','Rose','Agathe','Élise',
+  'Juliette','Margaux','Lucie','Anaïs','Romane','Adèle','Victoire','Lucía',
+  'Sofía','Martina','Valeria','Alba','Carmen','Vega','Noa','Claudia','Julia',
+  'Daniela','Mía','Sara','Elena','Aitana','Lola','Irene','Candela','Jimena',
+  'Marina','Ariadna','Giulia','Ginevra','Beatrice','Vittoria','Chiara',
+  'Greta','Francesca','Arianna','Elisa','Camilla','Gaia','Bianca','Noemi',
+  'Cecilia','Ludovica','Matilde','Beatriz','Leonor','Carolina','Inês',
+  'Margarida','Mariana','Clara','Catarina','Bárbara','Constança','Joana',
+  'Francisca','Íris','Madalena','Eva','Rita','Teresa','Aadhya','Anaya',
+  'Diya','Myra','Aaradhya','Ira','Anika','Kiara','Navya','Saanvi','Riya',
+  'Avni','Ishita','Meera','Tara','Aanya','Vanya','Nisha','Kavya','Ishani',
+  'Himari','Yui','Aoi','Rin','Mei','Sakura','Hana','Akari','Mio','Yuna',
+  'Riko','Saki','Koharu','Nanami','Hina','Miku','Ayaka','Nana','Misaki'],
+            l: ['Smith','Johnson','Williams','Brown','Jones','Garcia','Miller','Davis','Rodriguez','Martinez','Hernandez','Lopez','Gonzalez','Wilson','Anderson','Thomas','Taylor','Moore','Jackson','Martin','Lee','Perez','Thompson','White','Harris','Sanchez','Clark','Ramirez','Lewis','Robinson','Walker','Young','Allen','King','Wright','Scott','Torres','Nguyen','Hill','Smith','Johnson','Williams','Brown','Jones','Garcia','Miller','Davis',
+  'Rodriguez','Martinez','Hernandez','Lopez','Gonzalez','Wilson','Anderson',
+  'Thomas','Taylor','Moore','Jackson','Martin','Lee','Perez','Thompson',
+  'White','Harris','Sanchez','Clark','Ramirez','Lewis','Robinson','Walker',
+  'Young','Allen','King','Wright','Scott','Torres','Nguyen','Hill','Flores',
+  'Green','Adams','Nelson','Baker','Hall','Rivera','Campbell','Mitchell',
+  'Carter','Roberts','Gomez','Phillips','Evans','Turner','Diaz','Parker',
+  'Cruz','Edwards','Collins','Reyes','Stewart','Morris','Mendoza','Murphy',
+  'Cook','Rogers','Morgan','Peterson','Cooper','Reed','Bailey','Bell',
+  'Graham','Murray','Foster','Sullivan','Wallace','Woods','Cole','West',
+  'Jordan','Owens','Reynolds','Fisher','Ellis','Harrison','Gibson','McDonald',
+  'Crawford','Henry','Boyd','Mason','Kennedy','Warren','Dixon','Ramos',
+  'Griffin','Beaumont','Sinclair','McLeod','Fletcher','Caldwell','Mercer',
+  'Henderson','Kensington','Bouchard','Lavoie','Tremblay','Gauthier',
+  'Desjardins','Fontaine','McAllister','Donovan','Prescott','Montgomery',
+  'OBrien','Gallagher','Byrne','Ryan','OConnor','OSullivan','Doyle','McCarthy',
+  'Kennedy','Lynch','Quinn','Doherty','Flanagan','McGrath','Brennan',
+  'Fitzpatrick','Kavanagh','Nolan','De Jong','Jansen','De Vries','Van Dijk',
+  'Bakker','Visser','Smit','Meijer','De Boer','Mulder','De Groot','Bos','Vos',
+  'Peters','Hendriks','Van Leeuwen','Dekker','Brouwer','Van den Berg',
+  'Van der Meer','Schouten','Koster','Van Beek','Kuiper','Nielsen','Jensen',
+  'Hansen','Pedersen','Andersen','Christensen','Larsen','Sørensen',
+  'Rasmussen','Jørgensen','Petersen','Madsen','Kristensen','Olsen','Thomsen',
+  'Poulsen','Johansen','Møller','Mortensen','Knudsen','Jakobsen','Korhonen',
+  'Virtanen','Mäkinen','Nieminen','Mäkelä','Hämäläinen','Laine','Heikkinen',
+  'Koskinen','Järvinen','Lehtonen','Saarinen','Salminen','Heinonen','Niemi',
+  'Müller','Schmidt','Schneider','Fischer','Weber','Meyer','Wagner','Becker',
+  'Schulz','Hoffmann','Schäfer','Koch','Bauer','Richter','Klein','Wolf',
+  'Schröder','Neumann','Schwarz','Zimmermann','Braun','Krüger','Hartmann',
+  'Martin','Bernard','Dubois','Thomas','Robert','Richard','Petit','Durand',
+  'Leroy','Moreau','Simon','Laurent','Lefebvre','Michel','Bertrand','Roux',
+  'Fournier','Girard','Mercier','Rossi','Russo','Ferrari','Esposito','Bianchi',
+  'Romano','Colombo','Ricci','Marino','Greco','Bruno','Gallo','Conti',
+  'De Luca','Mancini','Costa','Giordano','Rizzo','Lombardi','Moretti',
+  'Fontana','Santoro','Mariani','Silva','Santos','Ferreira','Pereira',
+  'Oliveira','Rodrigues','Martins','Sousa','Fernandes','Gonçalves','Gomes',
+  'Lopes','Marques','Alves','Almeida','Ribeiro','Pinto','Carvalho','Teixeira',
+  'Moreira','Correia','Nowak','Kowalski','Wiśniewski','Wójcik','Kowalczyk',
+  'Kamiński','Lewandowski','Zieliński','Szymański','Woźniak','Dąbrowski',
+  'Kozłowski','Jankowski','Mazur','Kwiatkowski','Krawczyk','Piotrowski',
+  'Sharma','Verma','Patel','Mehta','Shah','Kapoor','Malhotra','Singh','Khan',
+  'Chopra','Agarwal','Bhatia','Joshi','Reddy','Rao','Iyer','Nair','Menon',
+  'Rahman','Ahmed','Hossain','Islam','Chowdhury','Hasan','Haque','Kabir',
+  'Mahmud','Sarker','Talukder','Bhuiyan','Molla','Uddin','Karim','Rashid',
+  'Siddique','Alam','Akter','Yılmaz','Kaya','Demir','Şahin','Çelik','Yıldız',
+  'Yıldırım','Öztürk','Aydın','Özdemir','Arslan','Doğan','Kılıç','Aslan',
+  'Çetin','Kara','Koç','Kurt','Aksoy','Polat','Erdoğan']
         },
         'UK': {
             m: ['Oliver','George','Harry','Noah','Jack','Leo','Arthur','Muhammad','Oscar','Charlie','Jacob','Thomas','Henry','William','Alfie','Archie','Joshua','Freddie','Theo','Isaac','James','Alexander','Logan','Edward','Ethan','Lucas','Harrison','Mason','Finley','Benjamin','Theo','Riley','Teddy','Sebastian','Joseph','David','Michael','Matthew','Daniel','Samuel'],
