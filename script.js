@@ -1,6 +1,6 @@
 const CONFIG = {
     
-    backendURL: "https://script.google.com/macros/s/AKfycbwv49zfBOFTbmoamPIUqNcnjkB4s1RdGWXuBzQLTIJd3_b7ls3ociGJ3MbkxRACa8S7DQ/exec"
+    backendURL: "https://script.google.com"
 };
 
 let isLoggedIn = false;
