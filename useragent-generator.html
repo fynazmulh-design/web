@@ -20,7 +20,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stealth UA Generator - Master Update</title>
+    <title>USER-AGENT GENERATOR</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -161,7 +161,7 @@
         <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
         <div>
-            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2 mb-1"><i class="ph-fill ph-device-mobile text-blue-400 text-lg"></i> OPERATING SYSTEM</h3>
+            <h3 class="text-[11px] font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2 mb-1"><i class="ph-fill ph-device-mobile text-blue-400 text-lg"></i> OPERATING SYSTEM</h3>
             <div class="ua-grid">
                 <input type="radio" name="device" id="dev_random_mix" value="Random Mix" class="ua-option" checked onchange="updateUI()">
                 <label for="dev_random_mix" class="ua-label"><i class="ph-fill ph-shuffle"></i> Random Mix</label>
@@ -184,7 +184,7 @@
         </div>
 
         <div id="brandSection">
-            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2 mb-1 mt-4"><i class="ph-fill ph-cpu text-orange-400 text-lg"></i> Android Brand</h3>
+            <h3 class="text-[11px] font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2 mb-1 mt-4"><i class="ph-fill ph-cpu text-orange-400 text-lg"></i> ANDROID BRAND</h3>
             <div class="ua-grid">
                 <input type="radio" name="brand" id="brd_random" value="Random" class="ua-option" checked>
                 <label for="brd_random" class="ua-label">Random Mix</label>
@@ -201,7 +201,7 @@
         </div>
 
         <div>
-            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2 mb-1 mt-4"><i class="ph-fill ph-browser text-emerald-400 text-lg"></i> Base Browser</h3>
+            <h3 class="text-[11px] font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2 mb-1 mt-4"><i class="ph-fill ph-browser text-emerald-400 text-lg"></i> BASE BROWSER</h3>
             <div class="ua-grid">
                 <input type="radio" name="browser" id="br_auto" value="Base OS" class="ua-option" checked>
                 <label for="br_auto" class="ua-label" id="lbl_br_auto"><i class="ph-fill ph-magic-wand"></i> Base OS</label>
@@ -227,7 +227,7 @@
         </div>
 
         <div id="inAppSection">
-            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2 mb-1 mt-4"><i class="ph-fill ph-app-window text-fuchsia-400 text-lg"></i> BASE SOCIAL MEDIA</h3>
+            <h3 class="text-[11px] font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2 mb-1 mt-4"><i class="ph-fill ph-app-window text-fuchsia-400 text-lg"></i> BASE SOCIAL MEDIA</h3>
             <div class="ua-grid">
                 <input type="radio" name="inapp" id="app_none" value="None" class="ua-option" checked>
                 <label for="app_none" class="ua-label">None</label>
@@ -256,7 +256,7 @@
         </div>
 
         <div>
-            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2 mb-1 mt-4"><i class="ph-fill ph-globe-hemisphere-west text-cyan-400 text-lg"></i> Target Country</h3>
+            <h3 class="text-[11px] font-bold text-slate-300 uppercase tracking-widest flex items-center gap-2 mb-1 mt-4"><i class="ph-fill ph-globe-hemisphere-west text-cyan-400 text-lg"></i> TARGET COUNTRY</h3>
             <div class="ua-grid">
                 <input type="radio" name="country" id="c_us" value="en-US" class="ua-option" checked>
                 <label for="c_us" class="ua-label">🇺🇸 United States</label>
@@ -312,10 +312,10 @@
         </div>
 
         <div class="mt-6 border-t border-white/10 pt-6">
-            <label class="block text-xs font-bold text-slate-300 uppercase tracking-widest mb-2">Generation Quantity (Max 10,000)</label>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-widest mb-2">GENERATION QUANTITY (MAX 10,000)</label>
             <input type="number" id="uaQty" value="10" min="1" max="10000" class="w-full bg-[#020617]/50 border border-emerald-500/20 text-white font-mono rounded-xl px-5 py-4 outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all text-sm mb-5 shadow-inner">
             
-            <button onclick="generateUAs()" class="w-full py-4 rounded-xl text-white font-extrabold text-[15px] transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 via-teal-400 to-emerald-600 animate-gradient-x border border-emerald-400/30 hover:scale-[1.02]">
+            <button onclick="generateUAs()" class="w-full py-4 rounded-xl text-white font-extrabold text-[15px] transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 animate-gradient-x border border-emerald-400/30 hover:scale-[1.02]">
                 <i class="ph-bold ph-lightning text-xl"></i> Generate User-Agent
             </button>
         </div>
@@ -489,10 +489,12 @@
                             ua = `Mozilla/5.0 (Linux; Android ${androidOsVer}; ${hw}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${chromeFull} Mobile Safari/537.36`;
                         }
                     } else if (currentBrowser === 'Edge') {
-                        const edgeV = rand(['152', '153', '154', '155']) + '.0.0.0';
+                        const baseEdge = rand(['152', '153', '154', '155']);
                         if (isGeneric) {
+                            const edgeV = `${baseEdge}.0.0.0`;
                             ua = `Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${edgeV} Mobile Safari/537.36 EdgA/${edgeV}`;
                         } else {
+                            const edgeV = `${baseEdge}.0.${randInt(7000, 8500)}.${randInt(10, 150)}`;
                             ua = `Mozilla/5.0 (Linux; Android ${androidOsVer}; ${hw}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${edgeV} Mobile Safari/537.36 EdgA/${edgeV}`;
                         }
                     } else if (currentBrowser === 'Firefox') {
@@ -501,11 +503,8 @@
                     } else if (currentBrowser === 'Opera') {
                         const opChrome = `${rand(['152','153','154','155'])}.0.${randInt(7500,8500)}.${randInt(10,99)}`;
                         const oprVer = `99.6.${randInt(2000,2999)}.${randInt(1000,3999)}`;
-                        if (isGeneric) {
-                            ua = `Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${opChrome} Mobile Safari/537.36 OPR/${oprVer}`;
-                        } else {
-                            ua = `Mozilla/5.0 (Linux; Android ${androidOsVer}; ${hw}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${opChrome} Mobile Safari/537.36 OPR/${oprVer}`;
-                        }
+                        // Opera is always specific format, no generic 'Android 10; K'
+                        ua = `Mozilla/5.0 (Linux; Android ${androidOsVer}; ${hw}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${opChrome} Mobile Safari/537.36 OPR/${oprVer}`;
                     }
 
                 } else if (currentDevice === 'iPhone' || currentDevice === 'iPad' || currentDevice === 'Mac') {
