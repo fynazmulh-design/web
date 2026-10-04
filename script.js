@@ -49,7 +49,6 @@ function syncUserPlan(user) {
     .then(res => res.json())
     .then(result => {
         if (result.result === 'success') {
-            
             if (user.plan !== result.plan || user.expiry !== result.expiry) {
                 user.plan = result.plan;
                 user.expiry = result.expiry || "";
@@ -92,9 +91,9 @@ function updateUIBasedOnPlan(user) {
         
         startCountdown(user.expiry);
         
-        // UNLOCK All Grid Icons
+        // UNLOCK Existing Grid Icons
         const unlockClass = "ph-fill ph-check-circle absolute top-5 right-5 text-green-400 text-2xl transition z-10";
-        ['course', 'ua', 'email', 'software', 'validator', 'cpa', 'proxy', 'software_mix', 'address', 'name'].forEach(id => {
+        ['course', 'ua', 'email', 'software', 'cpa', 'proxy', 'address', 'name'].forEach(id => {
             const icon = document.getElementById(`lock_${id}`);
             if(icon) icon.className = unlockClass;
         });
@@ -116,9 +115,9 @@ function updateUIBasedOnPlan(user) {
         
         clearInterval(countdownInterval);
         
-        // LOCK All Grid Icons
+        // LOCK Existing Grid Icons
         const lockClass = "ph-fill ph-lock-key absolute top-5 right-5 text-zinc-600 group-hover:text-red-500 transition text-2xl z-10";
-        ['course', 'ua', 'email', 'software', 'validator', 'cpa', 'proxy', 'software_mix', 'address', 'name'].forEach(id => {
+        ['course', 'ua', 'email', 'software', 'cpa', 'proxy', 'address', 'name'].forEach(id => {
             const icon = document.getElementById(`lock_${id}`);
             if(icon) icon.className = lockClass;
         });
